@@ -2,60 +2,33 @@
 #include <avr/io.h>
 #include <stdio.h>
 
-#define KBD_PIN_LEFT		PD7
-#define KBD_PIN_RIGHT		PD6
-#define KBD_PIN_UP			PD5
-#define KBD_PIN_DOWN		PD4
-#define KBD_PIN_OK			PD3
-#define KBD_PIN_GND			PD2
 
-#define KBD_MASK (_BV(KBD_PIN_UP)|_BV(KBD_PIN_LEFT)|_BV(KBD_PIN_RIGHT))
+static uint8_t lastPIN;
 
-#define KBD_PIN			PIND
-#define KBD_PORT		PORTD
-#define KBD_DDR			DDRD
-
-uint8_t lastKey,prevKey;
-
-unsigned char KBD_getKeyCode(uint8_t ah);
-
-unsigned char KBD_getKeyCode(uint8_t ah) 
+uint8_t KBD_ReadKey(void) 
 {
 
-
-/*	if (!(ah & _BV(KBD_PIN_OK))) {
-		return KEY_OK;
-	}*/
-	if (!(ah & _BV(KBD_PIN_UP))) {
-		return KEY_UP;
-	}
-/*	if (!(ah & _BV(KBD_PIN_DOWN))) {
-		return KEY_DOWN;
-	}*/
-	if (!(ah & _BV(KBD_PIN_LEFT))) {
-		return KEY_LEFT;
-	}
-	if (!(ah & _BV(KBD_PIN_RIGHT))) {
-		return KEY_RIGHT;
-	}
-	return 0;
-}
-//----------------------------
-void KBD_readKey(void) 
-{
-
-	lastKey=KBD_getKeyCode(KBD_PIN & KBD_MASK);
-	
-	if (prevKey != lastKey) 
+	lastPIN=(KBD_PIN & KBD_MASK);
+	if(lastPIN!=KBD_MASK)
 	{
-
+		_delay_ms(1);
+		if((lastPIN!=KBD_MASK) && (lastPIN==(KBD_PIN & KBD_MASK)))
+		{
+			return lastPIN;
+		}
+		else
+		{	
+			lastPIN=KBD_MASK;
+			return KEY_NONE;	
+		}
 	}
-	prevKey = lastKey;
-
-	return ;
+	else
+	{
+		return KEY_NONE;
+	}
 }
 //-------------------------------
-void  KBD_init(void) 
+void  KBD_Init(void) 
 {
 	KBD_PORT |= KBD_MASK;
 	KBD_DDR &= ~ KBD_MASK;

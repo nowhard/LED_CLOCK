@@ -69,7 +69,7 @@ void Clock_Buf_To_Year(uint16_t *buf, stDS1307Time *time)
 
 void Clock_Cycle(void)
 {
-	_delay_ms(500);
+	//_delay_ms(500);
 	I2C_ReadTime(&clock.DS1307Time);
 	Clock_Time_To_Buf(&clock.DS1307Time,&clock.display_buf[LED_NOT_DISPLAYED_LEN]);
 	LED_Out_Buf(&clock.display_buf,LED_BUF_LEN,0x1);
