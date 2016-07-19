@@ -37,7 +37,7 @@ HEX_EEPROM_FLAGS += --change-section-lma .eeprom=0 --no-change-warnings
 
 
 ## Objects that must be built in order to link
-OBJECTS = i2c.o keyboard.o main.o led_display.o clock.o 
+OBJECTS = i2c.o keyboard.o main.o led_display.o clock.o menu.o utilites.o 
 
 ## Objects explicitly added by the user
 LINKONLYOBJECTS = 
@@ -59,6 +59,12 @@ led_display.o: ../led_display.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 clock.o: ../clock.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+menu.o: ../menu.c
+	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
+
+utilites.o: ../utilites.c
 	$(CC) $(INCLUDES) $(CFLAGS) -c  $<
 
 ##Link

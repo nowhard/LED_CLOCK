@@ -1,15 +1,11 @@
 //#include "globals.h"
 #include "menu.h"
 #include "keyboard.h"
-#include "core.h"
 #include "timer1.h"
-#include "adc.h"
 #include <avr/pgmspace.h>
 #include "i2c.h"
-#include "led_process.h"
-#include "ext_int.h"
- #include <avr/wdt.h> 
-
+#include <avr/wdt.h> 
+#include "utilites.h"
 
 
 typedef struct PROGMEM{
@@ -55,7 +51,7 @@ menuItem        Null_Menu = {(void*)0, (void*)0, (void*)0, (void*)0, 0, {0x00}};
 MAKE_MENU(m_s1i1,  m_s1i2,    NULL_ENTRY,  NULL_ENTRY, m_s2i1,       MENU_TIME, 			/*time*/"");
 MAKE_MENU(m_s1i2,  m_s1i3,    m_s1i1,      NULL_ENTRY, m_s3i1,       MENU_DATE, 			/*data*/"");
 MAKE_MENU(m_s1i3,  m_s1i4,	  m_s1i2,      NULL_ENTRY, m_s4i1,       MENU_YEAR, 			/*year*/"");
-MAKE_MENU(m_s1i4,  m_s1i5,    m_s1i3,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS,  "");
+MAKE_MENU(m_s1i4,  NULL_ENTRY,m_s1i3,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS,  "");
 
 // подменю Ќастройка времени
 MAKE_MENU(m_s2i1,  m_s2i2,	  NULL_ENTRY,  m_s1i1,     NULL_ENTRY,   MENU_TUNE_HOURS, 		"");
@@ -70,10 +66,10 @@ MAKE_MENU(m_s4i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i3,     NULL_ENTRY,   MENU_TUNE_Y
 //volatile unsigned char disp_buf[6]={0};//буфер диспле€
 //unsigned char mode=0;//режим клавиатуры(режим меню, режим правки)
 
-extern volatile unsigned char brightness;
-uint8_t selectMenu(msg_par par);
+//extern volatile unsigned char brightness;
+//uint8_t selectMenu(msg_par par);
 
-void menuChange(menuItem* NewMenu)
+void Menu_Change(menuItem* NewMenu)
 {
 	if ((void*)NewMenu == (void*)&NULL_ENTRY)
 	  return;
@@ -81,7 +77,7 @@ void menuChange(menuItem* NewMenu)
 	selectedMenuItem = NewMenu;
 }
 //------------------------------------
-unsigned char dispMenu(void) 
+void Menu_Display(void) 
 {
 //	menuItem* tempMenu;
 //	tempMenu = (menuItem*)pgm_read_word(&selectedMenuItem);
@@ -160,224 +156,194 @@ unsigned char dispMenu(void)
 		break;
 	}
 
-	return (1);
 }
 
-uint8_t menuKey(msg_par par) {
-	switch (par) 
+void Menu_Key(enKey key) {
+	switch (key) 
 	{
-		case 0: 
+		case KEY_CODE_NONE: 
 		{
-			return 1;
+
 		}
 		//------------------------
-		case KEY_LEFT: 
-		{
-			switch(SELECT)//пункт меню
-			{			
-				case MENU_TUNE_TIME://определ€ем поведение кнопок в этом меню
-				{
-					time_tune_state=0;
-				}
-				break;
-
-				case MENU_TUNE_DATE:
-				{
-					date_tune_state=0;
-				}
-				break;
-				
-				default:
-				{
-					menuChange(PREVIOUS);
-				}
-				break;				
-			}
-		}
-		break;
-
-		//------------------------
-		case KEY_RIGHT: 
+		case KEY_CODE_A: 
 		{
 			switch(SELECT)//пункт меню
 			{			
-				case MENU_TUNE_TIME:
+				case MENU_TUNE_HOURS:
 				{
-					time_tune_state=1;
+
 				}
 				break;
 
-				case MENU_TUNE_DATE:
+			    case MENU_TUNE_MINUTES:
 				{
-					date_tune_state=1;
-				}
-				break;
-				
-				default:
-				{
-					menuChange(NEXT);
-				}
-				break;				
-			}
 
-		}
-		break;
-		//------------------------
-		case KEY_UP:
-		{ 
-			switch(SELECT)//пункт меню
-			{			
-				case MENU_TUNE_BRIGHTNESS:
-				{	
-					if(brightness>=0xF)
-					{
-						brightness=0xF;	
-					}
-					else
-					{
-						brightness=(brightness+1)&0xF;	
-						//I2C_Write_Byte(SLA_ADDR,0x0,brightness);
-					}
 				}
 				break;
 
-				case MENU_TUNE_TIME:
+				case MENU_TUNE_DAY:
 				{
-					if(time_tune_state)
-					{
-						if(clk.hour<23)
-						{
-							clk.hour++;
-						}
-						else
-						{
-							clk.hour=23;	
-						}
-					}
-					else
-					{
-						if(clk.minute<59)
-						{
-							clk.minute++;
-						}
-						else
-						{
-							clk.minute=59;
-						}
-					}
+
 				}
 				break;
 
-				case MENU_TUNE_DATE:
+				case MENU_TUNE_MONTH:
 				{
-					if(date_tune_state)
-					{
-						if(clk.month<12)
-						{
-							clk.month++;
-						}
-					}
-					else
-					{
-						if(clk.day<31)
-						{
-							clk.day++;
-						}
-					}
+
 				}
 				break;
 
 				case MENU_TUNE_YEAR:
 				{
-					if(clk.year>=99)
-					{
-						clk.year=99;
-					}
-					else
-					{
-						clk.year++;	
-					}
+
 				}
 				break;
 				
 				default:
 				{
-					//menuChange(NEXT);
+					Menu_Change(PREVIOUS);
+				}
+				break;				
+			}
+		}
+		break;
+
+		//------------------------
+		case KEY_CODE_B: 
+		{
+			switch(SELECT)//пункт меню
+			{			
+				case MENU_TUNE_HOURS:
+				{
+
+				}
+				break;
+
+			    case MENU_TUNE_MINUTES:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_DAY:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_MONTH:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_YEAR:
+				{
+
+				}
+				break;
+
+				default:
+				{
+					Menu_Change(NEXT);
+				}
+				break;				
+			}
+
+		}
+		break;
+		//------------------------
+		case KEY_CODE_C:
+		{ 
+			switch(SELECT)//пункт меню
+			{			
+				case MENU_TUNE_BRIGHTNESS:
+				{	
+
+				}
+				break;
+
+				case MENU_TUNE_HOURS:
+				{
+
+				}
+				break;
+
+			    case MENU_TUNE_MINUTES:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_DAY:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_MONTH:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_YEAR:
+				{
+
+				}
+				break;
+
+				default:
+				{
+					//Menu_Change(NEXT);
 				}
 				break;				
 			}			
 		}
 		break;
 		//------------------------
-		case KEY_DOWN:
+		case KEY_CODE_D:
 		{
 			switch(SELECT)//пункт меню
 			{			
 				case MENU_TUNE_BRIGHTNESS:
 				{
 
-					if(brightness<=0x1)
-					{
-						brightness=0x1;	
-					}
-					else
-					{
-						brightness=(brightness-1)&0xF;	
-						I2C_Write_Byte(SLA_ADDR,0x0,brightness);					
-					}
+
 				}
 				break;
 
-				case MENU_TUNE_TIME:
+				case MENU_TUNE_HOURS:
 				{
-					if(time_tune_state)
-					{
-						if(clk.hour>0)
-						{
-							clk.hour--;
-						}
-					}
-					else
-					{
-						if(clk.minute>0)
-						{
-							clk.minute--;
-						}
-					}				
+
 				}
 				break;
 
-				case MENU_TUNE_DATE:
+			    case MENU_TUNE_MINUTES:
 				{
-					if(date_tune_state)
-					{
-						if(clk.month>1)
-						{
-							clk.month--;
-						}
-					}
-					else
-					{
-						if(clk.day>1)
-						{
-							clk.day--;
-						}
-					}
+
+				}
+				break;
+
+				case MENU_TUNE_DAY:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_MONTH:
+				{
+
 				}
 				break;
 
 				case MENU_TUNE_YEAR:
-				{	
-					if(clk.year<=0)
-					{
-						clk.year=0;
-					}
-					else
-					{
-						clk.year--;	
-					}
+				{
+
 				}
 				break;
+
 				
 				default:
 				{
@@ -389,43 +355,43 @@ uint8_t menuKey(msg_par par) {
 		break;
 			
 		//------------------------
-		case KEY_OK:
-		{ // выбор пункта
-			switch(SELECT)//пункт меню
+		case KEY_CODE_AB:
+		{ 
+			switch(SELECT)
 			{			
-				case MENU_TUNE_TIME:
+			/*	case MENU_TUNE_TIME:
 				{
-					StoreTime(&clk,0);
-					menuChange(PARENT);
+
+					Menu_Change(PARENT);
 				}
 				break;
 
 				case MENU_TUNE_DATE:
 				{
-					StoreTime(&clk,1);
-					menuChange(PARENT);
+
+					Menu_Change(PARENT);
 				}
 				break;
 
 				case MENU_TUNE_YEAR:
 				{	
-					StoreTime(&clk,2);
-					menuChange(PARENT);
+
+					Menu_Change(PARENT);
 				}
-				break;
+				break;*/
 				
 				default:
 				{
-					menuChange(CHILD);	
+					Menu_Change(CHILD);	
 				}
 				break;				
 			}		
 		}
 		break;
 		//------------------------
-		case KEY_GND:// отмена выбора (возврат)
+		case KEY_CODE_CD:
 		{
-			menuChange(PARENT);
+			Menu_Change(PARENT);
 		}
 		break;
 		//------------------------
@@ -435,13 +401,12 @@ uint8_t menuKey(msg_par par) {
 		break;
 	}
 	//dispMenu(0);
-	return (1);
 }
 //---------------------------------------------------
-unsigned char startMenu() 
+void Menu_Start() 
 {
 	selectedMenuItem = (menuItem*)&m_s1i1;
-	return (0);
+
 }
 //--------------------------------------------------
 
