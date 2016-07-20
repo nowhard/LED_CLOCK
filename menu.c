@@ -19,10 +19,6 @@ typedef struct PROGMEM{
 
 menuItem* selectedMenuItem; // текущий пункт меню
 
-volatile unsigned char time_tune_state=0, date_tune_state=0;//метки состояния настройки(настройка минута-час, день-месяц)
-//extern volatile unsigned int frequency;
-extern unsigned int mid_mas[];
-volatile unsigned long freq=0;
 //menuItem* menuStack[10];
 //volatile uint8_t menuStackTop;
 
@@ -54,11 +50,11 @@ MAKE_MENU(m_s1i3,  m_s1i4,	  m_s1i2,      NULL_ENTRY, m_s4i1,       MENU_YEAR, 	
 MAKE_MENU(m_s1i4,  NULL_ENTRY,m_s1i3,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS,  "");
 
 // подменю Настройка времени
-MAKE_MENU(m_s2i1,  m_s2i2,	  NULL_ENTRY,  m_s1i1,     NULL_ENTRY,   MENU_TUNE_HOURS, 		"");
-MAKE_MENU(m_s2i2,  NULL_ENTRY,m_s2i1,	   m_s1i1,     NULL_ENTRY,   MENU_TUNE_MINUTES,		"");
+MAKE_MENU(m_s2i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i1,     NULL_ENTRY,   MENU_TUNE_TIME, 		"");
+//MAKE_MENU(m_s2i2,  NULL_ENTRY,m_s2i1,	   m_s1i1,     NULL_ENTRY,   MENU_TUNE_MINUTES,		"");
 // подменю Настройка даты
-MAKE_MENU(m_s3i1,  m_s3i2,	  NULL_ENTRY,  m_s1i2,     NULL_ENTRY,   MENU_TUNE_DAY, 		"");
-MAKE_MENU(m_s3i2,  NULL_ENTRY,m_s3i1,  	   m_s1i2,     NULL_ENTRY,   MENU_TUNE_MONTH, 		"");
+MAKE_MENU(m_s3i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i2,     NULL_ENTRY,   MENU_TUNE_DATE, 		"");
+//MAKE_MENU(m_s3i2,  NULL_ENTRY,m_s3i1,  	   m_s1i2,     NULL_ENTRY,   MENU_TUNE_MONTH, 		"");
 // подменю Настройка года
 MAKE_MENU(m_s4i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i3,     NULL_ENTRY,   MENU_TUNE_YEAR, 		"");
 
@@ -77,7 +73,7 @@ void Menu_Change(menuItem* NewMenu)
 	selectedMenuItem = NewMenu;
 }
 //------------------------------------
-void Menu_Display(void) 
+void Menu_Display(stClock *clock) 
 {
 //	menuItem* tempMenu;
 //	tempMenu = (menuItem*)pgm_read_word(&selectedMenuItem);
@@ -98,19 +94,23 @@ void Menu_Display(void)
 	{
 		case MENU_TIME:
 		{
+			I2C_ReadTime(&clock->DS1307Time);
+			Time_To_Buf(&clock->DS1307Time, clock->display_buf);
 
 		}
 		break;
 		
 		case MENU_DATE:
 		{
-
+			I2C_ReadTime(&clock->DS1307Time);
+			Date_To_Buf(&clock->DS1307Time, clock->display_buf);
 		}
 		break;
 
 		case MENU_YEAR:
 		{
-
+			I2C_ReadTime(&clock->DS1307Time);
+			Year_To_Buf(&clock->DS1307Time, clock->display_buf);
 		}
 		break;
 
@@ -120,25 +120,13 @@ void Menu_Display(void)
 		}
 		break;
 
-		case MENU_TUNE_HOURS:
+		case MENU_TUNE_TIME:
 		{
 
 		}
 		break;
 
-	    case MENU_TUNE_MINUTES:
-		{
-
-		}
-		break;
-
-		case MENU_TUNE_DAY:
-		{
-
-		}
-		break;
-
-		case MENU_TUNE_MONTH:
+	    case MENU_TUNE_DATE:
 		{
 
 		}
@@ -155,10 +143,9 @@ void Menu_Display(void)
 		}
 		break;
 	}
-
 }
 
-void Menu_Key(enKey key) {
+void Menu_Key(enKey key, stClock *clock) {
 	switch (key) 
 	{
 		case KEY_CODE_NONE: 
@@ -170,31 +157,113 @@ void Menu_Key(enKey key) {
 		{
 			switch(SELECT)//пункт меню
 			{			
-				case MENU_TUNE_HOURS:
+				case MENU_TUNE_TIME:
 				{
-
+					I2C_StoreTime(&clock->DS1307Time);
 				}
 				break;
 
-			    case MENU_TUNE_MINUTES:
-				{
 
+				case MENU_TUNE_DATE:
+				{
+					I2C_StoreDate(&clock->DS1307Time);
 				}
 				break;
 
-				case MENU_TUNE_DAY:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_MONTH:
-				{
-
-				}
-				break;
 
 				case MENU_TUNE_YEAR:
+				{
+					I2C_StoreYear(&clock->DS1307Time);
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS:
+				{
+
+				}
+				break;
+				
+				default:
+				{
+					
+				}
+				break;				
+			}
+			Menu_Change(PREVIOUS);
+		}
+		break;
+
+		//------------------------
+		case KEY_CODE_B: 
+		{
+
+		}
+		break;
+		//------------------------
+		case KEY_CODE_C:
+		{ 
+			switch(SELECT)//пункт меню
+			{			
+				case MENU_TUNE_TIME:
+				{
+
+				}
+				break;
+
+
+				case MENU_TUNE_DATE:
+				{
+
+				}
+				break;
+
+
+				case MENU_TUNE_YEAR:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS:
+				{
+
+				}
+				break;
+				
+				default:
+				{
+					Menu_Change(PREVIOUS);
+				}
+				break;				
+			}			
+		}
+		break;
+		//------------------------
+		case KEY_CODE_D:
+		{
+			switch(SELECT)//пункт меню
+			{			
+				case MENU_TUNE_TIME:
+				{
+
+				}
+				break;
+
+
+				case MENU_TUNE_DATE:
+				{
+
+				}
+				break;
+
+
+				case MENU_TUNE_YEAR:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS:
 				{
 
 				}
@@ -208,184 +277,11 @@ void Menu_Key(enKey key) {
 			}
 		}
 		break;
-
-		//------------------------
-		case KEY_CODE_B: 
-		{
-			switch(SELECT)//пункт меню
-			{			
-				case MENU_TUNE_HOURS:
-				{
-
-				}
-				break;
-
-			    case MENU_TUNE_MINUTES:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_DAY:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_MONTH:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_YEAR:
-				{
-
-				}
-				break;
-
-				default:
-				{
-					Menu_Change(NEXT);
-				}
-				break;				
-			}
-
-		}
-		break;
-		//------------------------
-		case KEY_CODE_C:
-		{ 
-			switch(SELECT)//пункт меню
-			{			
-				case MENU_TUNE_BRIGHTNESS:
-				{	
-
-				}
-				break;
-
-				case MENU_TUNE_HOURS:
-				{
-
-				}
-				break;
-
-			    case MENU_TUNE_MINUTES:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_DAY:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_MONTH:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_YEAR:
-				{
-
-				}
-				break;
-
-				default:
-				{
-					//Menu_Change(NEXT);
-				}
-				break;				
-			}			
-		}
-		break;
-		//------------------------
-		case KEY_CODE_D:
-		{
-			switch(SELECT)//пункт меню
-			{			
-				case MENU_TUNE_BRIGHTNESS:
-				{
-
-
-				}
-				break;
-
-				case MENU_TUNE_HOURS:
-				{
-
-				}
-				break;
-
-			    case MENU_TUNE_MINUTES:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_DAY:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_MONTH:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_YEAR:
-				{
-
-				}
-				break;
-
-				
-				default:
-				{
-					
-				}
-				break;				
-			}
-		}
-		break;
 			
 		//------------------------
 		case KEY_CODE_AB:
 		{ 
-			switch(SELECT)
-			{			
-			/*	case MENU_TUNE_TIME:
-				{
-
-					Menu_Change(PARENT);
-				}
-				break;
-
-				case MENU_TUNE_DATE:
-				{
-
-					Menu_Change(PARENT);
-				}
-				break;
-
-				case MENU_TUNE_YEAR:
-				{	
-
-					Menu_Change(PARENT);
-				}
-				break;*/
-				
-				default:
-				{
-					Menu_Change(CHILD);	
-				}
-				break;				
-			}		
+			Menu_Change(CHILD);		
 		}
 		break;
 		//------------------------
@@ -400,13 +296,11 @@ void Menu_Key(enKey key) {
 		}
 		break;
 	}
-	//dispMenu(0);
 }
 //---------------------------------------------------
-void Menu_Start() 
+void Menu_Init(void) 
 {
 	selectedMenuItem = (menuItem*)&m_s1i1;
-
 }
 //--------------------------------------------------
 

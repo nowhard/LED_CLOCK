@@ -1,12 +1,13 @@
 #include "clock.h"
 #include "led_display.h"
 #include "keyboard.h"
+#include "menu.h"
 
 stClock clock;
-enClockState ClockState;
 
 void Clock_Init(void)
 {
+	Menu_Init();
 	I2C_Init();
 	I2C_DS1307Init(&clock.DS1307Time);
 	KBD_Init();
@@ -37,17 +38,14 @@ void Clock_Init(void)
 void Clock_Cycle(void)
 {
 	static uint16_t dispCounter=0;
-	static uint8_t  keyCode=KEY_NONE;
 
-	keyCode=KBD_ReadKey();
-
-	Menu_Key(keyCode);
-
+	Menu_Key(KBD_ReadKey(), &clock);
 
 	if(dispCounter==DISP_COUNTER)
 	{
 		dispCounter=0;
-		Menu_Display();
+		Menu_Display(&clock);
+		LED_Out_Buf(clock.display_buf,LED_BUF_LEN,clock.display_mask);
 	}
 	else
 	{

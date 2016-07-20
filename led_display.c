@@ -11,11 +11,11 @@ void LED_Out_Buf(uint16_t *out_buf, uint8_t out_buf_len, uint8_t mask)//вывод бу
 		{
 			if(mask&(1<<(i-5)))
 			{
-				LED_SPI_WriteWord(out_buf[i]|0xF);
+				LED_SPI_WriteWord(out_buf[i]);
 			}
 			else
 			{
-				LED_SPI_WriteWord(out_buf[i]);
+				LED_SPI_WriteWord(out_buf[i]|0xF);
 			}
 		}
 		else

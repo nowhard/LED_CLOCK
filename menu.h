@@ -4,24 +4,23 @@
 
 #include <ctype.h>
 #include "keyboard.h"
+#include "clock.h"
 
 enum {
     MENU_CANCEL=1,
     MENU_TIME,
     MENU_DATE,
     MENU_YEAR,
-    MENU_TUNE_HOURS,
-	MENU_TUNE_MINUTES,
-    MENU_TUNE_DAY,
-	MENU_TUNE_MONTH,
+    MENU_TUNE_TIME,
+    MENU_TUNE_DATE,
     MENU_TUNE_YEAR,
     MENU_TUNE_BRIGHTNESS,
 };
 
 
 void	Menu_Init(void);
-void 	Menu_Key(enKey key);
-void 	Menu_Display(void);
+void 	Menu_Key(enKey key, stClock *clock);
+void 	Menu_Display(stClock *clock);
 
   
 #endif
