@@ -3,38 +3,64 @@
 #include <stdio.h>
 #include <util/delay.h>
 
-static uint8_t lastPIN, previousPIN;
+static uint8_t lastKEY=KEY_CODE_NONE, previousKEY=KEY_CODE_NONE;
+
+uint8_t KBD_ReadPins(void)
+{
+	uint8_t key=0;
+
+	if((KBD_PIN_1 & _BV(KBD_PIN_A))==0)
+	{
+		key|=(1<<0);
+	}
+	
+	if((KBD_PIN_1 & _BV(KBD_PIN_B))==0)
+	{
+		key|=(1<<1);
+	}
+	
+	if((KBD_PIN_1 & _BV(KBD_PIN_C))==0)
+	{
+		key|=(1<<2);
+	}
+	
+	if((KBD_PIN_2 & _BV(KBD_PIN_D))==0)
+	{
+		key|=(1<<3);
+	}	
+	
+	return key;	
+}
 
 enKey KBD_ReadKey(void) 
 {
-	lastPIN=(KBD_PIN & KBD_MASK);
+	lastKEY=KBD_ReadPins();
 
-	if((lastPIN!=KBD_MASK) && (lastPIN!=previousPIN))
+	if(lastKEY!=KEY_CODE_NONE)
 	{
-		_delay_ms(1);
-		if((lastPIN!=KBD_MASK) && (lastPIN==(KBD_PIN & KBD_MASK)))
+		if(lastKEY!=previousKEY)
 		{
-			previousPIN=lastPIN;
-
-			if(lastPIN==KEY_A)  	 return KEY_CODE_A;
-			else if(lastPIN==KEY_B)  return KEY_CODE_B;
-			else if(lastPIN==KEY_C)  return KEY_CODE_C;
-			else if(lastPIN==KEY_D)  return KEY_CODE_D;
-			else if(lastPIN==KEY_AB) return KEY_CODE_AB;
-			else if(lastPIN==KEY_CD) return KEY_CODE_CD;
-			else 					 return KEY_CODE_NONE;
-
+			_delay_ms(1);
+			if((lastKEY!=KEY_CODE_NONE) && (lastKEY==KBD_ReadPins()))
+			{
+				previousKEY=lastKEY;
+				return lastKEY;
+			}
+			else
+			{	
+				lastKEY		= KEY_CODE_NONE;
+				previousKEY = KEY_CODE_NONE;
+				return KEY_CODE_NONE;	
+			}
 		}
 		else
-		{	
-			lastPIN		= KBD_MASK;
-			previousPIN = KBD_MASK;
-			return KEY_CODE_NONE;	
+		{
+			return KEY_CODE_NONE;
 		}
 	}
 	else
 	{
-		previousPIN = KBD_MASK;
+		previousKEY = KEY_CODE_NONE;
 		return KEY_CODE_NONE;
 	}
 
@@ -42,9 +68,12 @@ enKey KBD_ReadKey(void)
 //-------------------------------
 void  KBD_Init(void) 
 {
-	KBD_PORT |= KBD_MASK;
-	KBD_DDR &= ~ KBD_MASK;
+	KBD_PORT_1 |= KBD_MASK_1;
+	KBD_DDR_1 &= ~ KBD_MASK_1;
 
-	lastPIN 	= KBD_MASK;
-	previousPIN = KBD_MASK;
+	KBD_PORT_2 |= KBD_MASK_2;
+	KBD_DDR_2 &= ~ KBD_MASK_2;
+
+	//lastPIN 	= KBD_MASK;
+	//previousPIN = KBD_MASK;
 }

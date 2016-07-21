@@ -128,7 +128,7 @@ LOAD c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x892
+.text           0x00000000      0x88e
  *(.vectors)
  .vectors       0x00000000       0x68 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm168.o
                 0x00000000                __vector_default
@@ -226,38 +226,39 @@ LOAD c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr
                 0x00000334                I2C_StoreTime
                 0x00000382                I2C_StoreDate
                 0x000003ba                I2C_StoreYear
- .text          0x000003d4       0x72 keyboard.o
-                0x000003d4                KBD_ReadKey
+ .text          0x000003d4       0x6c keyboard.o
+                0x000003d4                KBD_ReadPins
+                0x000003e8                KBD_ReadKey
                 0x0000042e                KBD_Init
- .text          0x00000446        0xc main.o
-                0x00000446                main
- .text          0x00000452       0xc8 led_display.o
-                0x00000452                LED_SPI_Init
-                0x00000464                LED_SPI_WriteWord
-                0x000004b0                LED_Out_Buf
- .text          0x0000051a       0xe0 clock.o
-                0x0000051a                Clock_Init
-                0x000005b2                Clock_Cycle
- .text          0x000005fa      0x198 menu.o
-                0x000005fa                Menu_Change
-                0x0000060c                Menu_Display
-                0x0000068a                Menu_Key
-                0x00000784                Menu_Init
- .text          0x00000792       0xfc utilites.o
-                0x00000792                Time_To_Buf
-                0x000007ea                Date_To_Buf
-                0x00000842                Year_To_Buf
- .text          0x0000088e        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
- .text          0x0000088e        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_clear_bss.o)
-                0x0000088e                . = ALIGN (0x2)
+ .text          0x00000440        0xa main.o
+                0x00000440                main
+ .text          0x0000044a       0xc8 led_display.o
+                0x0000044a                LED_SPI_Init
+                0x0000045c                LED_SPI_WriteWord
+                0x000004a8                LED_Out_Buf
+ .text          0x00000512       0xe4 clock.o
+                0x00000512                Clock_Init
+                0x000005aa                Clock_Cycle
+ .text          0x000005f6      0x198 menu.o
+                0x000005f6                Menu_Change
+                0x00000608                Menu_Display
+                0x00000686                Menu_Key
+                0x00000780                Menu_Init
+ .text          0x0000078e       0xfc utilites.o
+                0x0000078e                Time_To_Buf
+                0x000007e6                Date_To_Buf
+                0x0000083e                Year_To_Buf
+ .text          0x0000088a        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
+ .text          0x0000088a        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_clear_bss.o)
+                0x0000088a                . = ALIGN (0x2)
  *(.text.*)
- .text.libgcc   0x0000088e        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
- .text.libgcc   0x0000088e        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_clear_bss.o)
-                0x0000088e                . = ALIGN (0x2)
+ .text.libgcc   0x0000088a        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
+ .text.libgcc   0x0000088a        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_clear_bss.o)
+                0x0000088a                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000088e        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
-                0x0000088e                _exit
-                0x0000088e                exit
+ .fini9         0x0000088a        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
+                0x0000088a                _exit
+                0x0000088a                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -276,11 +277,11 @@ LOAD c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000088e        0x4 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000088a        0x4 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000892                _etext = .
+                0x0000088e                _etext = .
 
-.data           0x00800100        0x0 load address 0x00000892
+.data           0x00800100        0x0 load address 0x0000088e
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800100        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm168.o
@@ -301,7 +302,7 @@ LOAD c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr
                 0x00800100                _edata = .
                 0x00800100                PROVIDE (__data_end, .)
 
-.bss            0x00800100       0x32
+.bss            0x00800100       0x33
                 0x00800100                PROVIDE (__bss_start, .)
  *(.bss)
  .bss           0x00800100        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/../../../../avr/lib/avr5/crtm168.o
@@ -309,29 +310,29 @@ LOAD c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr
  .bss           0x00800100        0x2 keyboard.o
  .bss           0x00800102        0x0 main.o
  .bss           0x00800102        0x0 led_display.o
- .bss           0x00800102        0x2 clock.o
- .bss           0x00800104        0x0 menu.o
- .bss           0x00800104        0x0 utilites.o
- .bss           0x00800104        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
- .bss           0x00800104        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_clear_bss.o)
+ .bss           0x00800102        0x3 clock.o
+ .bss           0x00800105        0x0 menu.o
+ .bss           0x00800105        0x0 utilites.o
+ .bss           0x00800105        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_exit.o)
+ .bss           0x00800105        0x0 c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr5\libgcc.a(_clear_bss.o)
  *(.bss*)
  *(COMMON)
- COMMON         0x00800104        0x1 i2c.o
-                0x00800104                enDS1307Registers
- COMMON         0x00800105       0x2b clock.o
-                0x00800105                clock
- COMMON         0x00800130        0x2 menu.o
-                0x00800130                selectedMenuItem
-                0x00800132                PROVIDE (__bss_end, .)
-                0x00000892                __data_load_start = LOADADDR (.data)
-                0x00000892                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800105        0x1 i2c.o
+                0x00800105                enDS1307Registers
+ COMMON         0x00800106       0x2b clock.o
+                0x00800106                clock
+ COMMON         0x00800131        0x2 menu.o
+                0x00800131                selectedMenuItem
+                0x00800133                PROVIDE (__bss_end, .)
+                0x0000088e                __data_load_start = LOADADDR (.data)
+                0x0000088e                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800132        0x0
-                0x00800132                PROVIDE (__noinit_start, .)
+.noinit         0x00800133        0x0
+                0x00800133                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x00800132                PROVIDE (__noinit_end, .)
-                0x00800132                _end = .
-                0x00800132                PROVIDE (__heap_start, .)
+                0x00800133                PROVIDE (__noinit_end, .)
+                0x00800133                _end = .
+                0x00800133                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
  *(.eeprom*)
@@ -402,88 +403,88 @@ LOAD c:/program files/atmel/avr tools/avr toolchain/bin/../lib/gcc/avr/4.5.1/avr
                 0x000000c0       0x20 utilites.o
 
 .debug_pubnames
-                0x00000000      0x2d0
+                0x00000000      0x2e1
  *(.debug_pubnames)
  .debug_pubnames
                 0x00000000       0xaa i2c.o
  .debug_pubnames
-                0x000000aa       0x2f keyboard.o
+                0x000000aa       0x40 keyboard.o
  .debug_pubnames
-                0x000000d9       0x31 main.o
+                0x000000ea       0x31 main.o
  .debug_pubnames
-                0x0000010a       0x49 led_display.o
+                0x0000011b       0x49 led_display.o
  .debug_pubnames
-                0x00000153       0x51 clock.o
+                0x00000164       0x51 clock.o
  .debug_pubnames
-                0x000001a4       0xd4 menu.o
+                0x000001b5       0xd4 menu.o
  .debug_pubnames
-                0x00000278       0x58 utilites.o
+                0x00000289       0x58 utilites.o
 
-.debug_info     0x00000000     0x1740
+.debug_info     0x00000000     0x17c8
  *(.debug_info)
  .debug_info    0x00000000      0x794 i2c.o
- .debug_info    0x00000794      0x1d4 keyboard.o
- .debug_info    0x00000968       0xf5 main.o
- .debug_info    0x00000a5d      0x259 led_display.o
- .debug_info    0x00000cb6      0x221 clock.o
- .debug_info    0x00000ed7      0x662 menu.o
- .debug_info    0x00001539      0x207 utilites.o
+ .debug_info    0x00000794      0x201 keyboard.o
+ .debug_info    0x00000995       0xf5 main.o
+ .debug_info    0x00000a8a      0x259 led_display.o
+ .debug_info    0x00000ce3      0x27c clock.o
+ .debug_info    0x00000f5f      0x662 menu.o
+ .debug_info    0x000015c1      0x207 utilites.o
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x80b
+.debug_abbrev   0x00000000      0x838
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x1dd i2c.o
- .debug_abbrev  0x000001dd      0x128 keyboard.o
- .debug_abbrev  0x00000305       0x89 main.o
- .debug_abbrev  0x0000038e      0x142 led_display.o
- .debug_abbrev  0x000004d0       0xe7 clock.o
- .debug_abbrev  0x000005b7      0x18d menu.o
- .debug_abbrev  0x00000744       0xc7 utilites.o
+ .debug_abbrev  0x000001dd      0x137 keyboard.o
+ .debug_abbrev  0x00000314       0x89 main.o
+ .debug_abbrev  0x0000039d      0x142 led_display.o
+ .debug_abbrev  0x000004df      0x105 clock.o
+ .debug_abbrev  0x000005e4      0x18d menu.o
+ .debug_abbrev  0x00000771       0xc7 utilites.o
 
-.debug_line     0x00000000      0xe7a
+.debug_line     0x00000000      0xec0
  *(.debug_line)
  .debug_line    0x00000000      0x4ae i2c.o
- .debug_line    0x000004ae      0x1fb keyboard.o
- .debug_line    0x000006a9       0x74 main.o
- .debug_line    0x0000071d      0x242 led_display.o
- .debug_line    0x0000095f      0x194 clock.o
- .debug_line    0x00000af3      0x21b menu.o
- .debug_line    0x00000d0e      0x16c utilites.o
+ .debug_line    0x000004ae      0x233 keyboard.o
+ .debug_line    0x000006e1       0x6c main.o
+ .debug_line    0x0000074d      0x242 led_display.o
+ .debug_line    0x0000098f      0x1aa clock.o
+ .debug_line    0x00000b39      0x21b menu.o
+ .debug_line    0x00000d54      0x16c utilites.o
 
-.debug_frame    0x00000000      0x1e0
+.debug_frame    0x00000000      0x1f0
  *(.debug_frame)
  .debug_frame   0x00000000       0x90 i2c.o
- .debug_frame   0x00000090       0x30 keyboard.o
- .debug_frame   0x000000c0       0x20 main.o
- .debug_frame   0x000000e0       0x40 led_display.o
- .debug_frame   0x00000120       0x30 clock.o
- .debug_frame   0x00000150       0x50 menu.o
- .debug_frame   0x000001a0       0x40 utilites.o
+ .debug_frame   0x00000090       0x40 keyboard.o
+ .debug_frame   0x000000d0       0x20 main.o
+ .debug_frame   0x000000f0       0x40 led_display.o
+ .debug_frame   0x00000130       0x30 clock.o
+ .debug_frame   0x00000160       0x50 menu.o
+ .debug_frame   0x000001b0       0x40 utilites.o
 
-.debug_str      0x00000000      0x50c
+.debug_str      0x00000000      0x528
  *(.debug_str)
  .debug_str     0x00000000      0x202 i2c.o
                                 0x245 (size before relaxing)
- .debug_str     0x00000202       0xa7 keyboard.o
-                                0x1b5 (size before relaxing)
- .debug_str     0x000002a9       0x27 main.o
+ .debug_str     0x00000202       0xb4 keyboard.o
+                                0x1c2 (size before relaxing)
+ .debug_str     0x000002b6       0x27 main.o
                                 0x143 (size before relaxing)
- .debug_str     0x000002d0       0x50 led_display.o
+ .debug_str     0x000002dd       0x50 led_display.o
                                 0x187 (size before relaxing)
- .debug_str     0x00000320       0x69 clock.o
-                                0x1f4 (size before relaxing)
- .debug_str     0x00000389      0x151 menu.o
+ .debug_str     0x0000032d       0x78 clock.o
+                                0x25e (size before relaxing)
+ .debug_str     0x000003a5      0x151 menu.o
                                 0x36f (size before relaxing)
- .debug_str     0x000004da       0x32 utilites.o
+ .debug_str     0x000004f6       0x32 utilites.o
                                 0x19f (size before relaxing)
 
-.debug_loc      0x00000000      0x622
+.debug_loc      0x00000000      0x662
  *(.debug_loc)
  .debug_loc     0x00000000      0x1e7 i2c.o
- .debug_loc     0x000001e7       0x46 keyboard.o
- .debug_loc     0x0000022d       0x8c led_display.o
- .debug_loc     0x000002b9      0x2f1 menu.o
- .debug_loc     0x000005aa       0x78 utilites.o
+ .debug_loc     0x000001e7       0x86 keyboard.o
+ .debug_loc     0x0000026d       0x8c led_display.o
+ .debug_loc     0x000002f9      0x2f1 menu.o
+ .debug_loc     0x000005ea       0x78 utilites.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -491,7 +492,7 @@ OUTPUT(protocol.elf elf32-avr)
 LOAD linker stubs
 
 .debug_pubtypes
-                0x00000000      0x1ab
+                0x00000000      0x1b8
  .debug_pubtypes
                 0x00000000       0x3c i2c.o
  .debug_pubtypes
@@ -501,8 +502,8 @@ LOAD linker stubs
  .debug_pubtypes
                 0x00000090       0x38 led_display.o
  .debug_pubtypes
-                0x000000c8       0x48 clock.o
+                0x000000c8       0x55 clock.o
  .debug_pubtypes
-                0x00000110       0x5f menu.o
+                0x0000011d       0x5f menu.o
  .debug_pubtypes
-                0x0000016f       0x3c utilites.o
+                0x0000017c       0x3c utilites.o

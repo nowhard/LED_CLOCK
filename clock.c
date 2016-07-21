@@ -40,25 +40,38 @@ void Clock_Cycle(void)
 {
 	static uint16_t dispCounter=0;
 
-/*	static uint32_t keyTestCounter=0;
+	static uint32_t keyTestCounter=0;
 
-	if(keyTestCounter==100000)
+//	static uint8_t counter=0;
+
+static uint8_t key=KEY_CODE_NONE;
+
+/*	if(keyTestCounter==100000)
 	{
-		Menu_Key(KEY_CODE_A, &clock);
+		clock.display_buf[9]=0x0500|(counter&0xF);
+		counter++;
 		keyTestCounter=0;
 	}
 	else
 	{
-		Menu_Key(KEY_CODE_NONE, &clock);
+
 		keyTestCounter++;	
 	}*/
 
-	Menu_Key(KBD_ReadKey(), &clock);
+//	Menu_Key(KBD_ReadKey(), &clock);
+
+	key=KBD_ReadKey();
+
+	if(key!=KEY_CODE_NONE)
+	{
+		clock.display_buf[9]=0x0500|key;
+	}
 
 	if(dispCounter==DISP_COUNTER)
 	{
 		dispCounter=0;
-		Menu_Display(&clock);
+		//Menu_Display(&clock);
+
 		LED_Out_Buf(clock.display_buf,LED_BUF_LEN,clock.display_mask);
 	}
 	else

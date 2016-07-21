@@ -6,34 +6,32 @@
 #define KBD_PIN_A		PD0
 #define KBD_PIN_B		PD1
 #define KBD_PIN_C		PD2
-#define KBD_PIN_D		PD3//PC6
+#define KBD_PIN_D		PC6
 
 
-#define KBD_MASK (_BV(KBD_PIN_A)|_BV(KBD_PIN_B)|_BV(KBD_PIN_C)|_BV(KBD_PIN_D))
+#define KBD_MASK_1 (_BV(KBD_PIN_A)|_BV(KBD_PIN_B)|_BV(KBD_PIN_C))
 
-#define KBD_PIN			PIND
-#define KBD_PORT		PORTD
-#define KBD_DDR			DDRD
+#define KBD_PIN_1			PIND
+#define KBD_PORT_1			PORTD
+#define KBD_DDR_1			DDRD
 
+#define KBD_MASK_2 (_BV(KBD_PIN_D))
 
-#define	KEY_NONE	KBD_MASK
-#define KEY_A		((!(_BV(KBD_PIN_A))) & KBD_MASK)
-#define KEY_B		((!(_BV(KBD_PIN_B))) & KBD_MASK)
-#define KEY_C		((!(_BV(KBD_PIN_C))) & KBD_MASK)
-#define KEY_D		((!(_BV(KBD_PIN_D))) & KBD_MASK)
-#define KEY_AB		(( !(_BV(KBD_PIN_A) | _BV(KBD_PIN_B)) ) & KBD_MASK)
-#define KEY_CD		(( !(_BV(KBD_PIN_C) | _BV(KBD_PIN_D)) ) & KBD_MASK)
+#define KBD_PIN_2			PINC
+#define KBD_PORT_2			PORTC
+#define KBD_DDR_2			DDRC
+
 
 
 typedef enum
 {
 	KEY_CODE_NONE=0,
-	KEY_CODE_A,
-	KEY_CODE_B,
-	KEY_CODE_C,
-	KEY_CODE_D,
-	KEY_CODE_AB,
-	KEY_CODE_CD,
+	KEY_CODE_A=1,
+	KEY_CODE_B=2,
+	KEY_CODE_C=4,
+	KEY_CODE_D=8,
+	KEY_CODE_AB=3,
+	KEY_CODE_CD=12,
 } enKey;	
 
 

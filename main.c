@@ -12,7 +12,7 @@
 int main(void)
 {
 	Clock_Init();
-	sei();
+	//sei();
 
 	while(1)
 	{
