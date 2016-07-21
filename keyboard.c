@@ -16,18 +16,18 @@ enKey KBD_ReadKey(void)
 		{
 			previousPIN=lastPIN;
 
-			if(lastPIN==KEY_A)  return KEY_CODE_A;
-			if(lastPIN==KEY_B)  return KEY_CODE_B;
-			if(lastPIN==KEY_C)  return KEY_CODE_C;
-			if(lastPIN==KEY_D)  return KEY_CODE_D;
-			if(lastPIN==KEY_AB) return KEY_CODE_AB;
-			if(lastPIN==KEY_CD) return KEY_CODE_CD;
+			if(lastPIN==KEY_A)  	 return KEY_CODE_A;
+			else if(lastPIN==KEY_B)  return KEY_CODE_B;
+			else if(lastPIN==KEY_C)  return KEY_CODE_C;
+			else if(lastPIN==KEY_D)  return KEY_CODE_D;
+			else if(lastPIN==KEY_AB) return KEY_CODE_AB;
+			else if(lastPIN==KEY_CD) return KEY_CODE_CD;
+			else 					 return KEY_CODE_NONE;
 
-			return lastPIN;
 		}
 		else
 		{	
-			lastPIN		=KBD_MASK;
+			lastPIN		= KBD_MASK;
 			previousPIN = KBD_MASK;
 			return KEY_CODE_NONE;	
 		}
@@ -37,6 +37,7 @@ enKey KBD_ReadKey(void)
 		previousPIN = KBD_MASK;
 		return KEY_CODE_NONE;
 	}
+
 }
 //-------------------------------
 void  KBD_Init(void) 

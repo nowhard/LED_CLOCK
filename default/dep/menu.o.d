@@ -23,7 +23,7 @@ menu.o: ../menu.c ../menu.h \
  ../timer1.h \
  c:\program\ files\atmel\avr\ tools\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/pgmspace.h \
  c:\program\ files\atmel\avr\ tools\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/wdt.h \
- ../utilites.h
+ ../utilites.h ../led_display.h
 
 ../menu.h:
 
@@ -78,3 +78,5 @@ c:\program\ files\atmel\avr\ tools\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../..
 c:\program\ files\atmel\avr\ tools\avr\ toolchain\bin\../lib/gcc/avr/4.5.1/../../../../avr/include/avr/wdt.h:
 
 ../utilites.h:
+
+../led_display.h:

@@ -2,6 +2,7 @@
 #include "led_display.h"
 #include "keyboard.h"
 #include "menu.h"
+#include "utilites.h"
 
 stClock clock;
 
@@ -38,6 +39,19 @@ void Clock_Init(void)
 void Clock_Cycle(void)
 {
 	static uint16_t dispCounter=0;
+
+/*	static uint32_t keyTestCounter=0;
+
+	if(keyTestCounter==100000)
+	{
+		Menu_Key(KEY_CODE_A, &clock);
+		keyTestCounter=0;
+	}
+	else
+	{
+		Menu_Key(KEY_CODE_NONE, &clock);
+		keyTestCounter++;	
+	}*/
 
 	Menu_Key(KBD_ReadKey(), &clock);
 

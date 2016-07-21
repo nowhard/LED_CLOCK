@@ -3,10 +3,10 @@
 
 #include <stdint.h>
 
-#define KBD_PIN_A		PD7
-#define KBD_PIN_B		PD6
-#define KBD_PIN_C		PD5
-#define KBD_PIN_D		PD4
+#define KBD_PIN_A		PD0
+#define KBD_PIN_B		PD1
+#define KBD_PIN_C		PD2
+#define KBD_PIN_D		PD3//PC6
 
 
 #define KBD_MASK (_BV(KBD_PIN_A)|_BV(KBD_PIN_B)|_BV(KBD_PIN_C)|_BV(KBD_PIN_D))

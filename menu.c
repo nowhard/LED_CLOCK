@@ -6,6 +6,7 @@
 #include "i2c.h"
 #include <avr/wdt.h> 
 #include "utilites.h"
+#include "led_display.h"
 
 
 typedef struct PROGMEM{
@@ -37,7 +38,7 @@ menuItem* selectedMenuItem; // текущий пункт меню
 #define CHILD      ((menuItem*)pgm_read_word(&selectedMenuItem->Child))
 #define SELECT		(pgm_read_byte(&selectedMenuItem->Select))
 
-char strNULL[] PROGMEM = "";
+//char strNULL[] PROGMEM = "";
 
 #define NULL_ENTRY Null_Menu
 menuItem        Null_Menu = {(void*)0, (void*)0, (void*)0, (void*)0, 0, {0x00}};
@@ -51,19 +52,11 @@ MAKE_MENU(m_s1i4,  NULL_ENTRY,m_s1i3,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_B
 
 // подменю Настройка времени
 MAKE_MENU(m_s2i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i1,     NULL_ENTRY,   MENU_TUNE_TIME, 		"");
-//MAKE_MENU(m_s2i2,  NULL_ENTRY,m_s2i1,	   m_s1i1,     NULL_ENTRY,   MENU_TUNE_MINUTES,		"");
 // подменю Настройка даты
 MAKE_MENU(m_s3i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i2,     NULL_ENTRY,   MENU_TUNE_DATE, 		"");
-//MAKE_MENU(m_s3i2,  NULL_ENTRY,m_s3i1,  	   m_s1i2,     NULL_ENTRY,   MENU_TUNE_MONTH, 		"");
 // подменю Настройка года
 MAKE_MENU(m_s4i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i3,     NULL_ENTRY,   MENU_TUNE_YEAR, 		"");
 
-
-//volatile unsigned char disp_buf[6]={0};//буфер дисплея
-//unsigned char mode=0;//режим клавиатуры(режим меню, режим правки)
-
-//extern volatile unsigned char brightness;
-//uint8_t selectMenu(msg_par par);
 
 void Menu_Change(menuItem* NewMenu)
 {
@@ -72,30 +65,33 @@ void Menu_Change(menuItem* NewMenu)
 
 	selectedMenuItem = NewMenu;
 }
+
+#define BLINK_CONST		100
 //------------------------------------
 void Menu_Display(stClock *clock) 
 {
-//	menuItem* tempMenu;
-//	tempMenu = (menuItem*)pgm_read_word(&selectedMenuItem);
-	static unsigned char blink=100,blink_flag=0;
-//	static unsigned char blink_mask=0xFF;
+	uint8_t blink_mask=0xFF;
+	uint16_t blink_counter=0;
+
 //wdt_reset();	
-	if(blink<2)
+	if(blink_counter<BLINK_CONST)
 	{
-		blink++;
+		blink_counter++;
 	}	
 	else
 	{
-		blink_flag=!blink_flag;
-		blink=0;
+		blink_counter=0;
+		blink_mask=~blink_mask;
 	}
+
+
 
 	switch(SELECT)
 	{
 		case MENU_TIME:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
-			Time_To_Buf(&clock->DS1307Time, clock->display_buf);
+			Time_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 
 		}
 		break;
@@ -103,38 +99,38 @@ void Menu_Display(stClock *clock)
 		case MENU_DATE:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
-			Date_To_Buf(&clock->DS1307Time, clock->display_buf);
+			Date_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 		}
 		break;
 
 		case MENU_YEAR:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
-			Year_To_Buf(&clock->DS1307Time, clock->display_buf);
+			Year_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 		}
 		break;
 
 		case MENU_TUNE_BRIGHTNESS:
 		{
-
+			clock->display_mask=blink_mask;
 		}
 		break;
 
 		case MENU_TUNE_TIME:
 		{
-
+			clock->display_mask=blink_mask;
 		}
 		break;
 
 	    case MENU_TUNE_DATE:
 		{
-
+			clock->display_mask=blink_mask;
 		}
 		break;
 
 		case MENU_TUNE_YEAR:
 		{
-
+			clock->display_mask=blink_mask;
 		}
 		break;
 
@@ -152,11 +148,30 @@ void Menu_Key(enKey key, stClock *clock) {
 		{
 
 		}
+		break;
 		//------------------------
 		case KEY_CODE_A: 
 		{
 			switch(SELECT)//пункт меню
-			{			
+			{
+				case MENU_TIME:
+				{
+					Menu_Change(NEXT);
+				}
+				break;
+
+				case MENU_DATE:
+				{
+					Menu_Change(NEXT);
+				}
+				break;
+
+				case MENU_YEAR:
+				{
+					Menu_Change(&m_s1i1);
+				}
+				break;
+										
 				case MENU_TUNE_TIME:
 				{
 					I2C_StoreTime(&clock->DS1307Time);
@@ -189,7 +204,7 @@ void Menu_Key(enKey key, stClock *clock) {
 				}
 				break;				
 			}
-			Menu_Change(PREVIOUS);
+			//Menu_Change(PREVIOUS);
 		}
 		break;
 
@@ -206,7 +221,7 @@ void Menu_Key(enKey key, stClock *clock) {
 			{			
 				case MENU_TUNE_TIME:
 				{
-
+					Menu_Change(NEXT);
 				}
 				break;
 
@@ -293,6 +308,7 @@ void Menu_Key(enKey key, stClock *clock) {
 		//------------------------
 		default:
 		{
+
 		}
 		break;
 	}
