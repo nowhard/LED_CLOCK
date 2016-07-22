@@ -62,7 +62,7 @@ void Menu_Change(menuItem* NewMenu)
 	selectedMenuItem = NewMenu;
 }
 
-#define BLINK_CONST		100
+#define BLINK_CONST		10
 //------------------------------------
 void Menu_Display(stClock *clock) 
 {
@@ -81,12 +81,12 @@ void Menu_Display(stClock *clock)
 	}
 
 
-
 	switch(SELECT)
 	{
 		case MENU_TIME:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
+			clock->display_mask=0xFF;
 			Time_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 
 		}
@@ -95,6 +95,7 @@ void Menu_Display(stClock *clock)
 		case MENU_DATE:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
+			clock->display_mask=0xFF;
 			Date_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 		}
 		break;
@@ -102,6 +103,7 @@ void Menu_Display(stClock *clock)
 		case MENU_YEAR:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
+			clock->display_mask=0xFF;
 			Year_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 		}
 		break;
@@ -177,6 +179,7 @@ void Menu_Key(enKey key, stClock *clock) {
 				case MENU_TUNE_TIME:
 				{
 					I2C_StoreTime(&clock->DS1307Time);
+					Menu_Change(&m_s1i1);
 				}
 				break;
 
@@ -184,6 +187,7 @@ void Menu_Key(enKey key, stClock *clock) {
 				case MENU_TUNE_DATE:
 				{
 					I2C_StoreDate(&clock->DS1307Time);
+					Menu_Change(&m_s1i2);
 				}
 				break;
 
@@ -191,6 +195,7 @@ void Menu_Key(enKey key, stClock *clock) {
 				case MENU_TUNE_YEAR:
 				{
 					I2C_StoreYear(&clock->DS1307Time);
+					Menu_Change(&m_s1i3);
 				}
 				break;
 
