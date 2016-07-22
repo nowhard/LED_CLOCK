@@ -9,22 +9,22 @@ uint8_t KBD_ReadPins(void)
 {
 	uint8_t key=0;
 
-	if((KBD_PIN_1 & _BV(KBD_PIN_A))==0)
+	if((KBD_PIN & _BV(KBD_PIN_A))==0)
 	{
 		key|=(1<<0);
 	}
 	
-	if((KBD_PIN_1 & _BV(KBD_PIN_B))==0)
+	if((KBD_PIN & _BV(KBD_PIN_B))==0)
 	{
 		key|=(1<<1);
 	}
 	
-	if((KBD_PIN_1 & _BV(KBD_PIN_C))==0)
+	if((KBD_PIN & _BV(KBD_PIN_C))==0)
 	{
 		key|=(1<<2);
 	}
 	
-	if((KBD_PIN_2 & _BV(KBD_PIN_D))==0)
+	if((KBD_PIN & _BV(KBD_PIN_D))==0)
 	{
 		key|=(1<<3);
 	}	
@@ -40,7 +40,7 @@ enKey KBD_ReadKey(void)
 	{
 		if(lastKEY!=previousKEY)
 		{
-			_delay_ms(1);
+			_delay_ms(100);
 			if((lastKEY!=KEY_CODE_NONE) && (lastKEY==KBD_ReadPins()))
 			{
 				previousKEY=lastKEY;
@@ -68,12 +68,6 @@ enKey KBD_ReadKey(void)
 //-------------------------------
 void  KBD_Init(void) 
 {
-	KBD_PORT_1 |= KBD_MASK_1;
-	KBD_DDR_1 &= ~ KBD_MASK_1;
-
-	KBD_PORT_2 |= KBD_MASK_2;
-	KBD_DDR_2 &= ~ KBD_MASK_2;
-
-	//lastPIN 	= KBD_MASK;
-	//previousPIN = KBD_MASK;
+	KBD_PORT |= KBD_MASK;
+	KBD_DDR  &= ~ KBD_MASK;
 }

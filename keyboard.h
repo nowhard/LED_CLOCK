@@ -6,20 +6,16 @@
 #define KBD_PIN_A		PD0
 #define KBD_PIN_B		PD1
 #define KBD_PIN_C		PD2
-#define KBD_PIN_D		PC6
+#define KBD_PIN_D		PD3
 
 
-#define KBD_MASK_1 (_BV(KBD_PIN_A)|_BV(KBD_PIN_B)|_BV(KBD_PIN_C))
+#define KBD_MASK (_BV(KBD_PIN_A)|_BV(KBD_PIN_B)|_BV(KBD_PIN_C) |_BV(KBD_PIN_D))
 
-#define KBD_PIN_1			PIND
-#define KBD_PORT_1			PORTD
-#define KBD_DDR_1			DDRD
+#define KBD_PIN			PIND
+#define KBD_PORT		PORTD
+#define KBD_DDR			DDRD
 
-#define KBD_MASK_2 (_BV(KBD_PIN_D))
 
-#define KBD_PIN_2			PINC
-#define KBD_PORT_2			PORTC
-#define KBD_DDR_2			DDRC
 
 
 
