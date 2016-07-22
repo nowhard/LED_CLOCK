@@ -12,9 +12,16 @@
 
 typedef struct
 {
+	uint8_t timeDay[2];
+	uint8_t brightnessDay;
+	uint8_t timeNight[2];
+	uint8_t brightnessNight;
+} stBrightness;
+
+typedef struct
+{
 	stDS1307Time 	DS1307Time;
-	uint8_t 		brightness_day; 
-	uint8_t			brightness_night;
+	stBrightness	brightness;
 	uint16_t 		display_buf[DISPLAY_BUF_LEN];
 	uint8_t			display_mask;
 } stClock;

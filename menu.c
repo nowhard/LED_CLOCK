@@ -20,9 +20,6 @@ typedef struct PROGMEM{
 
 menuItem* selectedMenuItem; // текущий пункт меню
 
-//menuItem* menuStack[10];
-//volatile uint8_t menuStackTop;
-
 
 #define MAKE_MENU(Name, Next, Previous, Parent, Child, Select, Text) \
     extern menuItem Next;     \
@@ -38,7 +35,6 @@ menuItem* selectedMenuItem; // текущий пункт меню
 #define CHILD      ((menuItem*)pgm_read_word(&selectedMenuItem->Child))
 #define SELECT		(pgm_read_byte(&selectedMenuItem->Select))
 
-//char strNULL[] PROGMEM = "";
 
 #define NULL_ENTRY Null_Menu
 menuItem        Null_Menu = {(void*)0, (void*)0, (void*)0, (void*)0, 0, {0x00}};
@@ -48,8 +44,8 @@ menuItem        Null_Menu = {(void*)0, (void*)0, (void*)0, (void*)0, 0, {0x00}};
 MAKE_MENU(m_s1i1,  m_s1i2,    NULL_ENTRY,  NULL_ENTRY, m_s2i1,       MENU_TIME, 			/*time*/"");
 MAKE_MENU(m_s1i2,  m_s1i3,    m_s1i1,      NULL_ENTRY, m_s3i1,       MENU_DATE, 			/*data*/"");
 MAKE_MENU(m_s1i3,  m_s1i4,	  m_s1i2,      NULL_ENTRY, m_s4i1,       MENU_YEAR, 			/*year*/"");
-MAKE_MENU(m_s1i4,  NULL_ENTRY,m_s1i3,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS,  "");
-
+MAKE_MENU(m_s1i4,  m_s1i5,	  m_s1i3,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS_DAY,  	"");
+MAKE_MENU(m_s1i5,  NULL_ENTRY,m_s1i4,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS_NIGHT,  	"");
 // подменю Настройка времени
 MAKE_MENU(m_s2i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i1,     NULL_ENTRY,   MENU_TUNE_TIME, 		"");
 // подменю Настройка даты
@@ -110,7 +106,13 @@ void Menu_Display(stClock *clock)
 		}
 		break;
 
-		case MENU_TUNE_BRIGHTNESS:
+		case MENU_TUNE_BRIGHTNESS_DAY:
+		{
+			clock->display_mask=blink_mask;
+		}
+		break;
+
+		case MENU_TUNE_BRIGHTNESS_NIGHT:
 		{
 			clock->display_mask=blink_mask;
 		}
@@ -192,7 +194,13 @@ void Menu_Key(enKey key, stClock *clock) {
 				}
 				break;
 
-				case MENU_TUNE_BRIGHTNESS:
+				case MENU_TUNE_BRIGHTNESS_DAY:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS_NIGHT:
 				{
 
 				}
@@ -204,24 +212,18 @@ void Menu_Key(enKey key, stClock *clock) {
 				}
 				break;				
 			}
-			//Menu_Change(PREVIOUS);
 		}
 		break;
 
 		//------------------------
 		case KEY_CODE_B: 
 		{
-
-		}
-		break;
-		//------------------------
-		case KEY_CODE_C:
-		{ 
 			switch(SELECT)//пункт меню
 			{			
 				case MENU_TUNE_TIME:
 				{
-					Menu_Change(NEXT);
+					clock->DS1307Time.Minutes=BCD_Increment(clock->DS1307Time.Minutes,0,((5<<4)|9));
+					Time_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 
@@ -239,7 +241,60 @@ void Menu_Key(enKey key, stClock *clock) {
 				}
 				break;
 
-				case MENU_TUNE_BRIGHTNESS:
+				case MENU_TUNE_BRIGHTNESS_DAY:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS_NIGHT:
+				{
+
+				}
+				break;
+				
+				default:
+				{
+					Menu_Change(PREVIOUS);
+				}
+				break;				
+			}
+			
+		}
+		break;
+		//------------------------
+		case KEY_CODE_C:
+		{ 
+			switch(SELECT)//пункт меню
+			{			
+				case MENU_TUNE_TIME:
+				{
+					clock->DS1307Time.Hours=BCD_Increment(clock->DS1307Time.Hours,0,((2<<4)|3));
+					Time_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
+				}
+				break;
+
+
+				case MENU_TUNE_DATE:
+				{
+
+				}
+				break;
+
+
+				case MENU_TUNE_YEAR:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS_DAY:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS_NIGHT:
 				{
 
 				}
@@ -278,7 +333,13 @@ void Menu_Key(enKey key, stClock *clock) {
 				}
 				break;
 
-				case MENU_TUNE_BRIGHTNESS:
+				case MENU_TUNE_BRIGHTNESS_DAY:
+				{
+
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS_NIGHT:
 				{
 
 				}
@@ -294,15 +355,16 @@ void Menu_Key(enKey key, stClock *clock) {
 		break;
 			
 		//------------------------
-		case KEY_CODE_AB:
+		case KEY_CODE_AB://переход в режим настройки времени/даты/года
 		{ 
-			Menu_Change(CHILD);		
+			I2C_ReadTime(&clock->DS1307Time);
+			Menu_Change(CHILD);
 		}
 		break;
 		//------------------------
 		case KEY_CODE_CD:
 		{
-			Menu_Change(PARENT);
+			Menu_Change(&m_s1i4);
 		}
 		break;
 		//------------------------

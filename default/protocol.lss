@@ -3,1620 +3,1729 @@ protocol.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000088c  00000000  00000000  00000074  2**1
+  0 .text         0000090c  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .bss          00000032  00800100  00800100  00000900  2**0
+  1 .bss          00000036  00800100  00800100  00000980  2**0
                   ALLOC
-  2 .stab         000006cc  00000000  00000000  00000900  2**2
+  2 .stab         000006cc  00000000  00000000  00000980  2**2
                   CONTENTS, READONLY, DEBUGGING
-  3 .stabstr      00000085  00000000  00000000  00000fcc  2**0
+  3 .stabstr      00000085  00000000  00000000  0000104c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_aranges 000000e0  00000000  00000000  00001051  2**0
+  4 .debug_aranges 000000e0  00000000  00000000  000010d1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_pubnames 000002e1  00000000  00000000  00001131  2**0
+  5 .debug_pubnames 000002fe  00000000  00000000  000011b1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000176d  00000000  00000000  00001412  2**0
+  6 .debug_info   0000187d  00000000  00000000  000014af  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 0000081a  00000000  00000000  00002b7f  2**0
+  7 .debug_abbrev 00000851  00000000  00000000  00002d2c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000e9a  00000000  00000000  00003399  2**0
+  8 .debug_line   00000f02  00000000  00000000  0000357d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001f0  00000000  00000000  00004234  2**2
+  9 .debug_frame  00000200  00000000  00000000  00004480  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000519  00000000  00000000  00004424  2**0
+ 10 .debug_str    00000585  00000000  00000000  00004680  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000664  00000000  00000000  0000493d  2**0
+ 11 .debug_loc    00000700  00000000  00000000  00004c05  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_pubtypes 000001ab  00000000  00000000  00004fa1  2**0
+ 12 .debug_pubtypes 000001cd  00000000  00000000  00005305  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
 
 00000000 <__vectors>:
-   0:	0c 94 5c 00 	jmp	0xb8	; 0xb8 <__ctors_end>
-   4:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-   8:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-   c:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  10:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  14:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  18:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  1c:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  20:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  24:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  28:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  2c:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  30:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  34:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  38:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  3c:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  40:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  44:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  48:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  4c:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  50:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  54:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  58:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  5c:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  60:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
-  64:	0c 94 6e 00 	jmp	0xdc	; 0xdc <__bad_interrupt>
+   0:	0c 94 61 00 	jmp	0xc2	; 0xc2 <__ctors_end>
+   4:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+   8:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+   c:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  10:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  14:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  18:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  1c:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  20:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  24:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  28:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  2c:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  30:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  34:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  38:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  3c:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  40:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  44:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  48:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  4c:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  50:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  54:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  58:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  5c:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  60:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
+  64:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__bad_interrupt>
 
 00000068 <Null_Menu>:
 	...
 
 00000072 <m_s1i1>:
-  72:	7c 00 68 00 68 00 9a 00 02 00                       |.h.h.....
+  72:	7c 00 68 00 68 00 a4 00 02 00                       |.h.h.....
 
 0000007c <m_s1i2>:
-  7c:	86 00 72 00 68 00 a4 00 03 00                       ..r.h.....
+  7c:	86 00 72 00 68 00 ae 00 03 00                       ..r.h.....
 
 00000086 <m_s1i3>:
-  86:	90 00 7c 00 68 00 ae 00 04 00                       ..|.h.....
+  86:	90 00 7c 00 68 00 b8 00 04 00                       ..|.h.....
 
 00000090 <m_s1i4>:
-  90:	68 00 86 00 68 00 68 00 08 00                       h...h.h...
+  90:	9a 00 86 00 68 00 68 00 08 00                       ....h.h...
 
-0000009a <m_s2i1>:
-  9a:	68 00 68 00 72 00 68 00 05 00                       h.h.r.h...
+0000009a <m_s1i5>:
+  9a:	68 00 90 00 68 00 68 00 09 00                       h...h.h...
 
-000000a4 <m_s3i1>:
-  a4:	68 00 68 00 7c 00 68 00 06 00                       h.h.|.h...
+000000a4 <m_s2i1>:
+  a4:	68 00 68 00 72 00 68 00 05 00                       h.h.r.h...
 
-000000ae <m_s4i1>:
-  ae:	68 00 68 00 86 00 68 00 07 00                       h.h...h...
+000000ae <m_s3i1>:
+  ae:	68 00 68 00 7c 00 68 00 06 00                       h.h.|.h...
 
-000000b8 <__ctors_end>:
-  b8:	11 24       	eor	r1, r1
-  ba:	1f be       	out	0x3f, r1	; 63
-  bc:	cf ef       	ldi	r28, 0xFF	; 255
-  be:	d4 e0       	ldi	r29, 0x04	; 4
-  c0:	de bf       	out	0x3e, r29	; 62
-  c2:	cd bf       	out	0x3d, r28	; 61
+000000b8 <m_s4i1>:
+  b8:	68 00 68 00 86 00 68 00 07 00                       h.h...h...
 
-000000c4 <__do_clear_bss>:
-  c4:	11 e0       	ldi	r17, 0x01	; 1
-  c6:	a0 e0       	ldi	r26, 0x00	; 0
-  c8:	b1 e0       	ldi	r27, 0x01	; 1
-  ca:	01 c0       	rjmp	.+2      	; 0xce <.do_clear_bss_start>
+000000c2 <__ctors_end>:
+  c2:	11 24       	eor	r1, r1
+  c4:	1f be       	out	0x3f, r1	; 63
+  c6:	cf ef       	ldi	r28, 0xFF	; 255
+  c8:	d4 e0       	ldi	r29, 0x04	; 4
+  ca:	de bf       	out	0x3e, r29	; 62
+  cc:	cd bf       	out	0x3d, r28	; 61
 
-000000cc <.do_clear_bss_loop>:
-  cc:	1d 92       	st	X+, r1
+000000ce <__do_clear_bss>:
+  ce:	11 e0       	ldi	r17, 0x01	; 1
+  d0:	a0 e0       	ldi	r26, 0x00	; 0
+  d2:	b1 e0       	ldi	r27, 0x01	; 1
+  d4:	01 c0       	rjmp	.+2      	; 0xd8 <.do_clear_bss_start>
 
-000000ce <.do_clear_bss_start>:
-  ce:	a2 33       	cpi	r26, 0x32	; 50
-  d0:	b1 07       	cpc	r27, r17
-  d2:	e1 f7       	brne	.-8      	; 0xcc <.do_clear_bss_loop>
-  d4:	0e 94 21 02 	call	0x442	; 0x442 <main>
-  d8:	0c 94 44 04 	jmp	0x888	; 0x888 <_exit>
+000000d6 <.do_clear_bss_loop>:
+  d6:	1d 92       	st	X+, r1
 
-000000dc <__bad_interrupt>:
-  dc:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+000000d8 <.do_clear_bss_start>:
+  d8:	a6 33       	cpi	r26, 0x36	; 54
+  da:	b1 07       	cpc	r27, r17
+  dc:	e1 f7       	brne	.-8      	; 0xd6 <.do_clear_bss_loop>
+  de:	0e 94 26 02 	call	0x44c	; 0x44c <main>
+  e2:	0c 94 84 04 	jmp	0x908	; 0x908 <_exit>
 
-000000e0 <I2C_Init>:
+000000e6 <__bad_interrupt>:
+  e6:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000ea <I2C_Init>:
 #define I2C_SCL	 5
 #define I2C_SDA	 4
 //---------------------I2C_INIT------------------------------------
 void I2C_Init(void)
 {
 	I2C_PORT |= (1<<I2C_SCL)|(1<<I2C_SDA);	// Включим подтяжку на ноги, вдруг юзер на резисторы пожмотился
-  e0:	88 b1       	in	r24, 0x08	; 8
-  e2:	80 63       	ori	r24, 0x30	; 48
-  e4:	88 b9       	out	0x08, r24	; 8
+  ea:	88 b1       	in	r24, 0x08	; 8
+  ec:	80 63       	ori	r24, 0x30	; 48
+  ee:	88 b9       	out	0x08, r24	; 8
 	I2C_DDR &=~((1<<I2C_SCL)|(1<<I2C_SDA));
-  e6:	87 b1       	in	r24, 0x07	; 7
-  e8:	8f 7c       	andi	r24, 0xCF	; 207
-  ea:	87 b9       	out	0x07, r24	; 7
+  f0:	87 b1       	in	r24, 0x07	; 7
+  f2:	8f 7c       	andi	r24, 0xCF	; 207
+  f4:	87 b9       	out	0x07, r24	; 7
 	TWBR = 0x20;         			// Настроим битрейт
-  ec:	80 e2       	ldi	r24, 0x20	; 32
-  ee:	80 93 b8 00 	sts	0x00B8, r24
+  f6:	80 e2       	ldi	r24, 0x20	; 32
+  f8:	80 93 b8 00 	sts	0x00B8, r24
 	TWSR = 0x00;
-  f2:	10 92 b9 00 	sts	0x00B9, r1
+  fc:	10 92 b9 00 	sts	0x00B9, r1
 }
-  f6:	08 95       	ret
+ 100:	08 95       	ret
 
-000000f8 <I2C_Write>:
+00000102 <I2C_Write>:
 //---------------------I2C_WRITE------------------------------------
 
 void I2C_Write(unsigned char address,unsigned char address_reg, unsigned char data)
 {
 	TWCR=(1<<TWINT)|(1<<TWSTA)|(1<<TWEN);//START
-  f8:	94 ea       	ldi	r25, 0xA4	; 164
-  fa:	90 93 bc 00 	sts	0x00BC, r25
+ 102:	94 ea       	ldi	r25, 0xA4	; 164
+ 104:	90 93 bc 00 	sts	0x00BC, r25
 	
 	while(!(TWCR&(1<<TWINT)));//...wait for start
-  fe:	90 91 bc 00 	lds	r25, 0x00BC
- 102:	97 ff       	sbrs	r25, 7
- 104:	fc cf       	rjmp	.-8      	; 0xfe <I2C_Write+0x6>
+ 108:	90 91 bc 00 	lds	r25, 0x00BC
+ 10c:	97 ff       	sbrs	r25, 7
+ 10e:	fc cf       	rjmp	.-8      	; 0x108 <I2C_Write+0x6>
 
 	if((TWSR&0xF8)!=START)//result
- 106:	90 91 b9 00 	lds	r25, 0x00B9
- 10a:	98 7f       	andi	r25, 0xF8	; 248
- 10c:	98 30       	cpi	r25, 0x08	; 8
- 10e:	39 f5       	brne	.+78     	; 0x15e <I2C_Write+0x66>
+ 110:	90 91 b9 00 	lds	r25, 0x00B9
+ 114:	98 7f       	andi	r25, 0xF8	; 248
+ 116:	98 30       	cpi	r25, 0x08	; 8
+ 118:	39 f5       	brne	.+78     	; 0x168 <I2C_Write+0x66>
 	{
 		TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
 		return;
 	}
 
 	TWDR=address;//address+write
- 110:	80 93 bb 00 	sts	0x00BB, r24
+ 11a:	80 93 bb 00 	sts	0x00BB, r24
 	
 	TWCR=(1<<TWINT)|(1<<TWEN);//transfer address
- 114:	84 e8       	ldi	r24, 0x84	; 132
- 116:	80 93 bc 00 	sts	0x00BC, r24
+ 11e:	84 e8       	ldi	r24, 0x84	; 132
+ 120:	80 93 bc 00 	sts	0x00BC, r24
 
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 11a:	80 91 bc 00 	lds	r24, 0x00BC
- 11e:	87 ff       	sbrs	r24, 7
- 120:	fc cf       	rjmp	.-8      	; 0x11a <I2C_Write+0x22>
+ 124:	80 91 bc 00 	lds	r24, 0x00BC
+ 128:	87 ff       	sbrs	r24, 7
+ 12a:	fc cf       	rjmp	.-8      	; 0x124 <I2C_Write+0x22>
 
 	if((TWSR&0xF8)!=MT_SLA_ACK)//result
- 122:	80 91 b9 00 	lds	r24, 0x00B9
- 126:	88 7f       	andi	r24, 0xF8	; 248
- 128:	88 31       	cpi	r24, 0x18	; 24
- 12a:	c9 f4       	brne	.+50     	; 0x15e <I2C_Write+0x66>
+ 12c:	80 91 b9 00 	lds	r24, 0x00B9
+ 130:	88 7f       	andi	r24, 0xF8	; 248
+ 132:	88 31       	cpi	r24, 0x18	; 24
+ 134:	c9 f4       	brne	.+50     	; 0x168 <I2C_Write+0x66>
 	{
 		TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
 		return;
 	}
 	
 	TWDR=(unsigned char)address_reg;//address+write
- 12c:	60 93 bb 00 	sts	0x00BB, r22
+ 136:	60 93 bb 00 	sts	0x00BB, r22
 	
 	TWCR=(1<<TWINT)|(1<<TWEN);//transfer address
- 130:	84 e8       	ldi	r24, 0x84	; 132
- 132:	80 93 bc 00 	sts	0x00BC, r24
+ 13a:	84 e8       	ldi	r24, 0x84	; 132
+ 13c:	80 93 bc 00 	sts	0x00BC, r24
 
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 136:	80 91 bc 00 	lds	r24, 0x00BC
- 13a:	87 ff       	sbrs	r24, 7
- 13c:	fc cf       	rjmp	.-8      	; 0x136 <I2C_Write+0x3e>
+ 140:	80 91 bc 00 	lds	r24, 0x00BC
+ 144:	87 ff       	sbrs	r24, 7
+ 146:	fc cf       	rjmp	.-8      	; 0x140 <I2C_Write+0x3e>
 
 	if((TWSR&0xF8)!=MT_DATA_ACK)//result
- 13e:	80 91 b9 00 	lds	r24, 0x00B9
- 142:	88 7f       	andi	r24, 0xF8	; 248
- 144:	88 32       	cpi	r24, 0x28	; 40
- 146:	59 f4       	brne	.+22     	; 0x15e <I2C_Write+0x66>
+ 148:	80 91 b9 00 	lds	r24, 0x00B9
+ 14c:	88 7f       	andi	r24, 0xF8	; 248
+ 14e:	88 32       	cpi	r24, 0x28	; 40
+ 150:	59 f4       	brne	.+22     	; 0x168 <I2C_Write+0x66>
 	{
 		TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
 		return;
 	}
 
 	TWDR=data;//address+write
- 148:	40 93 bb 00 	sts	0x00BB, r20
+ 152:	40 93 bb 00 	sts	0x00BB, r20
 	
 	TWCR=(1<<TWINT)|(1<<TWEN);//transfer address
- 14c:	84 e8       	ldi	r24, 0x84	; 132
- 14e:	80 93 bc 00 	sts	0x00BC, r24
+ 156:	84 e8       	ldi	r24, 0x84	; 132
+ 158:	80 93 bc 00 	sts	0x00BC, r24
 
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 152:	80 91 bc 00 	lds	r24, 0x00BC
- 156:	87 ff       	sbrs	r24, 7
- 158:	fc cf       	rjmp	.-8      	; 0x152 <I2C_Write+0x5a>
+ 15c:	80 91 bc 00 	lds	r24, 0x00BC
+ 160:	87 ff       	sbrs	r24, 7
+ 162:	fc cf       	rjmp	.-8      	; 0x15c <I2C_Write+0x5a>
 
 	if((TWSR&0xF8)!=MT_DATA_ACK)//result
- 15a:	80 91 b9 00 	lds	r24, 0x00B9
+ 164:	80 91 b9 00 	lds	r24, 0x00B9
 	{
 		TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
 		return;
 	}
 
 	TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
- 15e:	84 e9       	ldi	r24, 0x94	; 148
- 160:	80 93 bc 00 	sts	0x00BC, r24
- 164:	08 95       	ret
+ 168:	84 e9       	ldi	r24, 0x94	; 148
+ 16a:	80 93 bc 00 	sts	0x00BC, r24
+ 16e:	08 95       	ret
 
-00000166 <I2C_Read>:
+00000170 <I2C_Read>:
 unsigned char I2C_Read(unsigned char address,unsigned char address_reg)
 {
 
 uint8_t reg;
 
 TWCR=(1<<TWINT)|(1<<TWSTA)|(1<<TWEN);//START
- 166:	94 ea       	ldi	r25, 0xA4	; 164
- 168:	90 93 bc 00 	sts	0x00BC, r25
+ 170:	94 ea       	ldi	r25, 0xA4	; 164
+ 172:	90 93 bc 00 	sts	0x00BC, r25
 	
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 16c:	90 91 bc 00 	lds	r25, 0x00BC
- 170:	97 ff       	sbrs	r25, 7
- 172:	fc cf       	rjmp	.-8      	; 0x16c <I2C_Read+0x6>
+ 176:	90 91 bc 00 	lds	r25, 0x00BC
+ 17a:	97 ff       	sbrs	r25, 7
+ 17c:	fc cf       	rjmp	.-8      	; 0x176 <I2C_Read+0x6>
 
 	if((TWSR&0xF8)!=START)//result
- 174:	90 91 b9 00 	lds	r25, 0x00B9
- 178:	98 7f       	andi	r25, 0xF8	; 248
- 17a:	98 30       	cpi	r25, 0x08	; 8
- 17c:	09 f0       	breq	.+2      	; 0x180 <I2C_Read+0x1a>
- 17e:	43 c0       	rjmp	.+134    	; 0x206 <I2C_Read+0xa0>
+ 17e:	90 91 b9 00 	lds	r25, 0x00B9
+ 182:	98 7f       	andi	r25, 0xF8	; 248
+ 184:	98 30       	cpi	r25, 0x08	; 8
+ 186:	09 f0       	breq	.+2      	; 0x18a <I2C_Read+0x1a>
+ 188:	43 c0       	rjmp	.+134    	; 0x210 <I2C_Read+0xa0>
 	{
 		TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
 		return 0;
 	}
 
 	TWDR=address;//address+write
- 180:	80 93 bb 00 	sts	0x00BB, r24
+ 18a:	80 93 bb 00 	sts	0x00BB, r24
 	
 	TWCR=(1<<TWINT)|(1<<TWEN);//transfer address
- 184:	94 e8       	ldi	r25, 0x84	; 132
- 186:	90 93 bc 00 	sts	0x00BC, r25
+ 18e:	94 e8       	ldi	r25, 0x84	; 132
+ 190:	90 93 bc 00 	sts	0x00BC, r25
 
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 18a:	90 91 bc 00 	lds	r25, 0x00BC
- 18e:	97 ff       	sbrs	r25, 7
- 190:	fc cf       	rjmp	.-8      	; 0x18a <I2C_Read+0x24>
+ 194:	90 91 bc 00 	lds	r25, 0x00BC
+ 198:	97 ff       	sbrs	r25, 7
+ 19a:	fc cf       	rjmp	.-8      	; 0x194 <I2C_Read+0x24>
 
 	if((TWSR&0xF8)!=MT_SLA_ACK)//result
- 192:	90 91 b9 00 	lds	r25, 0x00B9
- 196:	98 7f       	andi	r25, 0xF8	; 248
- 198:	98 31       	cpi	r25, 0x18	; 24
- 19a:	a9 f5       	brne	.+106    	; 0x206 <I2C_Read+0xa0>
+ 19c:	90 91 b9 00 	lds	r25, 0x00B9
+ 1a0:	98 7f       	andi	r25, 0xF8	; 248
+ 1a2:	98 31       	cpi	r25, 0x18	; 24
+ 1a4:	a9 f5       	brne	.+106    	; 0x210 <I2C_Read+0xa0>
 	{
 		TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
 		return 0;
 	}
 	
 	TWDR=address_reg;//
- 19c:	60 93 bb 00 	sts	0x00BB, r22
+ 1a6:	60 93 bb 00 	sts	0x00BB, r22
 	
 	TWCR=(1<<TWINT)|(1<<TWEN);//transfer address
- 1a0:	94 e8       	ldi	r25, 0x84	; 132
- 1a2:	90 93 bc 00 	sts	0x00BC, r25
+ 1aa:	94 e8       	ldi	r25, 0x84	; 132
+ 1ac:	90 93 bc 00 	sts	0x00BC, r25
 
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 1a6:	90 91 bc 00 	lds	r25, 0x00BC
- 1aa:	97 ff       	sbrs	r25, 7
- 1ac:	fc cf       	rjmp	.-8      	; 0x1a6 <I2C_Read+0x40>
+ 1b0:	90 91 bc 00 	lds	r25, 0x00BC
+ 1b4:	97 ff       	sbrs	r25, 7
+ 1b6:	fc cf       	rjmp	.-8      	; 0x1b0 <I2C_Read+0x40>
 
 	if((TWSR&0xF8)!=MT_DATA_ACK)//result
- 1ae:	90 91 b9 00 	lds	r25, 0x00B9
- 1b2:	98 7f       	andi	r25, 0xF8	; 248
- 1b4:	98 32       	cpi	r25, 0x28	; 40
- 1b6:	39 f5       	brne	.+78     	; 0x206 <I2C_Read+0xa0>
+ 1b8:	90 91 b9 00 	lds	r25, 0x00B9
+ 1bc:	98 7f       	andi	r25, 0xF8	; 248
+ 1be:	98 32       	cpi	r25, 0x28	; 40
+ 1c0:	39 f5       	brne	.+78     	; 0x210 <I2C_Read+0xa0>
 		return 0;
 	}
 
 
 //------------------read---------------------
 TWCR=(1<<TWINT)|(1<<TWSTA)|(1<<TWEN);//START2
- 1b8:	94 ea       	ldi	r25, 0xA4	; 164
- 1ba:	90 93 bc 00 	sts	0x00BC, r25
+ 1c2:	94 ea       	ldi	r25, 0xA4	; 164
+ 1c4:	90 93 bc 00 	sts	0x00BC, r25
 	
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 1be:	90 91 bc 00 	lds	r25, 0x00BC
- 1c2:	97 ff       	sbrs	r25, 7
- 1c4:	fc cf       	rjmp	.-8      	; 0x1be <I2C_Read+0x58>
+ 1c8:	90 91 bc 00 	lds	r25, 0x00BC
+ 1cc:	97 ff       	sbrs	r25, 7
+ 1ce:	fc cf       	rjmp	.-8      	; 0x1c8 <I2C_Read+0x58>
 
 	if((TWSR&0xF8)!=START_2)//result
- 1c6:	90 91 b9 00 	lds	r25, 0x00B9
- 1ca:	98 7f       	andi	r25, 0xF8	; 248
- 1cc:	90 31       	cpi	r25, 0x10	; 16
- 1ce:	d9 f4       	brne	.+54     	; 0x206 <I2C_Read+0xa0>
+ 1d0:	90 91 b9 00 	lds	r25, 0x00B9
+ 1d4:	98 7f       	andi	r25, 0xF8	; 248
+ 1d6:	90 31       	cpi	r25, 0x10	; 16
+ 1d8:	d9 f4       	brne	.+54     	; 0x210 <I2C_Read+0xa0>
 		return 0;
 	}
 
 
 	
 	TWDR=address+1;//address+read
- 1d0:	8f 5f       	subi	r24, 0xFF	; 255
- 1d2:	80 93 bb 00 	sts	0x00BB, r24
+ 1da:	8f 5f       	subi	r24, 0xFF	; 255
+ 1dc:	80 93 bb 00 	sts	0x00BB, r24
 	
 	TWCR=(1<<TWINT)|(1<<TWEN);//transfer address
- 1d6:	84 e8       	ldi	r24, 0x84	; 132
- 1d8:	80 93 bc 00 	sts	0x00BC, r24
+ 1e0:	84 e8       	ldi	r24, 0x84	; 132
+ 1e2:	80 93 bc 00 	sts	0x00BC, r24
 
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 1dc:	80 91 bc 00 	lds	r24, 0x00BC
- 1e0:	87 ff       	sbrs	r24, 7
- 1e2:	fc cf       	rjmp	.-8      	; 0x1dc <I2C_Read+0x76>
+ 1e6:	80 91 bc 00 	lds	r24, 0x00BC
+ 1ea:	87 ff       	sbrs	r24, 7
+ 1ec:	fc cf       	rjmp	.-8      	; 0x1e6 <I2C_Read+0x76>
 
 	if((TWSR&0xF8)!=MT_SLA_READ_ACK)//result
- 1e4:	80 91 b9 00 	lds	r24, 0x00B9
- 1e8:	88 7f       	andi	r24, 0xF8	; 248
- 1ea:	80 34       	cpi	r24, 0x40	; 64
- 1ec:	61 f4       	brne	.+24     	; 0x206 <I2C_Read+0xa0>
+ 1ee:	80 91 b9 00 	lds	r24, 0x00B9
+ 1f2:	88 7f       	andi	r24, 0xF8	; 248
+ 1f4:	80 34       	cpi	r24, 0x40	; 64
+ 1f6:	61 f4       	brne	.+24     	; 0x210 <I2C_Read+0xa0>
 	}
 
     
 	
 
 	TWCR=(1<<TWINT)|(1<<TWEN);//read & nack
- 1ee:	84 e8       	ldi	r24, 0x84	; 132
- 1f0:	80 93 bc 00 	sts	0x00BC, r24
+ 1f8:	84 e8       	ldi	r24, 0x84	; 132
+ 1fa:	80 93 bc 00 	sts	0x00BC, r24
 
 	while(!(TWCR&(1<<TWINT)));//...wait for start
- 1f4:	80 91 bc 00 	lds	r24, 0x00BC
- 1f8:	87 ff       	sbrs	r24, 7
- 1fa:	fc cf       	rjmp	.-8      	; 0x1f4 <I2C_Read+0x8e>
+ 1fe:	80 91 bc 00 	lds	r24, 0x00BC
+ 202:	87 ff       	sbrs	r24, 7
+ 204:	fc cf       	rjmp	.-8      	; 0x1fe <I2C_Read+0x8e>
 	
 	if((TWSR&0xF8)!=READ_NACK)
- 1fc:	80 91 b9 00 	lds	r24, 0x00B9
- 200:	88 7f       	andi	r24, 0xF8	; 248
- 202:	88 35       	cpi	r24, 0x58	; 88
- 204:	29 f0       	breq	.+10     	; 0x210 <I2C_Read+0xaa>
+ 206:	80 91 b9 00 	lds	r24, 0x00B9
+ 20a:	88 7f       	andi	r24, 0xF8	; 248
+ 20c:	88 35       	cpi	r24, 0x58	; 88
+ 20e:	29 f0       	breq	.+10     	; 0x21a <I2C_Read+0xaa>
 	{
 		TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
- 206:	84 e9       	ldi	r24, 0x94	; 148
- 208:	80 93 bc 00 	sts	0x00BC, r24
+ 210:	84 e9       	ldi	r24, 0x94	; 148
+ 212:	80 93 bc 00 	sts	0x00BC, r24
 		return 0;
- 20c:	80 e0       	ldi	r24, 0x00	; 0
- 20e:	08 95       	ret
+ 216:	80 e0       	ldi	r24, 0x00	; 0
+ 218:	08 95       	ret
 		
 	}
 	reg=TWDR;
- 210:	80 91 bb 00 	lds	r24, 0x00BB
+ 21a:	80 91 bb 00 	lds	r24, 0x00BB
     
 	
 	TWCR=(1<<TWINT)|(1<<TWSTO)|(1<<TWEN);//STOP
- 214:	94 e9       	ldi	r25, 0x94	; 148
- 216:	90 93 bc 00 	sts	0x00BC, r25
+ 21e:	94 e9       	ldi	r25, 0x94	; 148
+ 220:	90 93 bc 00 	sts	0x00BC, r25
 
 	return reg;
 
 }
- 21a:	08 95       	ret
+ 224:	08 95       	ret
 
-0000021c <I2C_ReadTime>:
+00000226 <I2C_ReadTime>:
 
 //------------------------------------------------------------
 void I2C_ReadTime(stDS1307Time *time)
 {	
- 21c:	cf 93       	push	r28
- 21e:	df 93       	push	r29
- 220:	ec 01       	movw	r28, r24
+ 226:	cf 93       	push	r28
+ 228:	df 93       	push	r29
+ 22a:	ec 01       	movw	r28, r24
 	time->Seconds	=I2C_Read(TMR_ADDR,REG_SECONDS);
- 222:	80 ed       	ldi	r24, 0xD0	; 208
- 224:	60 e0       	ldi	r22, 0x00	; 0
- 226:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 22a:	88 83       	st	Y, r24
+ 22c:	80 ed       	ldi	r24, 0xD0	; 208
+ 22e:	60 e0       	ldi	r22, 0x00	; 0
+ 230:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 234:	88 83       	st	Y, r24
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 22c:	87 ec       	ldi	r24, 0xC7	; 199
- 22e:	90 e0       	ldi	r25, 0x00	; 0
- 230:	01 97       	sbiw	r24, 0x01	; 1
- 232:	f1 f7       	brne	.-4      	; 0x230 <I2C_ReadTime+0x14>
- 234:	00 c0       	rjmp	.+0      	; 0x236 <I2C_ReadTime+0x1a>
- 236:	00 00       	nop
+ 236:	87 ec       	ldi	r24, 0xC7	; 199
+ 238:	90 e0       	ldi	r25, 0x00	; 0
+ 23a:	01 97       	sbiw	r24, 0x01	; 1
+ 23c:	f1 f7       	brne	.-4      	; 0x23a <I2C_ReadTime+0x14>
+ 23e:	00 c0       	rjmp	.+0      	; 0x240 <I2C_ReadTime+0x1a>
+ 240:	00 00       	nop
 	_delay_us(100);
 	time->Minutes	=I2C_Read(TMR_ADDR,REG_MINUTES);
- 238:	80 ed       	ldi	r24, 0xD0	; 208
- 23a:	61 e0       	ldi	r22, 0x01	; 1
- 23c:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 240:	89 83       	std	Y+1, r24	; 0x01
- 242:	87 ec       	ldi	r24, 0xC7	; 199
- 244:	90 e0       	ldi	r25, 0x00	; 0
- 246:	01 97       	sbiw	r24, 0x01	; 1
- 248:	f1 f7       	brne	.-4      	; 0x246 <I2C_ReadTime+0x2a>
- 24a:	00 c0       	rjmp	.+0      	; 0x24c <I2C_ReadTime+0x30>
- 24c:	00 00       	nop
+ 242:	80 ed       	ldi	r24, 0xD0	; 208
+ 244:	61 e0       	ldi	r22, 0x01	; 1
+ 246:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 24a:	89 83       	std	Y+1, r24	; 0x01
+ 24c:	87 ec       	ldi	r24, 0xC7	; 199
+ 24e:	90 e0       	ldi	r25, 0x00	; 0
+ 250:	01 97       	sbiw	r24, 0x01	; 1
+ 252:	f1 f7       	brne	.-4      	; 0x250 <I2C_ReadTime+0x2a>
+ 254:	00 c0       	rjmp	.+0      	; 0x256 <I2C_ReadTime+0x30>
+ 256:	00 00       	nop
 	_delay_us(100);
 	time->Hours		=I2C_Read(TMR_ADDR,REG_HOURS);
- 24e:	80 ed       	ldi	r24, 0xD0	; 208
- 250:	62 e0       	ldi	r22, 0x02	; 2
- 252:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 256:	8a 83       	std	Y+2, r24	; 0x02
- 258:	87 ec       	ldi	r24, 0xC7	; 199
- 25a:	90 e0       	ldi	r25, 0x00	; 0
- 25c:	01 97       	sbiw	r24, 0x01	; 1
- 25e:	f1 f7       	brne	.-4      	; 0x25c <I2C_ReadTime+0x40>
- 260:	00 c0       	rjmp	.+0      	; 0x262 <I2C_ReadTime+0x46>
- 262:	00 00       	nop
+ 258:	80 ed       	ldi	r24, 0xD0	; 208
+ 25a:	62 e0       	ldi	r22, 0x02	; 2
+ 25c:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 260:	8a 83       	std	Y+2, r24	; 0x02
+ 262:	87 ec       	ldi	r24, 0xC7	; 199
+ 264:	90 e0       	ldi	r25, 0x00	; 0
+ 266:	01 97       	sbiw	r24, 0x01	; 1
+ 268:	f1 f7       	brne	.-4      	; 0x266 <I2C_ReadTime+0x40>
+ 26a:	00 c0       	rjmp	.+0      	; 0x26c <I2C_ReadTime+0x46>
+ 26c:	00 00       	nop
 	_delay_us(100);
 	time->Day		=I2C_Read(TMR_ADDR,REG_DAY);
- 264:	80 ed       	ldi	r24, 0xD0	; 208
- 266:	63 e0       	ldi	r22, 0x03	; 3
- 268:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 26c:	8b 83       	std	Y+3, r24	; 0x03
- 26e:	87 ec       	ldi	r24, 0xC7	; 199
- 270:	90 e0       	ldi	r25, 0x00	; 0
- 272:	01 97       	sbiw	r24, 0x01	; 1
- 274:	f1 f7       	brne	.-4      	; 0x272 <I2C_ReadTime+0x56>
- 276:	00 c0       	rjmp	.+0      	; 0x278 <I2C_ReadTime+0x5c>
- 278:	00 00       	nop
+ 26e:	80 ed       	ldi	r24, 0xD0	; 208
+ 270:	63 e0       	ldi	r22, 0x03	; 3
+ 272:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 276:	8b 83       	std	Y+3, r24	; 0x03
+ 278:	87 ec       	ldi	r24, 0xC7	; 199
+ 27a:	90 e0       	ldi	r25, 0x00	; 0
+ 27c:	01 97       	sbiw	r24, 0x01	; 1
+ 27e:	f1 f7       	brne	.-4      	; 0x27c <I2C_ReadTime+0x56>
+ 280:	00 c0       	rjmp	.+0      	; 0x282 <I2C_ReadTime+0x5c>
+ 282:	00 00       	nop
 	_delay_us(100);
 	time->Date		=I2C_Read(TMR_ADDR,REG_DATE);
- 27a:	80 ed       	ldi	r24, 0xD0	; 208
- 27c:	64 e0       	ldi	r22, 0x04	; 4
- 27e:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 282:	8c 83       	std	Y+4, r24	; 0x04
- 284:	87 ec       	ldi	r24, 0xC7	; 199
- 286:	90 e0       	ldi	r25, 0x00	; 0
- 288:	01 97       	sbiw	r24, 0x01	; 1
- 28a:	f1 f7       	brne	.-4      	; 0x288 <I2C_ReadTime+0x6c>
- 28c:	00 c0       	rjmp	.+0      	; 0x28e <I2C_ReadTime+0x72>
- 28e:	00 00       	nop
+ 284:	80 ed       	ldi	r24, 0xD0	; 208
+ 286:	64 e0       	ldi	r22, 0x04	; 4
+ 288:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 28c:	8c 83       	std	Y+4, r24	; 0x04
+ 28e:	87 ec       	ldi	r24, 0xC7	; 199
+ 290:	90 e0       	ldi	r25, 0x00	; 0
+ 292:	01 97       	sbiw	r24, 0x01	; 1
+ 294:	f1 f7       	brne	.-4      	; 0x292 <I2C_ReadTime+0x6c>
+ 296:	00 c0       	rjmp	.+0      	; 0x298 <I2C_ReadTime+0x72>
+ 298:	00 00       	nop
 	_delay_us(100);
 	time->Month		=I2C_Read(TMR_ADDR,REG_MONTH);
- 290:	80 ed       	ldi	r24, 0xD0	; 208
- 292:	65 e0       	ldi	r22, 0x05	; 5
- 294:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 298:	8d 83       	std	Y+5, r24	; 0x05
- 29a:	87 ec       	ldi	r24, 0xC7	; 199
- 29c:	90 e0       	ldi	r25, 0x00	; 0
- 29e:	01 97       	sbiw	r24, 0x01	; 1
- 2a0:	f1 f7       	brne	.-4      	; 0x29e <I2C_ReadTime+0x82>
- 2a2:	00 c0       	rjmp	.+0      	; 0x2a4 <I2C_ReadTime+0x88>
- 2a4:	00 00       	nop
+ 29a:	80 ed       	ldi	r24, 0xD0	; 208
+ 29c:	65 e0       	ldi	r22, 0x05	; 5
+ 29e:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 2a2:	8d 83       	std	Y+5, r24	; 0x05
+ 2a4:	87 ec       	ldi	r24, 0xC7	; 199
+ 2a6:	90 e0       	ldi	r25, 0x00	; 0
+ 2a8:	01 97       	sbiw	r24, 0x01	; 1
+ 2aa:	f1 f7       	brne	.-4      	; 0x2a8 <I2C_ReadTime+0x82>
+ 2ac:	00 c0       	rjmp	.+0      	; 0x2ae <I2C_ReadTime+0x88>
+ 2ae:	00 00       	nop
 	_delay_us(100);
 	time->Year		=I2C_Read(TMR_ADDR,REG_YEAR);
- 2a6:	80 ed       	ldi	r24, 0xD0	; 208
- 2a8:	66 e0       	ldi	r22, 0x06	; 6
- 2aa:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 2ae:	8e 83       	std	Y+6, r24	; 0x06
- 2b0:	87 ec       	ldi	r24, 0xC7	; 199
- 2b2:	90 e0       	ldi	r25, 0x00	; 0
- 2b4:	01 97       	sbiw	r24, 0x01	; 1
- 2b6:	f1 f7       	brne	.-4      	; 0x2b4 <I2C_ReadTime+0x98>
- 2b8:	00 c0       	rjmp	.+0      	; 0x2ba <I2C_ReadTime+0x9e>
- 2ba:	00 00       	nop
+ 2b0:	80 ed       	ldi	r24, 0xD0	; 208
+ 2b2:	66 e0       	ldi	r22, 0x06	; 6
+ 2b4:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 2b8:	8e 83       	std	Y+6, r24	; 0x06
+ 2ba:	87 ec       	ldi	r24, 0xC7	; 199
+ 2bc:	90 e0       	ldi	r25, 0x00	; 0
+ 2be:	01 97       	sbiw	r24, 0x01	; 1
+ 2c0:	f1 f7       	brne	.-4      	; 0x2be <I2C_ReadTime+0x98>
+ 2c2:	00 c0       	rjmp	.+0      	; 0x2c4 <I2C_ReadTime+0x9e>
+ 2c4:	00 00       	nop
 	_delay_us(100);
 	time->Control	=I2C_Read(TMR_ADDR,REG_CONTROL);
- 2bc:	80 ed       	ldi	r24, 0xD0	; 208
- 2be:	67 e0       	ldi	r22, 0x07	; 7
- 2c0:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 2c4:	8f 83       	std	Y+7, r24	; 0x07
- 2c6:	87 ec       	ldi	r24, 0xC7	; 199
- 2c8:	90 e0       	ldi	r25, 0x00	; 0
- 2ca:	01 97       	sbiw	r24, 0x01	; 1
- 2cc:	f1 f7       	brne	.-4      	; 0x2ca <I2C_ReadTime+0xae>
- 2ce:	00 c0       	rjmp	.+0      	; 0x2d0 <I2C_ReadTime+0xb4>
- 2d0:	00 00       	nop
+ 2c6:	80 ed       	ldi	r24, 0xD0	; 208
+ 2c8:	67 e0       	ldi	r22, 0x07	; 7
+ 2ca:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 2ce:	8f 83       	std	Y+7, r24	; 0x07
+ 2d0:	87 ec       	ldi	r24, 0xC7	; 199
+ 2d2:	90 e0       	ldi	r25, 0x00	; 0
+ 2d4:	01 97       	sbiw	r24, 0x01	; 1
+ 2d6:	f1 f7       	brne	.-4      	; 0x2d4 <I2C_ReadTime+0xae>
+ 2d8:	00 c0       	rjmp	.+0      	; 0x2da <I2C_ReadTime+0xb4>
+ 2da:	00 00       	nop
 	_delay_us(100);
 }
- 2d2:	df 91       	pop	r29
- 2d4:	cf 91       	pop	r28
- 2d6:	08 95       	ret
+ 2dc:	df 91       	pop	r29
+ 2de:	cf 91       	pop	r28
+ 2e0:	08 95       	ret
 
-000002d8 <I2C_DS1307Init>:
+000002e2 <I2C_DS1307Init>:
 //----------------------------------------------------------
 void I2C_DS1307Init(stDS1307Time *time)//инициализация часов, установка
 {
 	uint8_t reg;
 
 	reg=I2C_Read(TMR_ADDR,REG_SECONDS);
- 2d8:	80 ed       	ldi	r24, 0xD0	; 208
- 2da:	60 e0       	ldi	r22, 0x00	; 0
- 2dc:	0e 94 b3 00 	call	0x166	; 0x166 <I2C_Read>
- 2e0:	ef ec       	ldi	r30, 0xCF	; 207
- 2e2:	f7 e0       	ldi	r31, 0x07	; 7
- 2e4:	31 97       	sbiw	r30, 0x01	; 1
- 2e6:	f1 f7       	brne	.-4      	; 0x2e4 <I2C_DS1307Init+0xc>
- 2e8:	00 c0       	rjmp	.+0      	; 0x2ea <I2C_DS1307Init+0x12>
- 2ea:	00 00       	nop
+ 2e2:	80 ed       	ldi	r24, 0xD0	; 208
+ 2e4:	60 e0       	ldi	r22, 0x00	; 0
+ 2e6:	0e 94 b8 00 	call	0x170	; 0x170 <I2C_Read>
+ 2ea:	ef ec       	ldi	r30, 0xCF	; 207
+ 2ec:	f7 e0       	ldi	r31, 0x07	; 7
+ 2ee:	31 97       	sbiw	r30, 0x01	; 1
+ 2f0:	f1 f7       	brne	.-4      	; 0x2ee <I2C_DS1307Init+0xc>
+ 2f2:	00 c0       	rjmp	.+0      	; 0x2f4 <I2C_DS1307Init+0x12>
+ 2f4:	00 00       	nop
 	_delay_us(1000);
 
 	if((reg&0x80)!=0)
- 2ec:	87 ff       	sbrs	r24, 7
- 2ee:	21 c0       	rjmp	.+66     	; 0x332 <I2C_DS1307Init+0x5a>
+ 2f6:	87 ff       	sbrs	r24, 7
+ 2f8:	21 c0       	rjmp	.+66     	; 0x33c <I2C_DS1307Init+0x5a>
 	{
 		I2C_Write(TMR_ADDR,REG_HOURS,(1<<4)+2);
- 2f0:	80 ed       	ldi	r24, 0xD0	; 208
- 2f2:	62 e0       	ldi	r22, 0x02	; 2
- 2f4:	42 e1       	ldi	r20, 0x12	; 18
- 2f6:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 2fa:	87 ec       	ldi	r24, 0xC7	; 199
- 2fc:	90 e0       	ldi	r25, 0x00	; 0
- 2fe:	01 97       	sbiw	r24, 0x01	; 1
- 300:	f1 f7       	brne	.-4      	; 0x2fe <I2C_DS1307Init+0x26>
- 302:	00 c0       	rjmp	.+0      	; 0x304 <I2C_DS1307Init+0x2c>
- 304:	00 00       	nop
+ 2fa:	80 ed       	ldi	r24, 0xD0	; 208
+ 2fc:	62 e0       	ldi	r22, 0x02	; 2
+ 2fe:	42 e1       	ldi	r20, 0x12	; 18
+ 300:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 304:	87 ec       	ldi	r24, 0xC7	; 199
+ 306:	90 e0       	ldi	r25, 0x00	; 0
+ 308:	01 97       	sbiw	r24, 0x01	; 1
+ 30a:	f1 f7       	brne	.-4      	; 0x308 <I2C_DS1307Init+0x26>
+ 30c:	00 c0       	rjmp	.+0      	; 0x30e <I2C_DS1307Init+0x2c>
+ 30e:	00 00       	nop
 		_delay_us(100);
 
 
 		I2C_Write(TMR_ADDR,REG_MINUTES,(0<<4)+0); 
- 306:	80 ed       	ldi	r24, 0xD0	; 208
- 308:	61 e0       	ldi	r22, 0x01	; 1
- 30a:	40 e0       	ldi	r20, 0x00	; 0
- 30c:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 310:	e7 ec       	ldi	r30, 0xC7	; 199
- 312:	f0 e0       	ldi	r31, 0x00	; 0
- 314:	31 97       	sbiw	r30, 0x01	; 1
- 316:	f1 f7       	brne	.-4      	; 0x314 <I2C_DS1307Init+0x3c>
- 318:	00 c0       	rjmp	.+0      	; 0x31a <I2C_DS1307Init+0x42>
- 31a:	00 00       	nop
+ 310:	80 ed       	ldi	r24, 0xD0	; 208
+ 312:	61 e0       	ldi	r22, 0x01	; 1
+ 314:	40 e0       	ldi	r20, 0x00	; 0
+ 316:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 31a:	e7 ec       	ldi	r30, 0xC7	; 199
+ 31c:	f0 e0       	ldi	r31, 0x00	; 0
+ 31e:	31 97       	sbiw	r30, 0x01	; 1
+ 320:	f1 f7       	brne	.-4      	; 0x31e <I2C_DS1307Init+0x3c>
+ 322:	00 c0       	rjmp	.+0      	; 0x324 <I2C_DS1307Init+0x42>
+ 324:	00 00       	nop
 		_delay_us(100);
 
 
 		I2C_Write(TMR_ADDR,REG_SECONDS,0x0); 
- 31c:	80 ed       	ldi	r24, 0xD0	; 208
- 31e:	60 e0       	ldi	r22, 0x00	; 0
- 320:	40 e0       	ldi	r20, 0x00	; 0
- 322:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 326:	87 ec       	ldi	r24, 0xC7	; 199
- 328:	90 e0       	ldi	r25, 0x00	; 0
- 32a:	01 97       	sbiw	r24, 0x01	; 1
- 32c:	f1 f7       	brne	.-4      	; 0x32a <I2C_DS1307Init+0x52>
- 32e:	00 c0       	rjmp	.+0      	; 0x330 <I2C_DS1307Init+0x58>
- 330:	00 00       	nop
- 332:	08 95       	ret
+ 326:	80 ed       	ldi	r24, 0xD0	; 208
+ 328:	60 e0       	ldi	r22, 0x00	; 0
+ 32a:	40 e0       	ldi	r20, 0x00	; 0
+ 32c:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 330:	87 ec       	ldi	r24, 0xC7	; 199
+ 332:	90 e0       	ldi	r25, 0x00	; 0
+ 334:	01 97       	sbiw	r24, 0x01	; 1
+ 336:	f1 f7       	brne	.-4      	; 0x334 <I2C_DS1307Init+0x52>
+ 338:	00 c0       	rjmp	.+0      	; 0x33a <I2C_DS1307Init+0x58>
+ 33a:	00 00       	nop
+ 33c:	08 95       	ret
 
-00000334 <I2C_StoreTime>:
+0000033e <I2C_StoreTime>:
 		_delay_us(100);
 	}
 }
 //---------------------------------------------------
 void I2C_StoreTime(stDS1307Time *time)
 {
- 334:	cf 93       	push	r28
- 336:	df 93       	push	r29
- 338:	ec 01       	movw	r28, r24
+ 33e:	cf 93       	push	r28
+ 340:	df 93       	push	r29
+ 342:	ec 01       	movw	r28, r24
 	I2C_Write(TMR_ADDR,REG_HOURS,time->Hours);
- 33a:	80 ed       	ldi	r24, 0xD0	; 208
- 33c:	62 e0       	ldi	r22, 0x02	; 2
- 33e:	4a 81       	ldd	r20, Y+2	; 0x02
- 340:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 344:	87 ec       	ldi	r24, 0xC7	; 199
- 346:	90 e0       	ldi	r25, 0x00	; 0
- 348:	01 97       	sbiw	r24, 0x01	; 1
- 34a:	f1 f7       	brne	.-4      	; 0x348 <I2C_StoreTime+0x14>
- 34c:	00 c0       	rjmp	.+0      	; 0x34e <I2C_StoreTime+0x1a>
- 34e:	00 00       	nop
+ 344:	80 ed       	ldi	r24, 0xD0	; 208
+ 346:	62 e0       	ldi	r22, 0x02	; 2
+ 348:	4a 81       	ldd	r20, Y+2	; 0x02
+ 34a:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 34e:	87 ec       	ldi	r24, 0xC7	; 199
+ 350:	90 e0       	ldi	r25, 0x00	; 0
+ 352:	01 97       	sbiw	r24, 0x01	; 1
+ 354:	f1 f7       	brne	.-4      	; 0x352 <I2C_StoreTime+0x14>
+ 356:	00 c0       	rjmp	.+0      	; 0x358 <I2C_StoreTime+0x1a>
+ 358:	00 00       	nop
 	_delay_us(100);
 
 	I2C_Write(TMR_ADDR,REG_MINUTES,time->Minutes); 
- 350:	80 ed       	ldi	r24, 0xD0	; 208
- 352:	61 e0       	ldi	r22, 0x01	; 1
- 354:	49 81       	ldd	r20, Y+1	; 0x01
- 356:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 35a:	87 ec       	ldi	r24, 0xC7	; 199
- 35c:	90 e0       	ldi	r25, 0x00	; 0
- 35e:	01 97       	sbiw	r24, 0x01	; 1
- 360:	f1 f7       	brne	.-4      	; 0x35e <I2C_StoreTime+0x2a>
- 362:	00 c0       	rjmp	.+0      	; 0x364 <I2C_StoreTime+0x30>
- 364:	00 00       	nop
+ 35a:	80 ed       	ldi	r24, 0xD0	; 208
+ 35c:	61 e0       	ldi	r22, 0x01	; 1
+ 35e:	49 81       	ldd	r20, Y+1	; 0x01
+ 360:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 364:	87 ec       	ldi	r24, 0xC7	; 199
+ 366:	90 e0       	ldi	r25, 0x00	; 0
+ 368:	01 97       	sbiw	r24, 0x01	; 1
+ 36a:	f1 f7       	brne	.-4      	; 0x368 <I2C_StoreTime+0x2a>
+ 36c:	00 c0       	rjmp	.+0      	; 0x36e <I2C_StoreTime+0x30>
+ 36e:	00 00       	nop
 	_delay_us(100);
 
 	I2C_Write(TMR_ADDR,REG_SECONDS,0x0); 
- 366:	80 ed       	ldi	r24, 0xD0	; 208
- 368:	60 e0       	ldi	r22, 0x00	; 0
- 36a:	40 e0       	ldi	r20, 0x00	; 0
- 36c:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 370:	87 ec       	ldi	r24, 0xC7	; 199
- 372:	90 e0       	ldi	r25, 0x00	; 0
- 374:	01 97       	sbiw	r24, 0x01	; 1
- 376:	f1 f7       	brne	.-4      	; 0x374 <I2C_StoreTime+0x40>
- 378:	00 c0       	rjmp	.+0      	; 0x37a <I2C_StoreTime+0x46>
- 37a:	00 00       	nop
+ 370:	80 ed       	ldi	r24, 0xD0	; 208
+ 372:	60 e0       	ldi	r22, 0x00	; 0
+ 374:	40 e0       	ldi	r20, 0x00	; 0
+ 376:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 37a:	87 ec       	ldi	r24, 0xC7	; 199
+ 37c:	90 e0       	ldi	r25, 0x00	; 0
+ 37e:	01 97       	sbiw	r24, 0x01	; 1
+ 380:	f1 f7       	brne	.-4      	; 0x37e <I2C_StoreTime+0x40>
+ 382:	00 c0       	rjmp	.+0      	; 0x384 <I2C_StoreTime+0x46>
+ 384:	00 00       	nop
 	_delay_us(100);
 }
- 37c:	df 91       	pop	r29
- 37e:	cf 91       	pop	r28
- 380:	08 95       	ret
+ 386:	df 91       	pop	r29
+ 388:	cf 91       	pop	r28
+ 38a:	08 95       	ret
 
-00000382 <I2C_StoreDate>:
+0000038c <I2C_StoreDate>:
 //--------------------------------------------------------
 void I2C_StoreDate(stDS1307Time *time)
 {
- 382:	cf 93       	push	r28
- 384:	df 93       	push	r29
- 386:	ec 01       	movw	r28, r24
+ 38c:	cf 93       	push	r28
+ 38e:	df 93       	push	r29
+ 390:	ec 01       	movw	r28, r24
 	I2C_Write(TMR_ADDR,REG_MONTH,time->Month);
- 388:	80 ed       	ldi	r24, 0xD0	; 208
- 38a:	65 e0       	ldi	r22, 0x05	; 5
- 38c:	4d 81       	ldd	r20, Y+5	; 0x05
- 38e:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 392:	87 ec       	ldi	r24, 0xC7	; 199
- 394:	90 e0       	ldi	r25, 0x00	; 0
- 396:	01 97       	sbiw	r24, 0x01	; 1
- 398:	f1 f7       	brne	.-4      	; 0x396 <I2C_StoreDate+0x14>
- 39a:	00 c0       	rjmp	.+0      	; 0x39c <I2C_StoreDate+0x1a>
- 39c:	00 00       	nop
+ 392:	80 ed       	ldi	r24, 0xD0	; 208
+ 394:	65 e0       	ldi	r22, 0x05	; 5
+ 396:	4d 81       	ldd	r20, Y+5	; 0x05
+ 398:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 39c:	87 ec       	ldi	r24, 0xC7	; 199
+ 39e:	90 e0       	ldi	r25, 0x00	; 0
+ 3a0:	01 97       	sbiw	r24, 0x01	; 1
+ 3a2:	f1 f7       	brne	.-4      	; 0x3a0 <I2C_StoreDate+0x14>
+ 3a4:	00 c0       	rjmp	.+0      	; 0x3a6 <I2C_StoreDate+0x1a>
+ 3a6:	00 00       	nop
 	_delay_us(100);
 
 	I2C_Write(TMR_ADDR,REG_DATE,time->Date); 
- 39e:	80 ed       	ldi	r24, 0xD0	; 208
- 3a0:	64 e0       	ldi	r22, 0x04	; 4
- 3a2:	4c 81       	ldd	r20, Y+4	; 0x04
- 3a4:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 3a8:	87 ec       	ldi	r24, 0xC7	; 199
- 3aa:	90 e0       	ldi	r25, 0x00	; 0
- 3ac:	01 97       	sbiw	r24, 0x01	; 1
- 3ae:	f1 f7       	brne	.-4      	; 0x3ac <I2C_StoreDate+0x2a>
- 3b0:	00 c0       	rjmp	.+0      	; 0x3b2 <I2C_StoreDate+0x30>
- 3b2:	00 00       	nop
+ 3a8:	80 ed       	ldi	r24, 0xD0	; 208
+ 3aa:	64 e0       	ldi	r22, 0x04	; 4
+ 3ac:	4c 81       	ldd	r20, Y+4	; 0x04
+ 3ae:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 3b2:	87 ec       	ldi	r24, 0xC7	; 199
+ 3b4:	90 e0       	ldi	r25, 0x00	; 0
+ 3b6:	01 97       	sbiw	r24, 0x01	; 1
+ 3b8:	f1 f7       	brne	.-4      	; 0x3b6 <I2C_StoreDate+0x2a>
+ 3ba:	00 c0       	rjmp	.+0      	; 0x3bc <I2C_StoreDate+0x30>
+ 3bc:	00 00       	nop
 	_delay_us(100);	
 }
- 3b4:	df 91       	pop	r29
- 3b6:	cf 91       	pop	r28
- 3b8:	08 95       	ret
+ 3be:	df 91       	pop	r29
+ 3c0:	cf 91       	pop	r28
+ 3c2:	08 95       	ret
 
-000003ba <I2C_StoreYear>:
+000003c4 <I2C_StoreYear>:
 //--------------------------------------------------------
 void I2C_StoreYear(stDS1307Time *time)
 {
- 3ba:	fc 01       	movw	r30, r24
+ 3c4:	fc 01       	movw	r30, r24
 	I2C_Write(TMR_ADDR,REG_YEAR,time->Year); 
- 3bc:	80 ed       	ldi	r24, 0xD0	; 208
- 3be:	66 e0       	ldi	r22, 0x06	; 6
- 3c0:	46 81       	ldd	r20, Z+6	; 0x06
- 3c2:	0e 94 7c 00 	call	0xf8	; 0xf8 <I2C_Write>
- 3c6:	87 ec       	ldi	r24, 0xC7	; 199
- 3c8:	90 e0       	ldi	r25, 0x00	; 0
- 3ca:	01 97       	sbiw	r24, 0x01	; 1
- 3cc:	f1 f7       	brne	.-4      	; 0x3ca <I2C_StoreYear+0x10>
- 3ce:	00 c0       	rjmp	.+0      	; 0x3d0 <I2C_StoreYear+0x16>
- 3d0:	00 00       	nop
+ 3c6:	80 ed       	ldi	r24, 0xD0	; 208
+ 3c8:	66 e0       	ldi	r22, 0x06	; 6
+ 3ca:	46 81       	ldd	r20, Z+6	; 0x06
+ 3cc:	0e 94 81 00 	call	0x102	; 0x102 <I2C_Write>
+ 3d0:	87 ec       	ldi	r24, 0xC7	; 199
+ 3d2:	90 e0       	ldi	r25, 0x00	; 0
+ 3d4:	01 97       	sbiw	r24, 0x01	; 1
+ 3d6:	f1 f7       	brne	.-4      	; 0x3d4 <I2C_StoreYear+0x10>
+ 3d8:	00 c0       	rjmp	.+0      	; 0x3da <I2C_StoreYear+0x16>
+ 3da:	00 00       	nop
 	_delay_us(100);
 }
- 3d2:	08 95       	ret
+ 3dc:	08 95       	ret
 
-000003d4 <KBD_ReadPins>:
+000003de <KBD_ReadPins>:
 
 static uint8_t lastKEY=KEY_CODE_NONE, previousKEY=KEY_CODE_NONE;
 
 uint8_t KBD_ReadPins(void)
 {
 	uint8_t key=0;
- 3d4:	81 e0       	ldi	r24, 0x01	; 1
- 3d6:	48 99       	sbic	0x09, 0	; 9
- 3d8:	80 e0       	ldi	r24, 0x00	; 0
+ 3de:	81 e0       	ldi	r24, 0x01	; 1
+ 3e0:	48 99       	sbic	0x09, 0	; 9
+ 3e2:	80 e0       	ldi	r24, 0x00	; 0
 	if((KBD_PIN & _BV(KBD_PIN_A))==0)
 	{
 		key|=(1<<0);
 	}
 	
 	if((KBD_PIN & _BV(KBD_PIN_B))==0)
- 3da:	49 9b       	sbis	0x09, 1	; 9
+ 3e4:	49 9b       	sbis	0x09, 1	; 9
 	{
 		key|=(1<<1);
- 3dc:	82 60       	ori	r24, 0x02	; 2
+ 3e6:	82 60       	ori	r24, 0x02	; 2
 	}
 	
 	if((KBD_PIN & _BV(KBD_PIN_C))==0)
- 3de:	4a 9b       	sbis	0x09, 2	; 9
+ 3e8:	4a 9b       	sbis	0x09, 2	; 9
 	{
 		key|=(1<<2);
- 3e0:	84 60       	ori	r24, 0x04	; 4
+ 3ea:	84 60       	ori	r24, 0x04	; 4
 	}
 	
 	if((KBD_PIN & _BV(KBD_PIN_D))==0)
- 3e2:	4b 9b       	sbis	0x09, 3	; 9
+ 3ec:	4b 9b       	sbis	0x09, 3	; 9
 	{
 		key|=(1<<3);
- 3e4:	88 60       	ori	r24, 0x08	; 8
+ 3ee:	88 60       	ori	r24, 0x08	; 8
 	}	
 	
 	return key;	
 }
- 3e6:	08 95       	ret
+ 3f0:	08 95       	ret
 
-000003e8 <KBD_ReadKey>:
+000003f2 <KBD_ReadKey>:
 
 enKey KBD_ReadKey(void) 
 {
- 3e8:	1f 93       	push	r17
+ 3f2:	1f 93       	push	r17
 	lastKEY=KBD_ReadPins();
- 3ea:	0e 94 ea 01 	call	0x3d4	; 0x3d4 <KBD_ReadPins>
- 3ee:	80 93 00 01 	sts	0x0100, r24
+ 3f4:	0e 94 ef 01 	call	0x3de	; 0x3de <KBD_ReadPins>
+ 3f8:	80 93 00 01 	sts	0x0100, r24
 
 	if(lastKEY!=KEY_CODE_NONE)
- 3f2:	88 23       	and	r24, r24
- 3f4:	c9 f0       	breq	.+50     	; 0x428 <KBD_ReadKey+0x40>
+ 3fc:	88 23       	and	r24, r24
+ 3fe:	c9 f0       	breq	.+50     	; 0x432 <KBD_ReadKey+0x40>
 	{
 		if(lastKEY!=previousKEY)
- 3f6:	90 91 01 01 	lds	r25, 0x0101
- 3fa:	89 17       	cp	r24, r25
- 3fc:	b9 f0       	breq	.+46     	; 0x42c <KBD_ReadKey+0x44>
+ 400:	90 91 01 01 	lds	r25, 0x0101
+ 404:	89 17       	cp	r24, r25
+ 406:	b9 f0       	breq	.+46     	; 0x436 <KBD_ReadKey+0x44>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 3fe:	2f ef       	ldi	r18, 0xFF	; 255
- 400:	30 e7       	ldi	r19, 0x70	; 112
- 402:	42 e0       	ldi	r20, 0x02	; 2
- 404:	21 50       	subi	r18, 0x01	; 1
- 406:	30 40       	sbci	r19, 0x00	; 0
- 408:	40 40       	sbci	r20, 0x00	; 0
- 40a:	e1 f7       	brne	.-8      	; 0x404 <KBD_ReadKey+0x1c>
- 40c:	00 c0       	rjmp	.+0      	; 0x40e <KBD_ReadKey+0x26>
- 40e:	00 00       	nop
+ 408:	2f ef       	ldi	r18, 0xFF	; 255
+ 40a:	30 e7       	ldi	r19, 0x70	; 112
+ 40c:	42 e0       	ldi	r20, 0x02	; 2
+ 40e:	21 50       	subi	r18, 0x01	; 1
+ 410:	30 40       	sbci	r19, 0x00	; 0
+ 412:	40 40       	sbci	r20, 0x00	; 0
+ 414:	e1 f7       	brne	.-8      	; 0x40e <KBD_ReadKey+0x1c>
+ 416:	00 c0       	rjmp	.+0      	; 0x418 <KBD_ReadKey+0x26>
+ 418:	00 00       	nop
 		{
 			_delay_ms(100);
 			if((lastKEY!=KEY_CODE_NONE) && (lastKEY==KBD_ReadPins()))
- 410:	18 2f       	mov	r17, r24
- 412:	88 23       	and	r24, r24
- 414:	39 f0       	breq	.+14     	; 0x424 <KBD_ReadKey+0x3c>
- 416:	0e 94 ea 01 	call	0x3d4	; 0x3d4 <KBD_ReadPins>
- 41a:	18 17       	cp	r17, r24
- 41c:	19 f4       	brne	.+6      	; 0x424 <KBD_ReadKey+0x3c>
+ 41a:	18 2f       	mov	r17, r24
+ 41c:	88 23       	and	r24, r24
+ 41e:	39 f0       	breq	.+14     	; 0x42e <KBD_ReadKey+0x3c>
+ 420:	0e 94 ef 01 	call	0x3de	; 0x3de <KBD_ReadPins>
+ 424:	18 17       	cp	r17, r24
+ 426:	19 f4       	brne	.+6      	; 0x42e <KBD_ReadKey+0x3c>
 			{
 				previousKEY=lastKEY;
- 41e:	10 93 01 01 	sts	0x0101, r17
+ 428:	10 93 01 01 	sts	0x0101, r17
 				return lastKEY;
- 422:	05 c0       	rjmp	.+10     	; 0x42e <KBD_ReadKey+0x46>
+ 42c:	05 c0       	rjmp	.+10     	; 0x438 <KBD_ReadKey+0x46>
 			}
 			else
 			{	
 				lastKEY		= KEY_CODE_NONE;
- 424:	10 92 00 01 	sts	0x0100, r1
+ 42e:	10 92 00 01 	sts	0x0100, r1
 			return KEY_CODE_NONE;
 		}
 	}
 	else
 	{
 		previousKEY = KEY_CODE_NONE;
- 428:	10 92 01 01 	sts	0x0101, r1
+ 432:	10 92 01 01 	sts	0x0101, r1
 				return KEY_CODE_NONE;	
 			}
 		}
 		else
 		{
 			return KEY_CODE_NONE;
- 42c:	10 e0       	ldi	r17, 0x00	; 0
+ 436:	10 e0       	ldi	r17, 0x00	; 0
 	{
 		previousKEY = KEY_CODE_NONE;
 		return KEY_CODE_NONE;
 	}
 
 }
- 42e:	81 2f       	mov	r24, r17
- 430:	1f 91       	pop	r17
- 432:	08 95       	ret
+ 438:	81 2f       	mov	r24, r17
+ 43a:	1f 91       	pop	r17
+ 43c:	08 95       	ret
 
-00000434 <KBD_Init>:
+0000043e <KBD_Init>:
 //-------------------------------
 void  KBD_Init(void) 
 {
 	KBD_PORT |= KBD_MASK;
- 434:	8b b1       	in	r24, 0x0b	; 11
- 436:	8f 60       	ori	r24, 0x0F	; 15
- 438:	8b b9       	out	0x0b, r24	; 11
+ 43e:	8b b1       	in	r24, 0x0b	; 11
+ 440:	8f 60       	ori	r24, 0x0F	; 15
+ 442:	8b b9       	out	0x0b, r24	; 11
 	KBD_DDR  &= ~ KBD_MASK;
- 43a:	8a b1       	in	r24, 0x0a	; 10
- 43c:	80 7f       	andi	r24, 0xF0	; 240
- 43e:	8a b9       	out	0x0a, r24	; 10
+ 444:	8a b1       	in	r24, 0x0a	; 10
+ 446:	80 7f       	andi	r24, 0xF0	; 240
+ 448:	8a b9       	out	0x0a, r24	; 10
 }
- 440:	08 95       	ret
+ 44a:	08 95       	ret
 
-00000442 <main>:
+0000044c <main>:
 #include "clock.h"
 
 
 int main(void)
 {
 	Clock_Init();
- 442:	0e 94 8a 02 	call	0x514	; 0x514 <Clock_Init>
+ 44c:	0e 94 8f 02 	call	0x51e	; 0x51e <Clock_Init>
 	//sei();
 
 	while(1)
 	{
 		Clock_Cycle();
- 446:	0e 94 d6 02 	call	0x5ac	; 0x5ac <Clock_Cycle>
- 44a:	fd cf       	rjmp	.-6      	; 0x446 <main+0x4>
+ 450:	0e 94 db 02 	call	0x5b6	; 0x5b6 <Clock_Cycle>
+ 454:	fd cf       	rjmp	.-6      	; 0x450 <main+0x4>
 
-0000044c <LED_SPI_Init>:
+00000456 <LED_SPI_Init>:
 /*инициализация SPI модуля в режиме master*/
 void LED_SPI_Init(void)
 {
    /*настройка портов ввода-вывода
    все выводы, кроме MISO выходы*/
    SPI_DDRX |= (1<<SPI_MOSI)|(1<<SPI_SCK)|(1<<SPI_SS);
- 44c:	84 b1       	in	r24, 0x04	; 4
- 44e:	8c 62       	ori	r24, 0x2C	; 44
- 450:	84 b9       	out	0x04, r24	; 4
+ 456:	84 b1       	in	r24, 0x04	; 4
+ 458:	8c 62       	ori	r24, 0x2C	; 44
+ 45a:	84 b9       	out	0x04, r24	; 4
    SPI_PORTX &= ~(1<<SPI_SS); 
- 452:	2a 98       	cbi	0x05, 2	; 5
+ 45c:	2a 98       	cbi	0x05, 2	; 5
  
    /*разрешение spi,старший бит вперед,мастер, режим 0*/
    SPCR = (1<<SPE)|(0<<DORD)|(1<<MSTR)|(0<<CPOL)|(0<<CPHA)|(0<<SPR1)|(0<<SPR0);
- 454:	80 e5       	ldi	r24, 0x50	; 80
- 456:	8c bd       	out	0x2c, r24	; 44
+ 45e:	80 e5       	ldi	r24, 0x50	; 80
+ 460:	8c bd       	out	0x2c, r24	; 44
 
    SPSR = (1<<SPI2X);
- 458:	81 e0       	ldi	r24, 0x01	; 1
- 45a:	8d bd       	out	0x2d, r24	; 45
+ 462:	81 e0       	ldi	r24, 0x01	; 1
+ 464:	8d bd       	out	0x2d, r24	; 45
 }
- 45c:	08 95       	ret
+ 466:	08 95       	ret
 
-0000045e <LED_SPI_WriteWord>:
+00000468 <LED_SPI_WriteWord>:
 
 void LED_SPI_WriteWord(uint16_t data)
 { 
- 45e:	df 93       	push	r29
- 460:	cf 93       	push	r28
- 462:	00 d0       	rcall	.+0      	; 0x464 <LED_SPI_WriteWord+0x6>
- 464:	cd b7       	in	r28, 0x3d	; 61
- 466:	de b7       	in	r29, 0x3e	; 62
- 468:	9a 83       	std	Y+2, r25	; 0x02
- 46a:	89 83       	std	Y+1, r24	; 0x01
+ 468:	df 93       	push	r29
+ 46a:	cf 93       	push	r28
+ 46c:	00 d0       	rcall	.+0      	; 0x46e <LED_SPI_WriteWord+0x6>
+ 46e:	cd b7       	in	r28, 0x3d	; 61
+ 470:	de b7       	in	r29, 0x3e	; 62
+ 472:	9a 83       	std	Y+2, r25	; 0x02
+ 474:	89 83       	std	Y+1, r24	; 0x01
    SPDR = ((uint8_t *)(&data))[1];
- 46c:	fe 01       	movw	r30, r28
- 46e:	31 96       	adiw	r30, 0x01	; 1
- 470:	81 81       	ldd	r24, Z+1	; 0x01
- 472:	8e bd       	out	0x2e, r24	; 46
-   while(!(SPSR & (1<<SPIF)));
- 474:	0d b4       	in	r0, 0x2d	; 45
- 476:	07 fe       	sbrs	r0, 7
- 478:	fd cf       	rjmp	.-6      	; 0x474 <LED_SPI_WriteWord+0x16>
-
-   SPDR = ((uint8_t *)(&data))[0];
- 47a:	80 81       	ld	r24, Z
+ 476:	fe 01       	movw	r30, r28
+ 478:	31 96       	adiw	r30, 0x01	; 1
+ 47a:	81 81       	ldd	r24, Z+1	; 0x01
  47c:	8e bd       	out	0x2e, r24	; 46
    while(!(SPSR & (1<<SPIF)));
  47e:	0d b4       	in	r0, 0x2d	; 45
  480:	07 fe       	sbrs	r0, 7
- 482:	fd cf       	rjmp	.-6      	; 0x47e <LED_SPI_WriteWord+0x20>
+ 482:	fd cf       	rjmp	.-6      	; 0x47e <LED_SPI_WriteWord+0x16>
+
+   SPDR = ((uint8_t *)(&data))[0];
+ 484:	80 81       	ld	r24, Z
+ 486:	8e bd       	out	0x2e, r24	; 46
+   while(!(SPSR & (1<<SPIF)));
+ 488:	0d b4       	in	r0, 0x2d	; 45
+ 48a:	07 fe       	sbrs	r0, 7
+ 48c:	fd cf       	rjmp	.-6      	; 0x488 <LED_SPI_WriteWord+0x20>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 484:	8a e1       	ldi	r24, 0x1A	; 26
- 486:	8a 95       	dec	r24
- 488:	f1 f7       	brne	.-4      	; 0x486 <LED_SPI_WriteWord+0x28>
- 48a:	00 c0       	rjmp	.+0      	; 0x48c <LED_SPI_WriteWord+0x2e>
+ 48e:	8a e1       	ldi	r24, 0x1A	; 26
+ 490:	8a 95       	dec	r24
+ 492:	f1 f7       	brne	.-4      	; 0x490 <LED_SPI_WriteWord+0x28>
+ 494:	00 c0       	rjmp	.+0      	; 0x496 <LED_SPI_WriteWord+0x2e>
 
 	_delay_us(10);	
    SPI_PORTX |= (1<<SPI_SS);
- 48c:	2a 9a       	sbi	0x05, 2	; 5
- 48e:	8a e1       	ldi	r24, 0x1A	; 26
- 490:	8a 95       	dec	r24
- 492:	f1 f7       	brne	.-4      	; 0x490 <LED_SPI_WriteWord+0x32>
- 494:	00 c0       	rjmp	.+0      	; 0x496 <LED_SPI_WriteWord+0x38>
-   _delay_us(10);
-   SPI_PORTX &= ~(1<<SPI_SS);   
- 496:	2a 98       	cbi	0x05, 2	; 5
+ 496:	2a 9a       	sbi	0x05, 2	; 5
  498:	8a e1       	ldi	r24, 0x1A	; 26
  49a:	8a 95       	dec	r24
- 49c:	f1 f7       	brne	.-4      	; 0x49a <LED_SPI_WriteWord+0x3c>
- 49e:	00 c0       	rjmp	.+0      	; 0x4a0 <LED_SPI_WriteWord+0x42>
+ 49c:	f1 f7       	brne	.-4      	; 0x49a <LED_SPI_WriteWord+0x32>
+ 49e:	00 c0       	rjmp	.+0      	; 0x4a0 <LED_SPI_WriteWord+0x38>
+   _delay_us(10);
+   SPI_PORTX &= ~(1<<SPI_SS);   
+ 4a0:	2a 98       	cbi	0x05, 2	; 5
+ 4a2:	8a e1       	ldi	r24, 0x1A	; 26
+ 4a4:	8a 95       	dec	r24
+ 4a6:	f1 f7       	brne	.-4      	; 0x4a4 <LED_SPI_WriteWord+0x3c>
+ 4a8:	00 c0       	rjmp	.+0      	; 0x4aa <LED_SPI_WriteWord+0x42>
    _delay_us(10);
 }
- 4a0:	0f 90       	pop	r0
- 4a2:	0f 90       	pop	r0
- 4a4:	cf 91       	pop	r28
- 4a6:	df 91       	pop	r29
- 4a8:	08 95       	ret
+ 4aa:	0f 90       	pop	r0
+ 4ac:	0f 90       	pop	r0
+ 4ae:	cf 91       	pop	r28
+ 4b0:	df 91       	pop	r29
+ 4b2:	08 95       	ret
 
-000004aa <LED_Out_Buf>:
+000004b4 <LED_Out_Buf>:
 #include "led_display.h"
 
 //--------------------------------------------------------------------------------
 void LED_Out_Buf(uint16_t *out_buf, uint8_t out_buf_len, uint8_t mask)//вывод буфера в SPI bit-bang
 {
- 4aa:	df 92       	push	r13
- 4ac:	ef 92       	push	r14
- 4ae:	ff 92       	push	r15
- 4b0:	0f 93       	push	r16
- 4b2:	1f 93       	push	r17
- 4b4:	cf 93       	push	r28
- 4b6:	df 93       	push	r29
- 4b8:	d6 2e       	mov	r13, r22
+ 4b4:	df 92       	push	r13
+ 4b6:	ef 92       	push	r14
+ 4b8:	ff 92       	push	r15
+ 4ba:	0f 93       	push	r16
+ 4bc:	1f 93       	push	r17
+ 4be:	cf 93       	push	r28
+ 4c0:	df 93       	push	r29
+ 4c2:	d6 2e       	mov	r13, r22
 	uint8_t i;
 
 	for(i=0;i<out_buf_len;i++)
- 4ba:	08 2f       	mov	r16, r24
- 4bc:	19 2f       	mov	r17, r25
- 4be:	c0 e0       	ldi	r28, 0x00	; 0
- 4c0:	d0 e0       	ldi	r29, 0x00	; 0
+ 4c4:	08 2f       	mov	r16, r24
+ 4c6:	19 2f       	mov	r17, r25
+ 4c8:	c0 e0       	ldi	r28, 0x00	; 0
+ 4ca:	d0 e0       	ldi	r29, 0x00	; 0
 	{
 		if(i>=5)
 		{
 			if(mask&(1<<(i-5)))
- 4c2:	e4 2e       	mov	r14, r20
- 4c4:	ff 24       	eor	r15, r15
+ 4cc:	e4 2e       	mov	r14, r20
+ 4ce:	ff 24       	eor	r15, r15
 //--------------------------------------------------------------------------------
 void LED_Out_Buf(uint16_t *out_buf, uint8_t out_buf_len, uint8_t mask)//вывод буфера в SPI bit-bang
 {
 	uint8_t i;
 
 	for(i=0;i<out_buf_len;i++)
- 4c6:	1b c0       	rjmp	.+54     	; 0x4fe <LED_Out_Buf+0x54>
+ 4d0:	1b c0       	rjmp	.+54     	; 0x508 <__stack+0x9>
 	{
 		if(i>=5)
- 4c8:	85 30       	cpi	r24, 0x05	; 5
- 4ca:	88 f0       	brcs	.+34     	; 0x4ee <LED_Out_Buf+0x44>
+ 4d2:	85 30       	cpi	r24, 0x05	; 5
+ 4d4:	88 f0       	brcs	.+34     	; 0x4f8 <LED_Out_Buf+0x44>
 #include "led_display.h"
 
 //--------------------------------------------------------------------------------
 void LED_Out_Buf(uint16_t *out_buf, uint8_t out_buf_len, uint8_t mask)//вывод буфера в SPI bit-bang
- 4cc:	9e 01       	movw	r18, r28
- 4ce:	25 50       	subi	r18, 0x05	; 5
- 4d0:	30 40       	sbci	r19, 0x00	; 0
+ 4d6:	9e 01       	movw	r18, r28
+ 4d8:	25 50       	subi	r18, 0x05	; 5
+ 4da:	30 40       	sbci	r19, 0x00	; 0
 
 	for(i=0;i<out_buf_len;i++)
 	{
 		if(i>=5)
 		{
 			if(mask&(1<<(i-5)))
- 4d2:	c7 01       	movw	r24, r14
- 4d4:	02 c0       	rjmp	.+4      	; 0x4da <LED_Out_Buf+0x30>
- 4d6:	95 95       	asr	r25
- 4d8:	87 95       	ror	r24
- 4da:	2a 95       	dec	r18
- 4dc:	e2 f7       	brpl	.-8      	; 0x4d6 <LED_Out_Buf+0x2c>
- 4de:	9c 01       	movw	r18, r24
- 4e0:	f8 01       	movw	r30, r16
- 4e2:	80 81       	ld	r24, Z
- 4e4:	91 81       	ldd	r25, Z+1	; 0x01
- 4e6:	20 fd       	sbrc	r18, 0
- 4e8:	05 c0       	rjmp	.+10     	; 0x4f4 <LED_Out_Buf+0x4a>
+ 4dc:	c7 01       	movw	r24, r14
+ 4de:	02 c0       	rjmp	.+4      	; 0x4e4 <LED_Out_Buf+0x30>
+ 4e0:	95 95       	asr	r25
+ 4e2:	87 95       	ror	r24
+ 4e4:	2a 95       	dec	r18
+ 4e6:	e2 f7       	brpl	.-8      	; 0x4e0 <LED_Out_Buf+0x2c>
+ 4e8:	9c 01       	movw	r18, r24
+ 4ea:	f8 01       	movw	r30, r16
+ 4ec:	80 81       	ld	r24, Z
+ 4ee:	91 81       	ldd	r25, Z+1	; 0x01
+ 4f0:	20 fd       	sbrc	r18, 0
+ 4f2:	05 c0       	rjmp	.+10     	; 0x4fe <LED_Out_Buf+0x4a>
 			{
 				LED_SPI_WriteWord(out_buf[i]);
 			}
 			else
 			{
 				LED_SPI_WriteWord(out_buf[i]|0xF);
- 4ea:	8f 60       	ori	r24, 0x0F	; 15
- 4ec:	03 c0       	rjmp	.+6      	; 0x4f4 <LED_Out_Buf+0x4a>
+ 4f4:	8f 60       	ori	r24, 0x0F	; 15
+ 4f6:	03 c0       	rjmp	.+6      	; 0x4fe <LED_Out_Buf+0x4a>
 			}
 		}
 		else
 		{
 			LED_SPI_WriteWord(out_buf[i]);
- 4ee:	f8 01       	movw	r30, r16
- 4f0:	80 81       	ld	r24, Z
- 4f2:	91 81       	ldd	r25, Z+1	; 0x01
- 4f4:	0e 94 2f 02 	call	0x45e	; 0x45e <LED_SPI_WriteWord>
- 4f8:	21 96       	adiw	r28, 0x01	; 1
- 4fa:	0e 5f       	subi	r16, 0xFE	; 254
- 4fc:	1f 4f       	sbci	r17, 0xFF	; 255
- 4fe:	8c 2f       	mov	r24, r28
+ 4f8:	f8 01       	movw	r30, r16
+ 4fa:	80 81       	ld	r24, Z
+ 4fc:	91 81       	ldd	r25, Z+1	; 0x01
+ 4fe:	0e 94 34 02 	call	0x468	; 0x468 <LED_SPI_WriteWord>
+ 502:	21 96       	adiw	r28, 0x01	; 1
+ 504:	0e 5f       	subi	r16, 0xFE	; 254
+ 506:	1f 4f       	sbci	r17, 0xFF	; 255
+ 508:	8c 2f       	mov	r24, r28
 //--------------------------------------------------------------------------------
 void LED_Out_Buf(uint16_t *out_buf, uint8_t out_buf_len, uint8_t mask)//вывод буфера в SPI bit-bang
 {
 	uint8_t i;
 
 	for(i=0;i<out_buf_len;i++)
- 500:	cd 15       	cp	r28, r13
- 502:	10 f3       	brcs	.-60     	; 0x4c8 <LED_Out_Buf+0x1e>
+ 50a:	cd 15       	cp	r28, r13
+ 50c:	10 f3       	brcs	.-60     	; 0x4d2 <LED_Out_Buf+0x1e>
 			LED_SPI_WriteWord(out_buf[i]);
 		}
 	}
 
 	return;	
 }
- 504:	df 91       	pop	r29
- 506:	cf 91       	pop	r28
- 508:	1f 91       	pop	r17
- 50a:	0f 91       	pop	r16
- 50c:	ff 90       	pop	r15
- 50e:	ef 90       	pop	r14
- 510:	df 90       	pop	r13
- 512:	08 95       	ret
+ 50e:	df 91       	pop	r29
+ 510:	cf 91       	pop	r28
+ 512:	1f 91       	pop	r17
+ 514:	0f 91       	pop	r16
+ 516:	ff 90       	pop	r15
+ 518:	ef 90       	pop	r14
+ 51a:	df 90       	pop	r13
+ 51c:	08 95       	ret
 
-00000514 <Clock_Init>:
+0000051e <Clock_Init>:
 
 stClock clock;
 
 void Clock_Init(void)
 {
 	Menu_Init();
- 514:	0e 94 bf 03 	call	0x77e	; 0x77e <Menu_Init>
+ 51e:	0e 94 ed 03 	call	0x7da	; 0x7da <Menu_Init>
 	I2C_Init();
- 518:	0e 94 70 00 	call	0xe0	; 0xe0 <I2C_Init>
+ 522:	0e 94 75 00 	call	0xea	; 0xea <I2C_Init>
 	I2C_DS1307Init(&clock.DS1307Time);
- 51c:	85 e0       	ldi	r24, 0x05	; 5
- 51e:	91 e0       	ldi	r25, 0x01	; 1
- 520:	0e 94 6c 01 	call	0x2d8	; 0x2d8 <I2C_DS1307Init>
+ 526:	85 e0       	ldi	r24, 0x05	; 5
+ 528:	91 e0       	ldi	r25, 0x01	; 1
+ 52a:	0e 94 71 01 	call	0x2e2	; 0x2e2 <I2C_DS1307Init>
 	KBD_Init();
- 524:	0e 94 1a 02 	call	0x434	; 0x434 <KBD_Init>
+ 52e:	0e 94 1f 02 	call	0x43e	; 0x43e <KBD_Init>
 	LED_SPI_Init();
- 528:	0e 94 26 02 	call	0x44c	; 0x44c <LED_SPI_Init>
+ 532:	0e 94 2b 02 	call	0x456	; 0x456 <LED_SPI_Init>
 
 	//clock.brightness=I2C_Read(SLA_ADDR,ADDR_BRIGHTNESS);
 	clock.display_buf[0]=0xA0F;
- 52c:	8f e0       	ldi	r24, 0x0F	; 15
- 52e:	9a e0       	ldi	r25, 0x0A	; 10
- 530:	90 93 10 01 	sts	0x0110, r25
- 534:	80 93 0f 01 	sts	0x010F, r24
+ 536:	8f e0       	ldi	r24, 0x0F	; 15
+ 538:	9a e0       	ldi	r25, 0x0A	; 10
+ 53a:	90 93 14 01 	sts	0x0114, r25
+ 53e:	80 93 13 01 	sts	0x0113, r24
 	clock.display_buf[1]=0x9FF;
- 538:	8f ef       	ldi	r24, 0xFF	; 255
- 53a:	99 e0       	ldi	r25, 0x09	; 9
- 53c:	90 93 12 01 	sts	0x0112, r25
- 540:	80 93 11 01 	sts	0x0111, r24
+ 542:	8f ef       	ldi	r24, 0xFF	; 255
+ 544:	99 e0       	ldi	r25, 0x09	; 9
+ 546:	90 93 16 01 	sts	0x0116, r25
+ 54a:	80 93 15 01 	sts	0x0115, r24
 	clock.display_buf[2]=0xB05;
- 544:	85 e0       	ldi	r24, 0x05	; 5
- 546:	9b e0       	ldi	r25, 0x0B	; 11
- 548:	90 93 14 01 	sts	0x0114, r25
- 54c:	80 93 13 01 	sts	0x0113, r24
+ 54e:	85 e0       	ldi	r24, 0x05	; 5
+ 550:	9b e0       	ldi	r25, 0x0B	; 11
+ 552:	90 93 18 01 	sts	0x0118, r25
+ 556:	80 93 17 01 	sts	0x0117, r24
 	clock.display_buf[3]=0xC01;		
- 550:	81 e0       	ldi	r24, 0x01	; 1
- 552:	9c e0       	ldi	r25, 0x0C	; 12
- 554:	90 93 16 01 	sts	0x0116, r25
- 558:	80 93 15 01 	sts	0x0115, r24
+ 55a:	81 e0       	ldi	r24, 0x01	; 1
+ 55c:	9c e0       	ldi	r25, 0x0C	; 12
+ 55e:	90 93 1a 01 	sts	0x011A, r25
+ 562:	80 93 19 01 	sts	0x0119, r24
 	clock.display_buf[4]=0xF00;
- 55c:	80 e0       	ldi	r24, 0x00	; 0
- 55e:	9f e0       	ldi	r25, 0x0F	; 15
- 560:	90 93 18 01 	sts	0x0118, r25
- 564:	80 93 17 01 	sts	0x0117, r24
+ 566:	80 e0       	ldi	r24, 0x00	; 0
+ 568:	9f e0       	ldi	r25, 0x0F	; 15
+ 56a:	90 93 1c 01 	sts	0x011C, r25
+ 56e:	80 93 1b 01 	sts	0x011B, r24
 	//clock.display_buf[3]=(0xA00|clock.brightness);
 	
 	clock.display_buf[5]=0x101;
- 568:	81 e0       	ldi	r24, 0x01	; 1
- 56a:	91 e0       	ldi	r25, 0x01	; 1
- 56c:	90 93 1a 01 	sts	0x011A, r25
- 570:	80 93 19 01 	sts	0x0119, r24
+ 572:	81 e0       	ldi	r24, 0x01	; 1
+ 574:	91 e0       	ldi	r25, 0x01	; 1
+ 576:	90 93 1e 01 	sts	0x011E, r25
+ 57a:	80 93 1d 01 	sts	0x011D, r24
 	clock.display_buf[6]=0x202;
- 574:	82 e0       	ldi	r24, 0x02	; 2
- 576:	92 e0       	ldi	r25, 0x02	; 2
- 578:	90 93 1c 01 	sts	0x011C, r25
- 57c:	80 93 1b 01 	sts	0x011B, r24
+ 57e:	82 e0       	ldi	r24, 0x02	; 2
+ 580:	92 e0       	ldi	r25, 0x02	; 2
+ 582:	90 93 20 01 	sts	0x0120, r25
+ 586:	80 93 1f 01 	sts	0x011F, r24
 	clock.display_buf[7]=0x303;
- 580:	83 e0       	ldi	r24, 0x03	; 3
- 582:	93 e0       	ldi	r25, 0x03	; 3
- 584:	90 93 1e 01 	sts	0x011E, r25
- 588:	80 93 1d 01 	sts	0x011D, r24
+ 58a:	83 e0       	ldi	r24, 0x03	; 3
+ 58c:	93 e0       	ldi	r25, 0x03	; 3
+ 58e:	90 93 22 01 	sts	0x0122, r25
+ 592:	80 93 21 01 	sts	0x0121, r24
 	clock.display_buf[8]=0x404;
- 58c:	84 e0       	ldi	r24, 0x04	; 4
- 58e:	94 e0       	ldi	r25, 0x04	; 4
- 590:	90 93 20 01 	sts	0x0120, r25
- 594:	80 93 1f 01 	sts	0x011F, r24
+ 596:	84 e0       	ldi	r24, 0x04	; 4
+ 598:	94 e0       	ldi	r25, 0x04	; 4
+ 59a:	90 93 24 01 	sts	0x0124, r25
+ 59e:	80 93 23 01 	sts	0x0123, r24
 	clock.display_buf[9]=0x505;
- 598:	85 e0       	ldi	r24, 0x05	; 5
- 59a:	95 e0       	ldi	r25, 0x05	; 5
- 59c:	90 93 22 01 	sts	0x0122, r25
- 5a0:	80 93 21 01 	sts	0x0121, r24
+ 5a2:	85 e0       	ldi	r24, 0x05	; 5
+ 5a4:	95 e0       	ldi	r25, 0x05	; 5
+ 5a6:	90 93 26 01 	sts	0x0126, r25
+ 5aa:	80 93 25 01 	sts	0x0125, r24
 
 	clock.display_mask	=0xFF;
- 5a4:	8f ef       	ldi	r24, 0xFF	; 255
- 5a6:	80 93 2f 01 	sts	0x012F, r24
+ 5ae:	8f ef       	ldi	r24, 0xFF	; 255
+ 5b0:	80 93 33 01 	sts	0x0133, r24
 }
- 5aa:	08 95       	ret
+ 5b4:	08 95       	ret
 
-000005ac <Clock_Cycle>:
+000005b6 <Clock_Cycle>:
 
 void Clock_Cycle(void)
 {
 	static uint16_t dispCounter=0;
 
 	Menu_Key(KBD_ReadKey(), &clock);
- 5ac:	0e 94 f4 01 	call	0x3e8	; 0x3e8 <KBD_ReadKey>
- 5b0:	65 e0       	ldi	r22, 0x05	; 5
- 5b2:	71 e0       	ldi	r23, 0x01	; 1
- 5b4:	0e 94 42 03 	call	0x684	; 0x684 <Menu_Key>
+ 5b6:	0e 94 f9 01 	call	0x3f2	; 0x3f2 <KBD_ReadKey>
+ 5ba:	65 e0       	ldi	r22, 0x05	; 5
+ 5bc:	71 e0       	ldi	r23, 0x01	; 1
+ 5be:	0e 94 49 03 	call	0x692	; 0x692 <Menu_Key>
 
 	if(dispCounter==DISP_COUNTER)
- 5b8:	80 91 02 01 	lds	r24, 0x0102
- 5bc:	90 91 03 01 	lds	r25, 0x0103
- 5c0:	23 e0       	ldi	r18, 0x03	; 3
- 5c2:	88 3e       	cpi	r24, 0xE8	; 232
- 5c4:	92 07       	cpc	r25, r18
- 5c6:	81 f4       	brne	.+32     	; 0x5e8 <Clock_Cycle+0x3c>
+ 5c2:	80 91 02 01 	lds	r24, 0x0102
+ 5c6:	90 91 03 01 	lds	r25, 0x0103
+ 5ca:	23 e0       	ldi	r18, 0x03	; 3
+ 5cc:	88 3e       	cpi	r24, 0xE8	; 232
+ 5ce:	92 07       	cpc	r25, r18
+ 5d0:	81 f4       	brne	.+32     	; 0x5f2 <Clock_Cycle+0x3c>
 	{
 		dispCounter=0;
- 5c8:	10 92 03 01 	sts	0x0103, r1
- 5cc:	10 92 02 01 	sts	0x0102, r1
+ 5d2:	10 92 03 01 	sts	0x0103, r1
+ 5d6:	10 92 02 01 	sts	0x0102, r1
 		Menu_Display(&clock);
- 5d0:	85 e0       	ldi	r24, 0x05	; 5
- 5d2:	91 e0       	ldi	r25, 0x01	; 1
- 5d4:	0e 94 03 03 	call	0x606	; 0x606 <Menu_Display>
+ 5da:	85 e0       	ldi	r24, 0x05	; 5
+ 5dc:	91 e0       	ldi	r25, 0x01	; 1
+ 5de:	0e 94 08 03 	call	0x610	; 0x610 <Menu_Display>
 		LED_Out_Buf(clock.display_buf,LED_BUF_LEN,clock.display_mask);
- 5d8:	8f e0       	ldi	r24, 0x0F	; 15
- 5da:	91 e0       	ldi	r25, 0x01	; 1
- 5dc:	6a e0       	ldi	r22, 0x0A	; 10
- 5de:	40 91 2f 01 	lds	r20, 0x012F
- 5e2:	0e 94 55 02 	call	0x4aa	; 0x4aa <LED_Out_Buf>
- 5e6:	08 95       	ret
+ 5e2:	83 e1       	ldi	r24, 0x13	; 19
+ 5e4:	91 e0       	ldi	r25, 0x01	; 1
+ 5e6:	6a e0       	ldi	r22, 0x0A	; 10
+ 5e8:	40 91 33 01 	lds	r20, 0x0133
+ 5ec:	0e 94 5a 02 	call	0x4b4	; 0x4b4 <LED_Out_Buf>
+ 5f0:	08 95       	ret
 	}
 	else
 	{
 		dispCounter++;
- 5e8:	01 96       	adiw	r24, 0x01	; 1
- 5ea:	90 93 03 01 	sts	0x0103, r25
- 5ee:	80 93 02 01 	sts	0x0102, r24
- 5f2:	08 95       	ret
+ 5f2:	01 96       	adiw	r24, 0x01	; 1
+ 5f4:	90 93 03 01 	sts	0x0103, r25
+ 5f8:	80 93 02 01 	sts	0x0102, r24
+ 5fc:	08 95       	ret
 
-000005f4 <Menu_Change>:
+000005fe <Menu_Change>:
 MAKE_MENU(m_s4i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i3,     NULL_ENTRY,   MENU_TUNE_YEAR, 		"");
 
 
 void Menu_Change(menuItem* NewMenu)
 {
 	if ((void*)NewMenu == (void*)&NULL_ENTRY)
- 5f4:	20 e0       	ldi	r18, 0x00	; 0
- 5f6:	88 36       	cpi	r24, 0x68	; 104
- 5f8:	92 07       	cpc	r25, r18
- 5fa:	21 f0       	breq	.+8      	; 0x604 <Menu_Change+0x10>
+ 5fe:	20 e0       	ldi	r18, 0x00	; 0
+ 600:	88 36       	cpi	r24, 0x68	; 104
+ 602:	92 07       	cpc	r25, r18
+ 604:	21 f0       	breq	.+8      	; 0x60e <Menu_Change+0x10>
 	  return;
 
 	selectedMenuItem = NewMenu;
- 5fc:	90 93 31 01 	sts	0x0131, r25
- 600:	80 93 30 01 	sts	0x0130, r24
- 604:	08 95       	ret
+ 606:	90 93 35 01 	sts	0x0135, r25
+ 60a:	80 93 34 01 	sts	0x0134, r24
+ 60e:	08 95       	ret
 
-00000606 <Menu_Display>:
+00000610 <Menu_Display>:
 }
 
 #define BLINK_CONST		100
 //------------------------------------
 void Menu_Display(stClock *clock) 
 {
- 606:	ef 92       	push	r14
- 608:	ff 92       	push	r15
- 60a:	cf 93       	push	r28
- 60c:	df 93       	push	r29
- 60e:	ec 01       	movw	r28, r24
+ 610:	ef 92       	push	r14
+ 612:	ff 92       	push	r15
+ 614:	cf 93       	push	r28
+ 616:	df 93       	push	r29
+ 618:	ec 01       	movw	r28, r24
 		blink_mask=~blink_mask;
 	}
 
 
 
 	switch(SELECT)
- 610:	e0 91 30 01 	lds	r30, 0x0130
- 614:	f0 91 31 01 	lds	r31, 0x0131
- 618:	38 96       	adiw	r30, 0x08	; 8
- 61a:	e4 91       	lpm	r30, Z+
- 61c:	e5 30       	cpi	r30, 0x05	; 5
- 61e:	59 f1       	breq	.+86     	; 0x676 <Menu_Display+0x70>
- 620:	e6 30       	cpi	r30, 0x06	; 6
- 622:	38 f4       	brcc	.+14     	; 0x632 <Menu_Display+0x2c>
- 624:	e3 30       	cpi	r30, 0x03	; 3
- 626:	a9 f0       	breq	.+42     	; 0x652 <Menu_Display+0x4c>
- 628:	e4 30       	cpi	r30, 0x04	; 4
- 62a:	e0 f4       	brcc	.+56     	; 0x664 <Menu_Display+0x5e>
- 62c:	e2 30       	cpi	r30, 0x02	; 2
- 62e:	29 f5       	brne	.+74     	; 0x67a <Menu_Display+0x74>
- 630:	07 c0       	rjmp	.+14     	; 0x640 <Menu_Display+0x3a>
- 632:	e7 30       	cpi	r30, 0x07	; 7
- 634:	01 f1       	breq	.+64     	; 0x676 <Menu_Display+0x70>
- 636:	e7 30       	cpi	r30, 0x07	; 7
- 638:	f0 f0       	brcs	.+60     	; 0x676 <Menu_Display+0x70>
- 63a:	e8 30       	cpi	r30, 0x08	; 8
- 63c:	f1 f4       	brne	.+60     	; 0x67a <Menu_Display+0x74>
- 63e:	1b c0       	rjmp	.+54     	; 0x676 <Menu_Display+0x70>
+ 61a:	e0 91 34 01 	lds	r30, 0x0134
+ 61e:	f0 91 35 01 	lds	r31, 0x0135
+ 622:	38 96       	adiw	r30, 0x08	; 8
+ 624:	e4 91       	lpm	r30, Z+
+ 626:	e5 30       	cpi	r30, 0x05	; 5
+ 628:	69 f1       	breq	.+90     	; 0x684 <Menu_Display+0x74>
+ 62a:	e6 30       	cpi	r30, 0x06	; 6
+ 62c:	38 f4       	brcc	.+14     	; 0x63c <Menu_Display+0x2c>
+ 62e:	e3 30       	cpi	r30, 0x03	; 3
+ 630:	b9 f0       	breq	.+46     	; 0x660 <Menu_Display+0x50>
+ 632:	e4 30       	cpi	r30, 0x04	; 4
+ 634:	f0 f4       	brcc	.+60     	; 0x672 <Menu_Display+0x62>
+ 636:	e2 30       	cpi	r30, 0x02	; 2
+ 638:	39 f5       	brne	.+78     	; 0x688 <Menu_Display+0x78>
+ 63a:	09 c0       	rjmp	.+18     	; 0x64e <Menu_Display+0x3e>
+ 63c:	e7 30       	cpi	r30, 0x07	; 7
+ 63e:	11 f1       	breq	.+68     	; 0x684 <Menu_Display+0x74>
+ 640:	e7 30       	cpi	r30, 0x07	; 7
+ 642:	00 f1       	brcs	.+64     	; 0x684 <Menu_Display+0x74>
+ 644:	e8 30       	cpi	r30, 0x08	; 8
+ 646:	f1 f0       	breq	.+60     	; 0x684 <Menu_Display+0x74>
+ 648:	e9 30       	cpi	r30, 0x09	; 9
+ 64a:	f1 f4       	brne	.+60     	; 0x688 <Menu_Display+0x78>
+ 64c:	1b c0       	rjmp	.+54     	; 0x684 <Menu_Display+0x74>
 	{
 		case MENU_TIME:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
- 640:	0e 94 0e 01 	call	0x21c	; 0x21c <I2C_ReadTime>
+ 64e:	0e 94 13 01 	call	0x226	; 0x226 <I2C_ReadTime>
 			Time_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
- 644:	be 01       	movw	r22, r28
- 646:	6c 5e       	subi	r22, 0xEC	; 236
- 648:	7f 4f       	sbci	r23, 0xFF	; 255
- 64a:	ce 01       	movw	r24, r28
- 64c:	0e 94 c6 03 	call	0x78c	; 0x78c <Time_To_Buf>
+ 652:	be 01       	movw	r22, r28
+ 654:	68 5e       	subi	r22, 0xE8	; 232
+ 656:	7f 4f       	sbci	r23, 0xFF	; 255
+ 658:	ce 01       	movw	r24, r28
+ 65a:	0e 94 f4 03 	call	0x7e8	; 0x7e8 <Time_To_Buf>
 
 		}
 		break;
- 650:	14 c0       	rjmp	.+40     	; 0x67a <Menu_Display+0x74>
+ 65e:	14 c0       	rjmp	.+40     	; 0x688 <Menu_Display+0x78>
 		
 		case MENU_DATE:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
- 652:	0e 94 0e 01 	call	0x21c	; 0x21c <I2C_ReadTime>
+ 660:	0e 94 13 01 	call	0x226	; 0x226 <I2C_ReadTime>
 			Date_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
- 656:	be 01       	movw	r22, r28
- 658:	6c 5e       	subi	r22, 0xEC	; 236
- 65a:	7f 4f       	sbci	r23, 0xFF	; 255
- 65c:	ce 01       	movw	r24, r28
- 65e:	0e 94 f2 03 	call	0x7e4	; 0x7e4 <Date_To_Buf>
+ 664:	be 01       	movw	r22, r28
+ 666:	68 5e       	subi	r22, 0xE8	; 232
+ 668:	7f 4f       	sbci	r23, 0xFF	; 255
+ 66a:	ce 01       	movw	r24, r28
+ 66c:	0e 94 20 04 	call	0x840	; 0x840 <Date_To_Buf>
 		}
 		break;
- 662:	0b c0       	rjmp	.+22     	; 0x67a <Menu_Display+0x74>
+ 670:	0b c0       	rjmp	.+22     	; 0x688 <Menu_Display+0x78>
 
 		case MENU_YEAR:
 		{
 			I2C_ReadTime(&clock->DS1307Time);
- 664:	0e 94 0e 01 	call	0x21c	; 0x21c <I2C_ReadTime>
+ 672:	0e 94 13 01 	call	0x226	; 0x226 <I2C_ReadTime>
 			Year_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
- 668:	be 01       	movw	r22, r28
- 66a:	6c 5e       	subi	r22, 0xEC	; 236
- 66c:	7f 4f       	sbci	r23, 0xFF	; 255
- 66e:	ce 01       	movw	r24, r28
- 670:	0e 94 1e 04 	call	0x83c	; 0x83c <Year_To_Buf>
+ 676:	be 01       	movw	r22, r28
+ 678:	68 5e       	subi	r22, 0xE8	; 232
+ 67a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 67c:	ce 01       	movw	r24, r28
+ 67e:	0e 94 4c 04 	call	0x898	; 0x898 <Year_To_Buf>
 		}
 		break;
- 674:	02 c0       	rjmp	.+4      	; 0x67a <Menu_Display+0x74>
+ 682:	02 c0       	rjmp	.+4      	; 0x688 <Menu_Display+0x78>
 		}
 		break;
 
 		case MENU_TUNE_YEAR:
 		{
 			clock->display_mask=blink_mask;
- 676:	8f ef       	ldi	r24, 0xFF	; 255
- 678:	8a a7       	std	Y+42, r24	; 0x2a
+ 684:	8f ef       	ldi	r24, 0xFF	; 255
+ 686:	8e a7       	std	Y+46, r24	; 0x2e
 		default:
 		{
 		}
 		break;
 	}
 }
- 67a:	df 91       	pop	r29
- 67c:	cf 91       	pop	r28
- 67e:	ff 90       	pop	r15
- 680:	ef 90       	pop	r14
- 682:	08 95       	ret
+ 688:	df 91       	pop	r29
+ 68a:	cf 91       	pop	r28
+ 68c:	ff 90       	pop	r15
+ 68e:	ef 90       	pop	r14
+ 690:	08 95       	ret
 
-00000684 <Menu_Key>:
+00000692 <Menu_Key>:
 
 void Menu_Key(enKey key, stClock *clock) {
- 684:	28 2f       	mov	r18, r24
- 686:	cb 01       	movw	r24, r22
+ 692:	cf 93       	push	r28
+ 694:	df 93       	push	r29
+ 696:	eb 01       	movw	r28, r22
 	switch (key) 
- 688:	24 30       	cpi	r18, 0x04	; 4
- 68a:	09 f4       	brne	.+2      	; 0x68e <Menu_Key+0xa>
- 68c:	3c c0       	rjmp	.+120    	; 0x706 <Menu_Key+0x82>
- 68e:	25 30       	cpi	r18, 0x05	; 5
- 690:	30 f4       	brcc	.+12     	; 0x69e <Menu_Key+0x1a>
- 692:	21 30       	cpi	r18, 0x01	; 1
- 694:	59 f0       	breq	.+22     	; 0x6ac <Menu_Key+0x28>
- 696:	23 30       	cpi	r18, 0x03	; 3
- 698:	09 f0       	breq	.+2      	; 0x69c <Menu_Key+0x18>
- 69a:	70 c0       	rjmp	.+224    	; 0x77c <Menu_Key+0xf8>
- 69c:	5a c0       	rjmp	.+180    	; 0x752 <Menu_Key+0xce>
- 69e:	28 30       	cpi	r18, 0x08	; 8
- 6a0:	09 f4       	brne	.+2      	; 0x6a4 <Menu_Key+0x20>
- 6a2:	48 c0       	rjmp	.+144    	; 0x734 <Menu_Key+0xb0>
- 6a4:	2c 30       	cpi	r18, 0x0C	; 12
- 6a6:	09 f0       	breq	.+2      	; 0x6aa <Menu_Key+0x26>
- 6a8:	69 c0       	rjmp	.+210    	; 0x77c <Menu_Key+0xf8>
- 6aa:	5e c0       	rjmp	.+188    	; 0x768 <Menu_Key+0xe4>
+ 698:	83 30       	cpi	r24, 0x03	; 3
+ 69a:	09 f4       	brne	.+2      	; 0x69e <Menu_Key+0xc>
+ 69c:	8b c0       	rjmp	.+278    	; 0x7b4 <Menu_Key+0x122>
+ 69e:	84 30       	cpi	r24, 0x04	; 4
+ 6a0:	30 f4       	brcc	.+12     	; 0x6ae <Menu_Key+0x1c>
+ 6a2:	81 30       	cpi	r24, 0x01	; 1
+ 6a4:	71 f0       	breq	.+28     	; 0x6c2 <Menu_Key+0x30>
+ 6a6:	82 30       	cpi	r24, 0x02	; 2
+ 6a8:	09 f0       	breq	.+2      	; 0x6ac <Menu_Key+0x1a>
+ 6aa:	94 c0       	rjmp	.+296    	; 0x7d4 <Menu_Key+0x142>
+ 6ac:	3a c0       	rjmp	.+116    	; 0x722 <Menu_Key+0x90>
+ 6ae:	88 30       	cpi	r24, 0x08	; 8
+ 6b0:	09 f4       	brne	.+2      	; 0x6b4 <Menu_Key+0x22>
+ 6b2:	71 c0       	rjmp	.+226    	; 0x796 <Menu_Key+0x104>
+ 6b4:	8c 30       	cpi	r24, 0x0C	; 12
+ 6b6:	09 f4       	brne	.+2      	; 0x6ba <Menu_Key+0x28>
+ 6b8:	89 c0       	rjmp	.+274    	; 0x7cc <Menu_Key+0x13a>
+ 6ba:	84 30       	cpi	r24, 0x04	; 4
+ 6bc:	09 f0       	breq	.+2      	; 0x6c0 <Menu_Key+0x2e>
+ 6be:	8a c0       	rjmp	.+276    	; 0x7d4 <Menu_Key+0x142>
+ 6c0:	4a c0       	rjmp	.+148    	; 0x756 <Menu_Key+0xc4>
 		}
 		break;
 		//------------------------
 		case KEY_CODE_A: 
 		{
 			switch(SELECT)//пункт меню
- 6ac:	20 91 30 01 	lds	r18, 0x0130
- 6b0:	30 91 31 01 	lds	r19, 0x0131
- 6b4:	f9 01       	movw	r30, r18
- 6b6:	38 96       	adiw	r30, 0x08	; 8
- 6b8:	e4 91       	lpm	r30, Z+
- 6ba:	e4 30       	cpi	r30, 0x04	; 4
- 6bc:	c1 f0       	breq	.+48     	; 0x6ee <Menu_Key+0x6a>
- 6be:	e5 30       	cpi	r30, 0x05	; 5
- 6c0:	30 f4       	brcc	.+12     	; 0x6ce <Menu_Key+0x4a>
- 6c2:	e2 30       	cpi	r30, 0x02	; 2
- 6c4:	61 f0       	breq	.+24     	; 0x6de <Menu_Key+0x5a>
- 6c6:	e3 30       	cpi	r30, 0x03	; 3
- 6c8:	09 f0       	breq	.+2      	; 0x6cc <Menu_Key+0x48>
- 6ca:	58 c0       	rjmp	.+176    	; 0x77c <Menu_Key+0xf8>
- 6cc:	0c c0       	rjmp	.+24     	; 0x6e6 <Menu_Key+0x62>
- 6ce:	e6 30       	cpi	r30, 0x06	; 6
- 6d0:	a1 f0       	breq	.+40     	; 0x6fa <Menu_Key+0x76>
- 6d2:	e6 30       	cpi	r30, 0x06	; 6
- 6d4:	78 f0       	brcs	.+30     	; 0x6f4 <Menu_Key+0x70>
- 6d6:	e7 30       	cpi	r30, 0x07	; 7
- 6d8:	09 f0       	breq	.+2      	; 0x6dc <Menu_Key+0x58>
- 6da:	50 c0       	rjmp	.+160    	; 0x77c <Menu_Key+0xf8>
- 6dc:	11 c0       	rjmp	.+34     	; 0x700 <Menu_Key+0x7c>
+ 6c2:	80 91 34 01 	lds	r24, 0x0134
+ 6c6:	90 91 35 01 	lds	r25, 0x0135
+ 6ca:	fc 01       	movw	r30, r24
+ 6cc:	38 96       	adiw	r30, 0x08	; 8
+ 6ce:	e4 91       	lpm	r30, Z+
+ 6d0:	e4 30       	cpi	r30, 0x04	; 4
+ 6d2:	c1 f0       	breq	.+48     	; 0x704 <Menu_Key+0x72>
+ 6d4:	e5 30       	cpi	r30, 0x05	; 5
+ 6d6:	30 f4       	brcc	.+12     	; 0x6e4 <Menu_Key+0x52>
+ 6d8:	e2 30       	cpi	r30, 0x02	; 2
+ 6da:	61 f0       	breq	.+24     	; 0x6f4 <Menu_Key+0x62>
+ 6dc:	e3 30       	cpi	r30, 0x03	; 3
+ 6de:	09 f0       	breq	.+2      	; 0x6e2 <Menu_Key+0x50>
+ 6e0:	79 c0       	rjmp	.+242    	; 0x7d4 <Menu_Key+0x142>
+ 6e2:	0c c0       	rjmp	.+24     	; 0x6fc <Menu_Key+0x6a>
+ 6e4:	e6 30       	cpi	r30, 0x06	; 6
+ 6e6:	a9 f0       	breq	.+42     	; 0x712 <Menu_Key+0x80>
+ 6e8:	e6 30       	cpi	r30, 0x06	; 6
+ 6ea:	78 f0       	brcs	.+30     	; 0x70a <Menu_Key+0x78>
+ 6ec:	e7 30       	cpi	r30, 0x07	; 7
+ 6ee:	09 f0       	breq	.+2      	; 0x6f2 <Menu_Key+0x60>
+ 6f0:	71 c0       	rjmp	.+226    	; 0x7d4 <Menu_Key+0x142>
+ 6f2:	13 c0       	rjmp	.+38     	; 0x71a <Menu_Key+0x88>
 			{
 				case MENU_TIME:
 				{
 					Menu_Change(NEXT);
- 6de:	f9 01       	movw	r30, r18
- 6e0:	25 91       	lpm	r18, Z+
- 6e2:	34 91       	lpm	r19, Z+
- 6e4:	3d c0       	rjmp	.+122    	; 0x760 <Menu_Key+0xdc>
+ 6f4:	fc 01       	movw	r30, r24
+ 6f6:	25 91       	lpm	r18, Z+
+ 6f8:	34 91       	lpm	r19, Z+
+ 6fa:	66 c0       	rjmp	.+204    	; 0x7c8 <Menu_Key+0x136>
 				}
 				break;
 
 				case MENU_DATE:
 				{
 					Menu_Change(NEXT);
- 6e6:	f9 01       	movw	r30, r18
- 6e8:	25 91       	lpm	r18, Z+
- 6ea:	34 91       	lpm	r19, Z+
- 6ec:	39 c0       	rjmp	.+114    	; 0x760 <Menu_Key+0xdc>
+ 6fc:	fc 01       	movw	r30, r24
+ 6fe:	25 91       	lpm	r18, Z+
+ 700:	34 91       	lpm	r19, Z+
+ 702:	62 c0       	rjmp	.+196    	; 0x7c8 <Menu_Key+0x136>
 				}
 				break;
 
 				case MENU_YEAR:
 				{
 					Menu_Change(&m_s1i1);
- 6ee:	82 e7       	ldi	r24, 0x72	; 114
- 6f0:	90 e0       	ldi	r25, 0x00	; 0
- 6f2:	37 c0       	rjmp	.+110    	; 0x762 <Menu_Key+0xde>
+ 704:	82 e7       	ldi	r24, 0x72	; 114
+ 706:	90 e0       	ldi	r25, 0x00	; 0
+ 708:	63 c0       	rjmp	.+198    	; 0x7d0 <Menu_Key+0x13e>
 				}
 				break;
 										
 				case MENU_TUNE_TIME:
 				{
 					I2C_StoreTime(&clock->DS1307Time);
- 6f4:	0e 94 9a 01 	call	0x334	; 0x334 <I2C_StoreTime>
+ 70a:	cb 01       	movw	r24, r22
+ 70c:	0e 94 9f 01 	call	0x33e	; 0x33e <I2C_StoreTime>
 				}
 				break;
- 6f8:	08 95       	ret
+ 710:	61 c0       	rjmp	.+194    	; 0x7d4 <Menu_Key+0x142>
 
 
 				case MENU_TUNE_DATE:
 				{
 					I2C_StoreDate(&clock->DS1307Time);
- 6fa:	0e 94 c1 01 	call	0x382	; 0x382 <I2C_StoreDate>
+ 712:	cb 01       	movw	r24, r22
+ 714:	0e 94 c6 01 	call	0x38c	; 0x38c <I2C_StoreDate>
 				}
 				break;
- 6fe:	08 95       	ret
+ 718:	5d c0       	rjmp	.+186    	; 0x7d4 <Menu_Key+0x142>
 
 
 				case MENU_TUNE_YEAR:
 				{
 					I2C_StoreYear(&clock->DS1307Time);
- 700:	0e 94 dd 01 	call	0x3ba	; 0x3ba <I2C_StoreYear>
+ 71a:	cb 01       	movw	r24, r22
+ 71c:	0e 94 e2 01 	call	0x3c4	; 0x3c4 <I2C_StoreYear>
 				}
 				break;
- 704:	08 95       	ret
+ 720:	59 c0       	rjmp	.+178    	; 0x7d4 <Menu_Key+0x142>
+		break;
+
+		//------------------------
+		case KEY_CODE_B: 
+		{
+			switch(SELECT)//пункт меню
+ 722:	80 91 34 01 	lds	r24, 0x0134
+ 726:	90 91 35 01 	lds	r25, 0x0135
+ 72a:	fc 01       	movw	r30, r24
+ 72c:	38 96       	adiw	r30, 0x08	; 8
+ 72e:	e4 91       	lpm	r30, Z+
+ 730:	e5 30       	cpi	r30, 0x05	; 5
+ 732:	29 f0       	breq	.+10     	; 0x73e <Menu_Key+0xac>
+ 734:	e5 30       	cpi	r30, 0x05	; 5
+ 736:	50 f0       	brcs	.+20     	; 0x74c <Menu_Key+0xba>
+ 738:	ea 30       	cpi	r30, 0x0A	; 10
+ 73a:	40 f4       	brcc	.+16     	; 0x74c <Menu_Key+0xba>
+ 73c:	4b c0       	rjmp	.+150    	; 0x7d4 <Menu_Key+0x142>
+			{			
+				case MENU_TUNE_TIME:
+				{
+					clock->DS1307Time.Minutes=BCD_Increment(clock->DS1307Time.Minutes,0,((5<<4)|9));
+ 73e:	89 81       	ldd	r24, Y+1	; 0x01
+ 740:	60 e0       	ldi	r22, 0x00	; 0
+ 742:	49 e5       	ldi	r20, 0x59	; 89
+ 744:	0e 94 72 04 	call	0x8e4	; 0x8e4 <BCD_Increment>
+ 748:	89 83       	std	Y+1, r24	; 0x01
+ 74a:	19 c0       	rjmp	.+50     	; 0x77e <Menu_Key+0xec>
+				}
+				break;
+				
+				default:
+				{
+					Menu_Change(PREVIOUS);
+ 74c:	02 96       	adiw	r24, 0x02	; 2
+ 74e:	fc 01       	movw	r30, r24
+ 750:	25 91       	lpm	r18, Z+
+ 752:	34 91       	lpm	r19, Z+
+ 754:	39 c0       	rjmp	.+114    	; 0x7c8 <Menu_Key+0x136>
 		}
 		break;
 		//------------------------
 		case KEY_CODE_C:
 		{ 
 			switch(SELECT)//пункт меню
- 706:	80 91 30 01 	lds	r24, 0x0130
- 70a:	90 91 31 01 	lds	r25, 0x0131
- 70e:	fc 01       	movw	r30, r24
- 710:	38 96       	adiw	r30, 0x08	; 8
- 712:	e4 91       	lpm	r30, Z+
- 714:	e5 30       	cpi	r30, 0x05	; 5
- 716:	29 f0       	breq	.+10     	; 0x722 <Menu_Key+0x9e>
- 718:	e5 30       	cpi	r30, 0x05	; 5
- 71a:	38 f0       	brcs	.+14     	; 0x72a <Menu_Key+0xa6>
- 71c:	e9 30       	cpi	r30, 0x09	; 9
- 71e:	28 f4       	brcc	.+10     	; 0x72a <Menu_Key+0xa6>
- 720:	08 95       	ret
+ 756:	80 91 34 01 	lds	r24, 0x0134
+ 75a:	90 91 35 01 	lds	r25, 0x0135
+ 75e:	fc 01       	movw	r30, r24
+ 760:	38 96       	adiw	r30, 0x08	; 8
+ 762:	e4 91       	lpm	r30, Z+
+ 764:	e5 30       	cpi	r30, 0x05	; 5
+ 766:	29 f0       	breq	.+10     	; 0x772 <Menu_Key+0xe0>
+ 768:	e5 30       	cpi	r30, 0x05	; 5
+ 76a:	80 f0       	brcs	.+32     	; 0x78c <Menu_Key+0xfa>
+ 76c:	ea 30       	cpi	r30, 0x0A	; 10
+ 76e:	70 f4       	brcc	.+28     	; 0x78c <Menu_Key+0xfa>
+ 770:	31 c0       	rjmp	.+98     	; 0x7d4 <Menu_Key+0x142>
 			{			
 				case MENU_TUNE_TIME:
 				{
-					Menu_Change(NEXT);
- 722:	fc 01       	movw	r30, r24
- 724:	25 91       	lpm	r18, Z+
- 726:	34 91       	lpm	r19, Z+
- 728:	1b c0       	rjmp	.+54     	; 0x760 <Menu_Key+0xdc>
+					clock->DS1307Time.Hours=BCD_Increment(clock->DS1307Time.Hours,0,((2<<4)|3));
+ 772:	8a 81       	ldd	r24, Y+2	; 0x02
+ 774:	60 e0       	ldi	r22, 0x00	; 0
+ 776:	43 e2       	ldi	r20, 0x23	; 35
+ 778:	0e 94 72 04 	call	0x8e4	; 0x8e4 <BCD_Increment>
+ 77c:	8a 83       	std	Y+2, r24	; 0x02
+					Time_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
+ 77e:	be 01       	movw	r22, r28
+ 780:	68 5e       	subi	r22, 0xE8	; 232
+ 782:	7f 4f       	sbci	r23, 0xFF	; 255
+ 784:	ce 01       	movw	r24, r28
+ 786:	0e 94 f4 03 	call	0x7e8	; 0x7e8 <Time_To_Buf>
+				}
+				break;
+ 78a:	24 c0       	rjmp	.+72     	; 0x7d4 <Menu_Key+0x142>
 				}
 				break;
 				
 				default:
 				{
 					Menu_Change(PREVIOUS);
- 72a:	02 96       	adiw	r24, 0x02	; 2
- 72c:	fc 01       	movw	r30, r24
- 72e:	25 91       	lpm	r18, Z+
- 730:	34 91       	lpm	r19, Z+
- 732:	16 c0       	rjmp	.+44     	; 0x760 <Menu_Key+0xdc>
+ 78c:	02 96       	adiw	r24, 0x02	; 2
+ 78e:	fc 01       	movw	r30, r24
+ 790:	25 91       	lpm	r18, Z+
+ 792:	34 91       	lpm	r19, Z+
+ 794:	19 c0       	rjmp	.+50     	; 0x7c8 <Menu_Key+0x136>
 		}
 		break;
 		//------------------------
 		case KEY_CODE_D:
 		{
 			switch(SELECT)//пункт меню
- 734:	80 91 30 01 	lds	r24, 0x0130
- 738:	90 91 31 01 	lds	r25, 0x0131
- 73c:	fc 01       	movw	r30, r24
- 73e:	38 96       	adiw	r30, 0x08	; 8
- 740:	e4 91       	lpm	r30, Z+
- 742:	e5 50       	subi	r30, 0x05	; 5
- 744:	e4 30       	cpi	r30, 0x04	; 4
- 746:	d0 f0       	brcs	.+52     	; 0x77c <Menu_Key+0xf8>
+ 796:	80 91 34 01 	lds	r24, 0x0134
+ 79a:	90 91 35 01 	lds	r25, 0x0135
+ 79e:	fc 01       	movw	r30, r24
+ 7a0:	38 96       	adiw	r30, 0x08	; 8
+ 7a2:	e4 91       	lpm	r30, Z+
+ 7a4:	e5 50       	subi	r30, 0x05	; 5
+ 7a6:	e5 30       	cpi	r30, 0x05	; 5
+ 7a8:	a8 f0       	brcs	.+42     	; 0x7d4 <Menu_Key+0x142>
 				}
 				break;
 				
 				default:
 				{
 					Menu_Change(PREVIOUS);
- 748:	02 96       	adiw	r24, 0x02	; 2
- 74a:	fc 01       	movw	r30, r24
- 74c:	25 91       	lpm	r18, Z+
- 74e:	34 91       	lpm	r19, Z+
- 750:	07 c0       	rjmp	.+14     	; 0x760 <Menu_Key+0xdc>
+ 7aa:	02 96       	adiw	r24, 0x02	; 2
+ 7ac:	fc 01       	movw	r30, r24
+ 7ae:	25 91       	lpm	r18, Z+
+ 7b0:	34 91       	lpm	r19, Z+
+ 7b2:	0a c0       	rjmp	.+20     	; 0x7c8 <Menu_Key+0x136>
 		break;
 			
 		//------------------------
-		case KEY_CODE_AB:
+		case KEY_CODE_AB://переход в режим настройки времени/даты/года
 		{ 
-			Menu_Change(CHILD);		
- 752:	e0 91 30 01 	lds	r30, 0x0130
- 756:	f0 91 31 01 	lds	r31, 0x0131
- 75a:	36 96       	adiw	r30, 0x06	; 6
- 75c:	25 91       	lpm	r18, Z+
- 75e:	34 91       	lpm	r19, Z+
- 760:	c9 01       	movw	r24, r18
- 762:	0e 94 fa 02 	call	0x5f4	; 0x5f4 <Menu_Change>
+			I2C_ReadTime(&clock->DS1307Time);
+ 7b4:	cb 01       	movw	r24, r22
+ 7b6:	0e 94 13 01 	call	0x226	; 0x226 <I2C_ReadTime>
+			Menu_Change(CHILD);
+ 7ba:	e0 91 34 01 	lds	r30, 0x0134
+ 7be:	f0 91 35 01 	lds	r31, 0x0135
+ 7c2:	36 96       	adiw	r30, 0x06	; 6
+ 7c4:	25 91       	lpm	r18, Z+
+ 7c6:	34 91       	lpm	r19, Z+
+ 7c8:	c9 01       	movw	r24, r18
+ 7ca:	02 c0       	rjmp	.+4      	; 0x7d0 <Menu_Key+0x13e>
 		}
 		break;
- 766:	08 95       	ret
 		//------------------------
 		case KEY_CODE_CD:
 		{
-			Menu_Change(PARENT);
- 768:	e0 91 30 01 	lds	r30, 0x0130
- 76c:	f0 91 31 01 	lds	r31, 0x0131
- 770:	34 96       	adiw	r30, 0x04	; 4
- 772:	25 91       	lpm	r18, Z+
- 774:	34 91       	lpm	r19, Z+
- 776:	c9 01       	movw	r24, r18
- 778:	0e 94 fa 02 	call	0x5f4	; 0x5f4 <Menu_Change>
- 77c:	08 95       	ret
+			Menu_Change(&m_s1i4);
+ 7cc:	80 e9       	ldi	r24, 0x90	; 144
+ 7ce:	90 e0       	ldi	r25, 0x00	; 0
+ 7d0:	0e 94 ff 02 	call	0x5fe	; 0x5fe <Menu_Change>
+		{
 
-0000077e <Menu_Init>:
+		}
+		break;
 	}
 }
+ 7d4:	df 91       	pop	r29
+ 7d6:	cf 91       	pop	r28
+ 7d8:	08 95       	ret
+
+000007da <Menu_Init>:
 //---------------------------------------------------
 void Menu_Init(void) 
 {
 	selectedMenuItem = (menuItem*)&m_s1i1;
- 77e:	82 e7       	ldi	r24, 0x72	; 114
- 780:	90 e0       	ldi	r25, 0x00	; 0
- 782:	90 93 31 01 	sts	0x0131, r25
- 786:	80 93 30 01 	sts	0x0130, r24
+ 7da:	82 e7       	ldi	r24, 0x72	; 114
+ 7dc:	90 e0       	ldi	r25, 0x00	; 0
+ 7de:	90 93 35 01 	sts	0x0135, r25
+ 7e2:	80 93 34 01 	sts	0x0134, r24
 }
- 78a:	08 95       	ret
+ 7e6:	08 95       	ret
 
-0000078c <Time_To_Buf>:
+000007e8 <Time_To_Buf>:
 #include "utilites.h"
 
 void Time_To_Buf(stDS1307Time *time, uint16_t *buf)
 {
- 78c:	fc 01       	movw	r30, r24
- 78e:	db 01       	movw	r26, r22
+ 7e8:	fc 01       	movw	r30, r24
+ 7ea:	db 01       	movw	r26, r22
 	buf[0]=0x0500|(time->Hours>>4);
- 790:	82 81       	ldd	r24, Z+2	; 0x02
- 792:	82 95       	swap	r24
- 794:	8f 70       	andi	r24, 0x0F	; 15
- 796:	90 e0       	ldi	r25, 0x00	; 0
- 798:	95 60       	ori	r25, 0x05	; 5
- 79a:	11 96       	adiw	r26, 0x01	; 1
- 79c:	9c 93       	st	X, r25
- 79e:	8e 93       	st	-X, r24
+ 7ec:	82 81       	ldd	r24, Z+2	; 0x02
+ 7ee:	82 95       	swap	r24
+ 7f0:	8f 70       	andi	r24, 0x0F	; 15
+ 7f2:	90 e0       	ldi	r25, 0x00	; 0
+ 7f4:	95 60       	ori	r25, 0x05	; 5
+ 7f6:	11 96       	adiw	r26, 0x01	; 1
+ 7f8:	9c 93       	st	X, r25
+ 7fa:	8e 93       	st	-X, r24
 	buf[1]=0x0400|(time->Hours&0x0F);
- 7a0:	82 81       	ldd	r24, Z+2	; 0x02
- 7a2:	90 e0       	ldi	r25, 0x00	; 0
- 7a4:	8f 70       	andi	r24, 0x0F	; 15
- 7a6:	90 70       	andi	r25, 0x00	; 0
- 7a8:	94 60       	ori	r25, 0x04	; 4
- 7aa:	13 96       	adiw	r26, 0x03	; 3
- 7ac:	9c 93       	st	X, r25
- 7ae:	8e 93       	st	-X, r24
- 7b0:	12 97       	sbiw	r26, 0x02	; 2
+ 7fc:	82 81       	ldd	r24, Z+2	; 0x02
+ 7fe:	90 e0       	ldi	r25, 0x00	; 0
+ 800:	8f 70       	andi	r24, 0x0F	; 15
+ 802:	90 70       	andi	r25, 0x00	; 0
+ 804:	94 60       	ori	r25, 0x04	; 4
+ 806:	13 96       	adiw	r26, 0x03	; 3
+ 808:	9c 93       	st	X, r25
+ 80a:	8e 93       	st	-X, r24
+ 80c:	12 97       	sbiw	r26, 0x02	; 2
 	buf[2]=0x0300|(0x0A);//"-"
- 7b2:	8a e0       	ldi	r24, 0x0A	; 10
- 7b4:	93 e0       	ldi	r25, 0x03	; 3
- 7b6:	15 96       	adiw	r26, 0x05	; 5
- 7b8:	9c 93       	st	X, r25
- 7ba:	8e 93       	st	-X, r24
- 7bc:	14 97       	sbiw	r26, 0x04	; 4
+ 80e:	8a e0       	ldi	r24, 0x0A	; 10
+ 810:	93 e0       	ldi	r25, 0x03	; 3
+ 812:	15 96       	adiw	r26, 0x05	; 5
+ 814:	9c 93       	st	X, r25
+ 816:	8e 93       	st	-X, r24
+ 818:	14 97       	sbiw	r26, 0x04	; 4
 	buf[3]=0x0200|(time->Minutes>>4);
- 7be:	81 81       	ldd	r24, Z+1	; 0x01
- 7c0:	82 95       	swap	r24
- 7c2:	8f 70       	andi	r24, 0x0F	; 15
- 7c4:	90 e0       	ldi	r25, 0x00	; 0
- 7c6:	92 60       	ori	r25, 0x02	; 2
- 7c8:	17 96       	adiw	r26, 0x07	; 7
- 7ca:	9c 93       	st	X, r25
- 7cc:	8e 93       	st	-X, r24
- 7ce:	16 97       	sbiw	r26, 0x06	; 6
+ 81a:	81 81       	ldd	r24, Z+1	; 0x01
+ 81c:	82 95       	swap	r24
+ 81e:	8f 70       	andi	r24, 0x0F	; 15
+ 820:	90 e0       	ldi	r25, 0x00	; 0
+ 822:	92 60       	ori	r25, 0x02	; 2
+ 824:	17 96       	adiw	r26, 0x07	; 7
+ 826:	9c 93       	st	X, r25
+ 828:	8e 93       	st	-X, r24
+ 82a:	16 97       	sbiw	r26, 0x06	; 6
 	buf[4]=0x0100|(time->Minutes&0x0F);
- 7d0:	81 81       	ldd	r24, Z+1	; 0x01
- 7d2:	90 e0       	ldi	r25, 0x00	; 0
- 7d4:	8f 70       	andi	r24, 0x0F	; 15
- 7d6:	90 70       	andi	r25, 0x00	; 0
- 7d8:	91 60       	ori	r25, 0x01	; 1
- 7da:	19 96       	adiw	r26, 0x09	; 9
- 7dc:	9c 93       	st	X, r25
- 7de:	8e 93       	st	-X, r24
- 7e0:	18 97       	sbiw	r26, 0x08	; 8
+ 82c:	81 81       	ldd	r24, Z+1	; 0x01
+ 82e:	90 e0       	ldi	r25, 0x00	; 0
+ 830:	8f 70       	andi	r24, 0x0F	; 15
+ 832:	90 70       	andi	r25, 0x00	; 0
+ 834:	91 60       	ori	r25, 0x01	; 1
+ 836:	19 96       	adiw	r26, 0x09	; 9
+ 838:	9c 93       	st	X, r25
+ 83a:	8e 93       	st	-X, r24
+ 83c:	18 97       	sbiw	r26, 0x08	; 8
 }
- 7e2:	08 95       	ret
+ 83e:	08 95       	ret
 
-000007e4 <Date_To_Buf>:
+00000840 <Date_To_Buf>:
 
 void Date_To_Buf(stDS1307Time *time, uint16_t *buf)
 {
- 7e4:	fc 01       	movw	r30, r24
- 7e6:	db 01       	movw	r26, r22
+ 840:	fc 01       	movw	r30, r24
+ 842:	db 01       	movw	r26, r22
 	buf[0]=0x0500|(time->Date>>4);
- 7e8:	84 81       	ldd	r24, Z+4	; 0x04
- 7ea:	82 95       	swap	r24
- 7ec:	8f 70       	andi	r24, 0x0F	; 15
- 7ee:	90 e0       	ldi	r25, 0x00	; 0
- 7f0:	95 60       	ori	r25, 0x05	; 5
- 7f2:	11 96       	adiw	r26, 0x01	; 1
- 7f4:	9c 93       	st	X, r25
- 7f6:	8e 93       	st	-X, r24
+ 844:	84 81       	ldd	r24, Z+4	; 0x04
+ 846:	82 95       	swap	r24
+ 848:	8f 70       	andi	r24, 0x0F	; 15
+ 84a:	90 e0       	ldi	r25, 0x00	; 0
+ 84c:	95 60       	ori	r25, 0x05	; 5
+ 84e:	11 96       	adiw	r26, 0x01	; 1
+ 850:	9c 93       	st	X, r25
+ 852:	8e 93       	st	-X, r24
 	buf[1]=0x0400|(time->Date&0x0F);
- 7f8:	84 81       	ldd	r24, Z+4	; 0x04
- 7fa:	90 e0       	ldi	r25, 0x00	; 0
- 7fc:	8f 70       	andi	r24, 0x0F	; 15
- 7fe:	90 70       	andi	r25, 0x00	; 0
- 800:	94 60       	ori	r25, 0x04	; 4
- 802:	13 96       	adiw	r26, 0x03	; 3
- 804:	9c 93       	st	X, r25
- 806:	8e 93       	st	-X, r24
- 808:	12 97       	sbiw	r26, 0x02	; 2
+ 854:	84 81       	ldd	r24, Z+4	; 0x04
+ 856:	90 e0       	ldi	r25, 0x00	; 0
+ 858:	8f 70       	andi	r24, 0x0F	; 15
+ 85a:	90 70       	andi	r25, 0x00	; 0
+ 85c:	94 60       	ori	r25, 0x04	; 4
+ 85e:	13 96       	adiw	r26, 0x03	; 3
+ 860:	9c 93       	st	X, r25
+ 862:	8e 93       	st	-X, r24
+ 864:	12 97       	sbiw	r26, 0x02	; 2
 	buf[2]=0x0300|(0xFF);//"."
- 80a:	8f ef       	ldi	r24, 0xFF	; 255
- 80c:	93 e0       	ldi	r25, 0x03	; 3
- 80e:	15 96       	adiw	r26, 0x05	; 5
- 810:	9c 93       	st	X, r25
- 812:	8e 93       	st	-X, r24
- 814:	14 97       	sbiw	r26, 0x04	; 4
+ 866:	8f ef       	ldi	r24, 0xFF	; 255
+ 868:	93 e0       	ldi	r25, 0x03	; 3
+ 86a:	15 96       	adiw	r26, 0x05	; 5
+ 86c:	9c 93       	st	X, r25
+ 86e:	8e 93       	st	-X, r24
+ 870:	14 97       	sbiw	r26, 0x04	; 4
 	buf[3]=0x0200|(time->Month>>4);
- 816:	85 81       	ldd	r24, Z+5	; 0x05
- 818:	82 95       	swap	r24
- 81a:	8f 70       	andi	r24, 0x0F	; 15
- 81c:	90 e0       	ldi	r25, 0x00	; 0
- 81e:	92 60       	ori	r25, 0x02	; 2
- 820:	17 96       	adiw	r26, 0x07	; 7
- 822:	9c 93       	st	X, r25
- 824:	8e 93       	st	-X, r24
- 826:	16 97       	sbiw	r26, 0x06	; 6
+ 872:	85 81       	ldd	r24, Z+5	; 0x05
+ 874:	82 95       	swap	r24
+ 876:	8f 70       	andi	r24, 0x0F	; 15
+ 878:	90 e0       	ldi	r25, 0x00	; 0
+ 87a:	92 60       	ori	r25, 0x02	; 2
+ 87c:	17 96       	adiw	r26, 0x07	; 7
+ 87e:	9c 93       	st	X, r25
+ 880:	8e 93       	st	-X, r24
+ 882:	16 97       	sbiw	r26, 0x06	; 6
 	buf[4]=0x0100|(time->Month&0x0F);
- 828:	85 81       	ldd	r24, Z+5	; 0x05
- 82a:	90 e0       	ldi	r25, 0x00	; 0
- 82c:	8f 70       	andi	r24, 0x0F	; 15
- 82e:	90 70       	andi	r25, 0x00	; 0
- 830:	91 60       	ori	r25, 0x01	; 1
- 832:	19 96       	adiw	r26, 0x09	; 9
- 834:	9c 93       	st	X, r25
- 836:	8e 93       	st	-X, r24
- 838:	18 97       	sbiw	r26, 0x08	; 8
+ 884:	85 81       	ldd	r24, Z+5	; 0x05
+ 886:	90 e0       	ldi	r25, 0x00	; 0
+ 888:	8f 70       	andi	r24, 0x0F	; 15
+ 88a:	90 70       	andi	r25, 0x00	; 0
+ 88c:	91 60       	ori	r25, 0x01	; 1
+ 88e:	19 96       	adiw	r26, 0x09	; 9
+ 890:	9c 93       	st	X, r25
+ 892:	8e 93       	st	-X, r24
+ 894:	18 97       	sbiw	r26, 0x08	; 8
 }
- 83a:	08 95       	ret
+ 896:	08 95       	ret
 
-0000083c <Year_To_Buf>:
+00000898 <Year_To_Buf>:
 
 void Year_To_Buf(stDS1307Time *time, uint16_t *buf)
 {
- 83c:	fc 01       	movw	r30, r24
- 83e:	db 01       	movw	r26, r22
+ 898:	fc 01       	movw	r30, r24
+ 89a:	db 01       	movw	r26, r22
 	buf[0]=0x0500|(0xF);
- 840:	8f e0       	ldi	r24, 0x0F	; 15
- 842:	95 e0       	ldi	r25, 0x05	; 5
- 844:	11 96       	adiw	r26, 0x01	; 1
- 846:	9c 93       	st	X, r25
- 848:	8e 93       	st	-X, r24
+ 89c:	8f e0       	ldi	r24, 0x0F	; 15
+ 89e:	95 e0       	ldi	r25, 0x05	; 5
+ 8a0:	11 96       	adiw	r26, 0x01	; 1
+ 8a2:	9c 93       	st	X, r25
+ 8a4:	8e 93       	st	-X, r24
 	buf[1]=0x0400|(2);
- 84a:	82 e0       	ldi	r24, 0x02	; 2
- 84c:	94 e0       	ldi	r25, 0x04	; 4
- 84e:	13 96       	adiw	r26, 0x03	; 3
- 850:	9c 93       	st	X, r25
- 852:	8e 93       	st	-X, r24
- 854:	12 97       	sbiw	r26, 0x02	; 2
+ 8a6:	82 e0       	ldi	r24, 0x02	; 2
+ 8a8:	94 e0       	ldi	r25, 0x04	; 4
+ 8aa:	13 96       	adiw	r26, 0x03	; 3
+ 8ac:	9c 93       	st	X, r25
+ 8ae:	8e 93       	st	-X, r24
+ 8b0:	12 97       	sbiw	r26, 0x02	; 2
 	buf[2]=0x0300|(0);
- 856:	80 e0       	ldi	r24, 0x00	; 0
- 858:	93 e0       	ldi	r25, 0x03	; 3
- 85a:	15 96       	adiw	r26, 0x05	; 5
- 85c:	9c 93       	st	X, r25
- 85e:	8e 93       	st	-X, r24
- 860:	14 97       	sbiw	r26, 0x04	; 4
+ 8b2:	80 e0       	ldi	r24, 0x00	; 0
+ 8b4:	93 e0       	ldi	r25, 0x03	; 3
+ 8b6:	15 96       	adiw	r26, 0x05	; 5
+ 8b8:	9c 93       	st	X, r25
+ 8ba:	8e 93       	st	-X, r24
+ 8bc:	14 97       	sbiw	r26, 0x04	; 4
 	buf[3]=0x0200|(time->Year>>4);
- 862:	86 81       	ldd	r24, Z+6	; 0x06
- 864:	82 95       	swap	r24
- 866:	8f 70       	andi	r24, 0x0F	; 15
- 868:	90 e0       	ldi	r25, 0x00	; 0
- 86a:	92 60       	ori	r25, 0x02	; 2
- 86c:	17 96       	adiw	r26, 0x07	; 7
- 86e:	9c 93       	st	X, r25
- 870:	8e 93       	st	-X, r24
- 872:	16 97       	sbiw	r26, 0x06	; 6
+ 8be:	86 81       	ldd	r24, Z+6	; 0x06
+ 8c0:	82 95       	swap	r24
+ 8c2:	8f 70       	andi	r24, 0x0F	; 15
+ 8c4:	90 e0       	ldi	r25, 0x00	; 0
+ 8c6:	92 60       	ori	r25, 0x02	; 2
+ 8c8:	17 96       	adiw	r26, 0x07	; 7
+ 8ca:	9c 93       	st	X, r25
+ 8cc:	8e 93       	st	-X, r24
+ 8ce:	16 97       	sbiw	r26, 0x06	; 6
 	buf[4]=0x0100|(time->Year&0x0F);
- 874:	86 81       	ldd	r24, Z+6	; 0x06
- 876:	90 e0       	ldi	r25, 0x00	; 0
- 878:	8f 70       	andi	r24, 0x0F	; 15
- 87a:	90 70       	andi	r25, 0x00	; 0
- 87c:	91 60       	ori	r25, 0x01	; 1
- 87e:	19 96       	adiw	r26, 0x09	; 9
- 880:	9c 93       	st	X, r25
- 882:	8e 93       	st	-X, r24
- 884:	18 97       	sbiw	r26, 0x08	; 8
+ 8d0:	86 81       	ldd	r24, Z+6	; 0x06
+ 8d2:	90 e0       	ldi	r25, 0x00	; 0
+ 8d4:	8f 70       	andi	r24, 0x0F	; 15
+ 8d6:	90 70       	andi	r25, 0x00	; 0
+ 8d8:	91 60       	ori	r25, 0x01	; 1
+ 8da:	19 96       	adiw	r26, 0x09	; 9
+ 8dc:	9c 93       	st	X, r25
+ 8de:	8e 93       	st	-X, r24
+ 8e0:	18 97       	sbiw	r26, 0x08	; 8
 }
- 886:	08 95       	ret
+ 8e2:	08 95       	ret
 
-00000888 <_exit>:
- 888:	f8 94       	cli
+000008e4 <BCD_Increment>:
 
-0000088a <__stop_program>:
- 88a:	ff cf       	rjmp	.-2      	; 0x88a <__stop_program>
+uint8_t BCD_Increment(uint8_t bcd, uint8_t bcd_min, uint8_t bcd_max)
+{
+	
+	if((bcd&0xF)<9)
+ 8e4:	28 2f       	mov	r18, r24
+ 8e6:	30 e0       	ldi	r19, 0x00	; 0
+ 8e8:	2f 70       	andi	r18, 0x0F	; 15
+ 8ea:	30 70       	andi	r19, 0x00	; 0
+ 8ec:	29 30       	cpi	r18, 0x09	; 9
+ 8ee:	31 05       	cpc	r19, r1
+ 8f0:	14 f4       	brge	.+4      	; 0x8f6 <BCD_Increment+0x12>
+	{
+		bcd+=0x01;
+ 8f2:	8f 5f       	subi	r24, 0xFF	; 255
+ 8f4:	02 c0       	rjmp	.+4      	; 0x8fa <BCD_Increment+0x16>
+	}
+	else
+	{
+		bcd+=0x10;
+ 8f6:	80 5f       	subi	r24, 0xF0	; 240
+		bcd&=0xF0;
+ 8f8:	80 7f       	andi	r24, 0xF0	; 240
+ 8fa:	86 17       	cp	r24, r22
+ 8fc:	08 f4       	brcc	.+2      	; 0x900 <BCD_Increment+0x1c>
+ 8fe:	86 2f       	mov	r24, r22
+	if(bcd<bcd_min)
+	{
+		bcd=bcd_min;			
+	}
+
+	if(bcd>bcd_max)
+ 900:	48 17       	cp	r20, r24
+ 902:	08 f4       	brcc	.+2      	; 0x906 <BCD_Increment+0x22>
+ 904:	86 2f       	mov	r24, r22
+	{
+		bcd=bcd_min;			
+	}
+
+	return bcd;
+}
+ 906:	08 95       	ret
+
+00000908 <_exit>:
+ 908:	f8 94       	cli
+
+0000090a <__stop_program>:
+ 90a:	ff cf       	rjmp	.-2      	; 0x90a <__stop_program>

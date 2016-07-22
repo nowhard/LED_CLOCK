@@ -27,3 +27,28 @@ void Year_To_Buf(stDS1307Time *time, uint16_t *buf)
 	buf[4]=0x0100|(time->Year&0x0F);
 }
 
+uint8_t BCD_Increment(uint8_t bcd, uint8_t bcd_min, uint8_t bcd_max)
+{	
+	if((bcd&0xF)<9)
+	{
+		bcd+=0x01;
+	}
+	else
+	{
+		bcd+=0x10;
+		bcd&=0xF0;
+	}
+	
+	if(bcd<bcd_min)
+	{
+		bcd=bcd_min;			
+	}
+
+	if(bcd>bcd_max)
+	{
+		bcd=bcd_min;			
+	}
+
+	return bcd;
+}
+
