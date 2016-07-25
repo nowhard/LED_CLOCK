@@ -62,12 +62,12 @@ void Menu_Change(menuItem* NewMenu)
 	selectedMenuItem = NewMenu;
 }
 
-#define BLINK_CONST		10
+#define BLINK_CONST		30
 //------------------------------------
 void Menu_Display(stClock *clock) 
 {
-	uint8_t blink_mask=0xFF;
-	uint16_t blink_counter=0;
+	static uint8_t blink_mask=0xFF;
+	static uint16_t blink_counter=0;
 
 //wdt_reset();	
 	if(blink_counter<BLINK_CONST)
@@ -235,20 +235,22 @@ void Menu_Key(enKey key, stClock *clock) {
 
 				case MENU_TUNE_DATE:
 				{
-
+					clock->DS1307Time.Month=BCD_Increment(clock->DS1307Time.Month,1,((1<<4)|2));
+					Date_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 
 
 				case MENU_TUNE_YEAR:
 				{
-
+					clock->DS1307Time.Year=BCD_Increment(clock->DS1307Time.Year,0,((9<<4)|9));
+					Year_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 
 				case MENU_TUNE_BRIGHTNESS_DAY:
 				{
-
+					
 				}
 				break;
 
@@ -282,7 +284,8 @@ void Menu_Key(enKey key, stClock *clock) {
 
 				case MENU_TUNE_DATE:
 				{
-
+					clock->DS1307Time.Date=BCD_Increment(clock->DS1307Time.Date,1,((3<<4)|1));
+					Date_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 
@@ -316,7 +319,7 @@ void Menu_Key(enKey key, stClock *clock) {
 		//------------------------
 		case KEY_CODE_D:
 		{
-			switch(SELECT)//пункт меню
+	/*		switch(SELECT)//пункт меню
 			{			
 				case MENU_TUNE_TIME:
 				{
@@ -355,7 +358,9 @@ void Menu_Key(enKey key, stClock *clock) {
 					Menu_Change(PREVIOUS);
 				}
 				break;				
-			}
+			}*/
+
+			Menu_Change(PREVIOUS);
 		}
 		break;
 			
