@@ -27,6 +27,24 @@ void Year_To_Buf(stDS1307Time *time, uint16_t *buf)
 	buf[4]=0x0100|(time->Year&0x0F);
 }
 
+void Time_Brightness_To_Buf(stBrightness *brightness, uint16_t *buf)
+{
+	buf[0]=0x0500|(brightness->hour>>4);
+	buf[1]=0x0400|(brightness->hour&0x0F);
+	buf[2]=0x0300|(0x0A);//"-"
+	buf[3]=0x0200|(brightness->minute>>4);
+	buf[4]=0x0100|(brightness->minute&0x0F);		
+}
+
+void Value_Brightness_To_Buf(stBrightness *brightness, uint16_t *buf)
+{
+	buf[0]=0x0500|(0xF);
+	buf[1]=0x0400|(0xF);
+	buf[2]=0x0300|(0xF);
+	buf[3]=0x0200|(0xF);
+	buf[4]=0x0100|((brightness->brightness>>1)&0x0F);	
+}
+
 uint8_t BCD_Increment(uint8_t bcd, uint8_t bcd_min, uint8_t bcd_max)
 {	
 	if((bcd&0xF)<9)

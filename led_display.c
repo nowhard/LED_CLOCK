@@ -1,26 +1,29 @@
 #include "led_display.h"
 
+
 //--------------------------------------------------------------------------------
-void LED_Out_Buf(uint16_t *out_buf, uint8_t out_buf_len, uint8_t mask)//вывод буфера в SPI bit-bang
+void LED_Out(stClock *clock, uint8_t out_buf_len)//вывод буфера в SPI bit-bang
 {
 	uint8_t i;
+
+	clock->display_buf[3]=(0xA00|clock->brightnessCurrent|0x01);
 
 	for(i=0;i<out_buf_len;i++)
 	{
 		if(i>=5)
 		{
-			if(mask&(1<<(i-5)))
+			if(clock->display_mask&(1<<(i-5)))
 			{
-				LED_SPI_WriteWord(out_buf[i]);
+				LED_SPI_WriteWord(clock->display_buf[i]);
 			}
 			else
 			{
-				LED_SPI_WriteWord(out_buf[i]|0xF);
+				LED_SPI_WriteWord(clock->display_buf[i]|0xF);
 			}
 		}
 		else
 		{
-			LED_SPI_WriteWord(out_buf[i]);
+			LED_SPI_WriteWord(clock->display_buf[i]);
 		}
 	}
 

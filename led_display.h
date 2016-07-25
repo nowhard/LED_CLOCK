@@ -5,6 +5,7 @@
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 #include<avr/interrupt.h>
+#include "clock.h"
 //-------------------------------------------
 
 #define LED_BUF_LEN				10
@@ -13,6 +14,6 @@
 
 void LED_SPI_Init(void);
 void LED_SPI_WriteWord(uint16_t data);
-void LED_Out_Buf(uint16_t *out_buf, uint8_t out_buf_len, uint8_t mask);
+void LED_Out(stClock *clock, uint8_t out_buf_len);
 
 #endif

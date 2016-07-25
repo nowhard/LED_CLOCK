@@ -28,6 +28,8 @@ void Clock_Init(void)
 	clock.display_buf[8]=0x404;
 	clock.display_buf[9]=0x505;
 
+
+	clock.brightnessCurrent=0xF;
 	clock.display_mask	=0xFF;
 }
 
@@ -46,7 +48,7 @@ void Clock_Cycle(void)
 	{
 		dispCounter=0;
 		Menu_Display(&clock);
-		LED_Out_Buf(clock.display_buf,LED_BUF_LEN,clock.display_mask);
+		LED_Out(&clock, LED_BUF_LEN);
 	}
 	else
 	{

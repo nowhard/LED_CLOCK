@@ -44,8 +44,11 @@ menuItem        Null_Menu = {(void*)0, (void*)0, (void*)0, (void*)0, 0, {0x00}};
 MAKE_MENU(m_s1i1,  m_s1i2,    NULL_ENTRY,  NULL_ENTRY, m_s2i1,       MENU_TIME, 			/*time*/"");
 MAKE_MENU(m_s1i2,  m_s1i3,    m_s1i1,      NULL_ENTRY, m_s3i1,       MENU_DATE, 			/*data*/"");
 MAKE_MENU(m_s1i3,  m_s1i4,	  m_s1i2,      NULL_ENTRY, m_s4i1,       MENU_YEAR, 			/*year*/"");
-MAKE_MENU(m_s1i4,  m_s1i5,	  m_s1i3,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS_DAY,  	"");
-MAKE_MENU(m_s1i5,  NULL_ENTRY,m_s1i4,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS_NIGHT,  	"");
+
+MAKE_MENU(m_s1i4,  m_s1i5,	  m_s1i3,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS_DAY_VAL,  	"");
+MAKE_MENU(m_s1i5,  m_s1i6,	  m_s1i4,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS_DAY_TIME,  	"");
+MAKE_MENU(m_s1i6,  m_s1i7,	  m_s1i5,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS_NIGHT_VAL,  	"");
+MAKE_MENU(m_s1i7,  NULL_ENTRY,m_s1i6,      NULL_ENTRY, NULL_ENTRY,   MENU_TUNE_BRIGHTNESS_NIGHT_TIME,  	"");
 // подменю Настройка времени
 MAKE_MENU(m_s2i1,  NULL_ENTRY,NULL_ENTRY,  m_s1i1,     NULL_ENTRY,   MENU_TUNE_TIME, 		"");
 // подменю Настройка даты
@@ -108,13 +111,13 @@ void Menu_Display(stClock *clock)
 		}
 		break;
 
-		case MENU_TUNE_BRIGHTNESS_DAY:
+		case MENU_TUNE_BRIGHTNESS_DAY_TIME:
 		{
 			clock->display_mask=blink_mask;
 		}
 		break;
 
-		case MENU_TUNE_BRIGHTNESS_NIGHT:
+		case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
 		{
 			clock->display_mask=blink_mask;
 		}
@@ -199,15 +202,31 @@ void Menu_Key(enKey key, stClock *clock) {
 				}
 				break;
 
-				case MENU_TUNE_BRIGHTNESS_DAY:
+				case MENU_TUNE_BRIGHTNESS_DAY_VAL:
 				{
-
+					
+					Menu_Change(NEXT);
 				}
 				break;
 
-				case MENU_TUNE_BRIGHTNESS_NIGHT:
+				case MENU_TUNE_BRIGHTNESS_DAY_TIME:
 				{
+					
+					Menu_Change(NEXT);
+				}
+				break;
 
+				case MENU_TUNE_BRIGHTNESS_NIGHT_VAL:
+				{
+				
+					Menu_Change(NEXT);
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
+				{
+					
+					Menu_Change(&m_s1i1);
 				}
 				break;
 				
@@ -248,15 +267,33 @@ void Menu_Key(enKey key, stClock *clock) {
 				}
 				break;
 
-				case MENU_TUNE_BRIGHTNESS_DAY:
+				case MENU_TUNE_BRIGHTNESS_DAY_TIME:
 				{
-					
+					clock->brightnessDay.minute=BCD_Increment(clock->brightnessDay.minute,0,((5<<4)|9));
+					Time_Brightness_To_Buf(&clock->brightnessDay,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 
-				case MENU_TUNE_BRIGHTNESS_NIGHT:
+				case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
 				{
+					clock->brightnessNight.minute=BCD_Increment(clock->brightnessNight.minute,0,((5<<4)|9));
+					Time_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
+				}
+				break;
 
+				case MENU_TUNE_BRIGHTNESS_DAY_VAL:
+				{
+					clock->brightnessDay.brightness=(clock->brightnessDay.brightness+2)&0xF;
+					clock->brightnessCurrent=clock->brightnessDay.brightness;
+					Value_Brightness_To_Buf(&clock->brightnessDay,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
+				}
+				break;
+
+				case MENU_TUNE_BRIGHTNESS_NIGHT_VAL:
+				{
+					clock->brightnessNight.brightness=(clock->brightnessNight.brightness+2)&0xF;
+					clock->brightnessCurrent=clock->brightnessNight.brightness;
+					Value_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 				
@@ -290,21 +327,17 @@ void Menu_Key(enKey key, stClock *clock) {
 				break;
 
 
-				case MENU_TUNE_YEAR:
+				case MENU_TUNE_BRIGHTNESS_DAY_TIME:
 				{
-
+					clock->brightnessDay.hour=BCD_Increment(clock->brightnessDay.hour,0,((5<<4)|9));
+					Time_Brightness_To_Buf(&clock->brightnessDay,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 
-				case MENU_TUNE_BRIGHTNESS_DAY:
+				case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
 				{
-
-				}
-				break;
-
-				case MENU_TUNE_BRIGHTNESS_NIGHT:
-				{
-
+					clock->brightnessNight.hour=BCD_Increment(clock->brightnessNight.hour,0,((5<<4)|9));
+					Time_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 				
@@ -319,48 +352,14 @@ void Menu_Key(enKey key, stClock *clock) {
 		//------------------------
 		case KEY_CODE_D:
 		{
-	/*		switch(SELECT)//пункт меню
-			{			
-				case MENU_TUNE_TIME:
-				{
-
-				}
-				break;
-
-
-				case MENU_TUNE_DATE:
-				{
-
-				}
-				break;
-
-
-				case MENU_TUNE_YEAR:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_BRIGHTNESS_DAY:
-				{
-
-				}
-				break;
-
-				case MENU_TUNE_BRIGHTNESS_NIGHT:
-				{
-
-				}
-				break;
-				
+			switch(SELECT)
+			{						
 				default:
 				{
-					Menu_Change(PREVIOUS);
+					Menu_Change(PARENT);
 				}
 				break;				
-			}*/
-
-			Menu_Change(PREVIOUS);
+			}
 		}
 		break;
 			
@@ -374,6 +373,8 @@ void Menu_Key(enKey key, stClock *clock) {
 		//------------------------
 		case KEY_CODE_CD:
 		{
+			clock->brightnessCurrent=clock->brightnessDay.brightness;
+			Value_Brightness_To_Buf(&clock->brightnessDay,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 			Menu_Change(&m_s1i4);
 		}
 		break;
