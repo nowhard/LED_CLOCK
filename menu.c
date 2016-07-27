@@ -71,8 +71,7 @@ void Menu_Display(stClock *clock)
 {
 	static uint8_t blink_mask=0xFF;
 	static uint16_t blink_counter=0;
-
-//wdt_reset();	
+	
 	if(blink_counter<BLINK_CONST)
 	{
 		blink_counter++;
@@ -218,15 +217,16 @@ void Menu_Key(enKey key, stClock *clock) {
 				case MENU_TUNE_BRIGHTNESS_DAY_VAL:
 				{					
 					Time_Brightness_To_Buf(&clock->brightnessDay,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
-					Determine_Current_Brightness(clock);
+					//Determine_Current_Brightness(clock);
 					Menu_Change(NEXT);
 				}
 				break;
 
 				case MENU_TUNE_BRIGHTNESS_DAY_TIME:
 				{					
-					I2C_Write_Buf(ADDR_BRIGHTNESS_DAY, 	(void*)&clock->brightnessDay, sizeof(stBrightness));
+					I2C_Write_Buf(ADDR_BRIGHTNESS_DAY, 	(uint8_t*)&clock->brightnessDay, sizeof(stBrightness));
 					Value_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
+					clock->brightnessCurrent=clock->brightnessNight.brightness;
 					Menu_Change(NEXT);
 				}
 				break;
@@ -234,14 +234,15 @@ void Menu_Key(enKey key, stClock *clock) {
 				case MENU_TUNE_BRIGHTNESS_NIGHT_VAL:
 				{				
 					Time_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
-					Determine_Current_Brightness(clock);
+					//Determine_Current_Brightness(clock);
 					Menu_Change(NEXT);
 				}
 				break;
 
 				case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
 				{
-					I2C_Write_Buf(ADDR_BRIGHTNESS_NIGHT, 	(void*)&clock->brightnessNight, sizeof(stBrightness));
+					I2C_Write_Buf(ADDR_BRIGHTNESS_NIGHT, 	(uint8_t*)&clock->brightnessNight, sizeof(stBrightness));
+					Determine_Current_Brightness(clock);
 					Menu_Change(&m_s1i1);
 				}
 				break;
@@ -345,14 +346,14 @@ void Menu_Key(enKey key, stClock *clock) {
 
 				case MENU_TUNE_BRIGHTNESS_DAY_TIME:
 				{
-					clock->brightnessDay.hour=BCD_Increment(clock->brightnessDay.hour,(((MIN_NIGHT_TO_DAY_HOUR/10)<<4)|(MIN_NIGHT_TO_DAY_HOUR%10)),(((MAX_NIGHT_TO_DAY_HOUR/10)<<4)|(MAX_NIGHT_TO_DAY_HOUR%10)));
+					clock->brightnessDay.hour=BCD_Increment(clock->brightnessDay.hour,MIN_NIGHT_TO_DAY_HOUR,MAX_NIGHT_TO_DAY_HOUR);
 					Time_Brightness_To_Buf(&clock->brightnessDay,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 
 				case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
 				{
-					clock->brightnessNight.hour=BCD_Increment(clock->brightnessNight.hour,(((MIN_DAY_TO_NIGHT_HOUR/10)<<4)|(MIN_DAY_TO_NIGHT_HOUR%10)),(((MAX_DAY_TO_NIGHT_HOUR/10)<<4)|(MAX_DAY_TO_NIGHT_HOUR%10)));
+					clock->brightnessNight.hour=BCD_Increment(clock->brightnessNight.hour,MIN_DAY_TO_NIGHT_HOUR,MAX_DAY_TO_NIGHT_HOUR);
 					Time_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;

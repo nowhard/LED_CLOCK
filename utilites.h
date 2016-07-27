@@ -4,12 +4,12 @@
 #include "i2c.h"
 #include "clock.h"
 
-#define MIN_DAY_TO_NIGHT_HOUR	12
-#define MAX_DAY_TO_NIGHT_HOUR	23
+#define MIN_DAY_TO_NIGHT_HOUR	((1<<4)|2)
+#define MAX_DAY_TO_NIGHT_HOUR	((2<<4)|3)
 
 
-#define MIN_NIGHT_TO_DAY_HOUR	1
-#define MAX_NIGHT_TO_DAY_HOUR	11
+#define MIN_NIGHT_TO_DAY_HOUR	((0<<4)|1)
+#define MAX_NIGHT_TO_DAY_HOUR	((1<<4)|1)
 
 void Time_To_Buf(stDS1307Time *time, uint16_t *buf);
 void Date_To_Buf(stDS1307Time *time, uint16_t *buf);

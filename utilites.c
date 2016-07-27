@@ -47,22 +47,12 @@ void Value_Brightness_To_Buf(stBrightness *brightness, uint16_t *buf)
 
 void Determine_Current_Brightness(stClock *clock)
 {
-	if((clock->brightnessDay.hour<MIN_NIGHT_TO_DAY_HOUR) | (clock->brightnessDay.hour>MAX_NIGHT_TO_DAY_HOUR))
-	{
-		clock->brightnessDay.hour=MAX_NIGHT_TO_DAY_HOUR;
-	}
-
-	if((clock->brightnessNight.hour<MIN_DAY_TO_NIGHT_HOUR) | (clock->brightnessNight.hour>MAX_DAY_TO_NIGHT_HOUR))
-	{
-		clock->brightnessNight.hour=MAX_DAY_TO_NIGHT_HOUR;
-	}
-
-	if((clock->DS1307Time.Hours==clock->brightnessDay.hour) && (clock->DS1307Time.Minutes==clock->brightnessDay.minute) && (clock->brightnessCurrent!=clock->brightnessDay.brightness))
+	if((((uint16_t)clock->DS1307Time.Hours*100+clock->DS1307Time.Minutes)>=((uint16_t)clock->brightnessDay.hour*100+clock->brightnessDay.minute)) && 
+	   (((uint16_t)clock->DS1307Time.Hours*100+clock->DS1307Time.Minutes)< ((uint16_t)clock->brightnessNight.hour*100+clock->brightnessNight.minute)))
 	{
 		clock->brightnessCurrent=clock->brightnessDay.brightness;	
 	}
-
-	if((clock->DS1307Time.Hours==clock->brightnessNight.hour) && (clock->DS1307Time.Minutes==clock->brightnessNight.minute) && (clock->brightnessCurrent!=clock->brightnessNight.brightness))
+	else 
 	{
 		clock->brightnessCurrent=clock->brightnessNight.brightness;	
 	}
