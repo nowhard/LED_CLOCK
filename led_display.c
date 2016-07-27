@@ -6,7 +6,7 @@ void LED_Out(stClock *clock, uint8_t out_buf_len)//вывод буфера в SPI bit-bang
 {
 	uint8_t i;
 
-	clock->display_buf[3]=(0xA00|clock->brightnessCurrent|0x01);
+	clock->display_buf[0]=(0xA00|clock->brightnessCurrent|0x01);
 
 	for(i=0;i<out_buf_len;i++)
 	{
@@ -50,7 +50,7 @@ void LED_SPI_Init(void)
    /*разрешение spi,старший бит вперед,мастер, режим 0*/
    SPCR = (1<<SPE)|(0<<DORD)|(1<<MSTR)|(0<<CPOL)|(0<<CPHA)|(0<<SPR1)|(0<<SPR0);
 
-   SPSR = (1<<SPI2X);
+   SPSR = (0<<SPI2X);
 }
 
 void LED_SPI_WriteWord(uint16_t data)

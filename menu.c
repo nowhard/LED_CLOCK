@@ -90,8 +90,8 @@ void Menu_Display(stClock *clock)
 		{
 			I2C_ReadTime(&clock->DS1307Time);
 			clock->display_mask=0xFF;
+			Determine_Current_Brightness(clock);
 			Time_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
-
 		}
 		break;
 		
@@ -99,6 +99,7 @@ void Menu_Display(stClock *clock)
 		{
 			I2C_ReadTime(&clock->DS1307Time);
 			clock->display_mask=0xFF;
+			Determine_Current_Brightness(clock);
 			Date_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 		}
 		break;
@@ -107,6 +108,7 @@ void Menu_Display(stClock *clock)
 		{
 			I2C_ReadTime(&clock->DS1307Time);
 			clock->display_mask=0xFF;
+			Determine_Current_Brightness(clock);
 			Year_To_Buf(&clock->DS1307Time, &clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 		}
 		break;
@@ -118,6 +120,18 @@ void Menu_Display(stClock *clock)
 		break;
 
 		case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
+		{
+			clock->display_mask=blink_mask;
+		}
+		break;
+
+		case MENU_TUNE_BRIGHTNESS_DAY_VAL:
+		{
+			clock->display_mask=blink_mask;
+		}
+		break;
+
+		case MENU_TUNE_BRIGHTNESS_NIGHT_VAL:
 		{
 			clock->display_mask=blink_mask;
 		}
@@ -161,6 +175,7 @@ void Menu_Key(enKey key, stClock *clock) {
 		{
 			switch(SELECT)//пункт меню
 			{
+			//-----------------------------
 				case MENU_TIME:
 				{
 					Menu_Change(NEXT);
@@ -178,14 +193,13 @@ void Menu_Key(enKey key, stClock *clock) {
 					Menu_Change(&m_s1i1);
 				}
 				break;
-										
+			//------------------------------							
 				case MENU_TUNE_TIME:
 				{
 					I2C_StoreTime(&clock->DS1307Time);
 					Menu_Change(&m_s1i1);
 				}
 				break;
-
 
 				case MENU_TUNE_DATE:
 				{
@@ -194,38 +208,40 @@ void Menu_Key(enKey key, stClock *clock) {
 				}
 				break;
 
-
 				case MENU_TUNE_YEAR:
 				{
 					I2C_StoreYear(&clock->DS1307Time);
 					Menu_Change(&m_s1i3);
 				}
 				break;
-
+			//--------------------------------
 				case MENU_TUNE_BRIGHTNESS_DAY_VAL:
-				{
-					
+				{					
+					Time_Brightness_To_Buf(&clock->brightnessDay,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
+					Determine_Current_Brightness(clock);
 					Menu_Change(NEXT);
 				}
 				break;
 
 				case MENU_TUNE_BRIGHTNESS_DAY_TIME:
-				{
-					
+				{					
+					I2C_Write_Buf(ADDR_BRIGHTNESS_DAY, 	(void*)&clock->brightnessDay, sizeof(stBrightness));
+					Value_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 					Menu_Change(NEXT);
 				}
 				break;
 
 				case MENU_TUNE_BRIGHTNESS_NIGHT_VAL:
-				{
-				
+				{				
+					Time_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
+					Determine_Current_Brightness(clock);
 					Menu_Change(NEXT);
 				}
 				break;
 
 				case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
 				{
-					
+					I2C_Write_Buf(ADDR_BRIGHTNESS_NIGHT, 	(void*)&clock->brightnessNight, sizeof(stBrightness));
 					Menu_Change(&m_s1i1);
 				}
 				break;
@@ -299,7 +315,7 @@ void Menu_Key(enKey key, stClock *clock) {
 				
 				default:
 				{
-					Menu_Change(PREVIOUS);
+
 				}
 				break;				
 			}
@@ -329,21 +345,21 @@ void Menu_Key(enKey key, stClock *clock) {
 
 				case MENU_TUNE_BRIGHTNESS_DAY_TIME:
 				{
-					clock->brightnessDay.hour=BCD_Increment(clock->brightnessDay.hour,0,((5<<4)|9));
+					clock->brightnessDay.hour=BCD_Increment(clock->brightnessDay.hour,(((MIN_NIGHT_TO_DAY_HOUR/10)<<4)|(MIN_NIGHT_TO_DAY_HOUR%10)),(((MAX_NIGHT_TO_DAY_HOUR/10)<<4)|(MAX_NIGHT_TO_DAY_HOUR%10)));
 					Time_Brightness_To_Buf(&clock->brightnessDay,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 
 				case MENU_TUNE_BRIGHTNESS_NIGHT_TIME:
 				{
-					clock->brightnessNight.hour=BCD_Increment(clock->brightnessNight.hour,0,((5<<4)|9));
+					clock->brightnessNight.hour=BCD_Increment(clock->brightnessNight.hour,(((MIN_DAY_TO_NIGHT_HOUR/10)<<4)|(MIN_DAY_TO_NIGHT_HOUR%10)),(((MAX_DAY_TO_NIGHT_HOUR/10)<<4)|(MAX_DAY_TO_NIGHT_HOUR%10)));
 					Time_Brightness_To_Buf(&clock->brightnessNight,&clock->display_buf[LED_NOT_DISPLAYED_LEN]);
 				}
 				break;
 				
 				default:
 				{
-					Menu_Change(PREVIOUS);
+					//Menu_Change(PREVIOUS);
 				}
 				break;				
 			}			
@@ -352,14 +368,7 @@ void Menu_Key(enKey key, stClock *clock) {
 		//------------------------
 		case KEY_CODE_D:
 		{
-			switch(SELECT)
-			{						
-				default:
-				{
-					Menu_Change(PARENT);
-				}
-				break;				
-			}
+
 		}
 		break;
 			

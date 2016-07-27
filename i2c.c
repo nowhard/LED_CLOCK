@@ -152,7 +152,26 @@ TWCR=(1<<TWINT)|(1<<TWSTA)|(1<<TWEN);//START2
 	return reg;
 
 }
+//-----------------------------------------------------------
+void 	I2C_Read_Buf(uint8_t address_mem, void* data, uint8_t data_len)
+{
+	uint8_t i=0;
 
+	for(i=0;i<data_len;i++)
+	{
+		((uint8_t*)data)[i]=I2C_Read(TMR_ADDR,address_mem+i);
+	}
+}
+
+void 	I2C_Write_Buf(uint8_t address_mem, void* data, uint8_t data_len)
+{
+	uint8_t i=0;
+
+	for(i=0;i<data_len;i++)
+	{
+		I2C_Write(TMR_ADDR,address_mem+i,((uint8_t*)data)[i]);
+	}
+}
 //------------------------------------------------------------
 void I2C_ReadTime(stDS1307Time *time)
 {	

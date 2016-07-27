@@ -7,16 +7,18 @@
 
 #include "led_display.h"
 #include "clock.h"
-
+#include <avr/wdt.h> 
 
 int main(void)
 {
 	Clock_Init();
-	//sei();
+	wdt_enable(WDTO_1S);
+	sei();
 
 	while(1)
 	{
 		Clock_Cycle();
+		wdt_reset();
 	}
 }
 

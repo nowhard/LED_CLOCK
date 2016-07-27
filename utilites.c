@@ -45,6 +45,29 @@ void Value_Brightness_To_Buf(stBrightness *brightness, uint16_t *buf)
 	buf[4]=0x0100|((brightness->brightness>>1)&0x0F);	
 }
 
+void Determine_Current_Brightness(stClock *clock)
+{
+	if((clock->brightnessDay.hour<MIN_NIGHT_TO_DAY_HOUR) | (clock->brightnessDay.hour>MAX_NIGHT_TO_DAY_HOUR))
+	{
+		clock->brightnessDay.hour=MAX_NIGHT_TO_DAY_HOUR;
+	}
+
+	if((clock->brightnessNight.hour<MIN_DAY_TO_NIGHT_HOUR) | (clock->brightnessNight.hour>MAX_DAY_TO_NIGHT_HOUR))
+	{
+		clock->brightnessNight.hour=MAX_DAY_TO_NIGHT_HOUR;
+	}
+
+	if((clock->DS1307Time.Hours==clock->brightnessDay.hour) && (clock->DS1307Time.Minutes==clock->brightnessDay.minute) && (clock->brightnessCurrent!=clock->brightnessDay.brightness))
+	{
+		clock->brightnessCurrent=clock->brightnessDay.brightness;	
+	}
+
+	if((clock->DS1307Time.Hours==clock->brightnessNight.hour) && (clock->DS1307Time.Minutes==clock->brightnessNight.minute) && (clock->brightnessCurrent!=clock->brightnessNight.brightness))
+	{
+		clock->brightnessCurrent=clock->brightnessNight.brightness;	
+	}
+}
+
 uint8_t BCD_Increment(uint8_t bcd, uint8_t bcd_min, uint8_t bcd_max)
 {	
 	if((bcd&0xF)<9)
